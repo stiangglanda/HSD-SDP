@@ -1,4 +1,4 @@
-## Visual Studio und MSBuild temporäre Dateien & Build-Ausgaben
+## Visual Studio und MSBuild temporï¿½re Dateien & Build-Ausgaben
 
 # Benutzerdefinierte Einstellungen und Verzeichnis-Caches
 .vs/
@@ -6,6 +6,8 @@
 *.user
 *.userosscache
 *.sln.docstates
+CMakeFiles
+out
 
 # Build-Ergebnisse (Binaries)
 [Bb]in/
@@ -19,7 +21,7 @@ x86/
 Debug/
 Release/
 
-# Executables & Binärdateien
+# Executables & Binï¿½rdateien
 *.exe
 *.dll
 *.so
@@ -27,7 +29,7 @@ Release/
 *.iso
 *.img
 
-# Temporäre Dateien von C++ / MSBuild
+# Temporï¿½re Dateien von C++ / MSBuild
 *.obj
 *.i
 *.s
