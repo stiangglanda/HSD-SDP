@@ -1,8 +1,12 @@
-﻿// PropertyManagement.h : Include file for standard system include files,
-// or project specific include files.
+﻿#ifndef PROPERTYMANAGEMENT_H
+#define PROPERTYMANAGEMENT_H
 
-#pragma once
+#include "House.h"
 
-#include <iostream>
-
-// TODO: Reference additional headers your program requires here.
+class PropertyManagement
+{
+public:
+private:
+	std::vector<House> mHouses;
+};
+#endif //PROPERTYMANAGEMENT_H
