@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="15.0.0">
+  <zoom_level>15</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>450</x>
+      <y>75</y>
+      <w>225</w>
+      <h>120</h>
+    </coordinates>
+    <panel_attributes>/Object/
+--
++ ~Object()
++ ToString():string
+# Object()
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>330</x>
+      <y>555</y>
+      <w>225</w>
+      <h>135</h>
+    </coordinates>
+    <panel_attributes>Cat
+--
++ Cat(w: size_t)
++ ToString():string
++ GiveTongue(): void
++ Clone(): Animal</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>600</x>
+      <y>555</y>
+      <w>225</w>
+      <h>135</h>
+    </coordinates>
+    <panel_attributes>Dog
+--
++ Cat(w: size_t)
++ ToString():string
++ GiveTongue(): void
++ Clone(): Animal</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>420</x>
+      <y>465</y>
+      <w>150</w>
+      <h>120</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>80.0;10.0;10.0;60.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>555</x>
+      <y>465</y>
+      <w>150</w>
+      <h>120</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;80.0;60.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>450</x>
+      <y>255</y>
+      <w>240</w>
+      <h>225</h>
+    </coordinates>
+    <panel_attributes>Animal
+--
+- mID: sizte_t
+- mWeight: size_t
+--
++ ToString():string
+/+ GiveTongue(): void/
++ GetWeight(): size_t
+/+ Clone() : Animal/
+# Animal()</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>540</x>
+      <y>180</y>
+      <w>45</w>
+      <h>105</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;50.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>945</x>
+      <y>270</y>
+      <w>285</w>
+      <h>195</h>
+    </coordinates>
+    <panel_attributes>Zoo
+--
++ Zoo()
++ Zoo(z: Zoo)
++ ~Zoo()
++ operator = (z: Zoo): void
++ Add(ani: Animnal): void
++ ToString(): string</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>675</x>
+      <y>330</y>
+      <w>300</w>
+      <h>75</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-
+m1=1
+m2=*
+</panel_attributes>
+    <additional_attributes>180.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>660</x>
+      <y>120</y>
+      <w>450</w>
+      <h>180</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;280.0;10.0;280.0;100.0</additional_attributes>
+  </element>
+</diagram>

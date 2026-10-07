@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.32106.194
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SimpleAnimal", "SimpleAnimal.vcxproj", "{EE7CDFA3-4BA1-407F-82D3-B9D720912A9F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EE7CDFA3-4BA1-407F-82D3-B9D720912A9F}.Debug|x64.ActiveCfg = Debug|x64
+		{EE7CDFA3-4BA1-407F-82D3-B9D720912A9F}.Debug|x64.Build.0 = Debug|x64
+		{EE7CDFA3-4BA1-407F-82D3-B9D720912A9F}.Debug|x86.ActiveCfg = Debug|Win32
+		{EE7CDFA3-4BA1-407F-82D3-B9D720912A9F}.Debug|x86.Build.0 = Debug|Win32
+		{EE7CDFA3-4BA1-407F-82D3-B9D720912A9F}.Release|x64.ActiveCfg = Release|x64
+		{EE7CDFA3-4BA1-407F-82D3-B9D720912A9F}.Release|x64.Build.0 = Release|x64
+		{EE7CDFA3-4BA1-407F-82D3-B9D720912A9F}.Release|x86.ActiveCfg = Release|Win32
+		{EE7CDFA3-4BA1-407F-82D3-B9D720912A9F}.Release|x86.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {2AC08FEA-C762-441B-AF3C-E1EA7BF75C0F}
+	EndGlobalSection
+EndGlobal
