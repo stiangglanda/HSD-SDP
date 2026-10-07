@@ -1,25 +1,29 @@
-<diagram program="umletino" version="15.1"><zoom_level>10</zoom_level><element><id>UMLClass</id><coordinates><x>459</x><y>250</y><w>210</w><h>110</h></coordinates><panel_attributes>House
+<diagram program="umletino" version="15.1"><zoom_level>10</zoom_level><element><id>UMLClass</id><coordinates><x>60</x><y>220</y><w>210</w><h>110</h></coordinates><panel_attributes>House
 -
-- mAddress
-- mZip
-- mFloors : vector&lt;Floor&gt;</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>459</x><y>420</y><w>200</w><h>100</h></coordinates><panel_attributes>Floor
+- mAddress : string
+- mZip : string
+- mFloors : vector&lt;Floor&gt;</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>70</x><y>390</y><w>200</w><h>100</h></coordinates><panel_attributes>Floor
 -
 - mNumber : int
-- mFlats : vector&lt;Flat&gt;</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>429</x><y>30</y><w>230</w><h>140</h></coordinates><panel_attributes>FacilityManagment
+- mFlats : vector&lt;Flat&gt;</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>50</x><y>20</y><w>230</w><h>140</h></coordinates><panel_attributes>PropertyManagment
 -
-- mHouses : vector&lt;House&gt;</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>429</x><y>550</y><w>140</w><h>100</h></coordinates><panel_attributes>Flat
+- mHouses : vector&lt;House&gt;</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>90</x><y>540</y><w>200</w><h>140</h></coordinates><panel_attributes>Flat
 -
 - mNumber : size_t
 - mSpace : float
 - mBalcony : bool
-- mTenant : Tenant*</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>449</x><y>700</y><w>110</w><h>150</h></coordinates><panel_attributes>Tenant
+- mTenant : Tenant*
 -
-- mfirstname
-- mlastname
-- mbirthyear
++ ChangeTenant(Tenant&amp;) : void
++ GetLastName()
++ GetBirthyear()</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>90</x><y>770</y><w>140</w><h>150</h></coordinates><panel_attributes>Tenant
+-
+- mfirstname : string
+- mlastname : string
+- mbirthyear : size_t
 -
 + GetFirstName()
 + GetLastName()
-+ Get()</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>549</x><y>590</y><w>120</w><h>180</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-
++ GetBirthyear()</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>150</x><y>670</y><w>40</w><h>120</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-
 m1=1
-m2=1</panel_attributes><additional_attributes>20;10;100;10;10;160</additional_attributes></element></diagram>
+m2=1</panel_attributes><additional_attributes>10;10;10;100</additional_attributes></element><element><id>Relation</id><coordinates><x>150</x><y>480</y><w>40</w><h>80</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>16;12;10;60</additional_attributes></element><element><id>Relation</id><coordinates><x>140</x><y>320</y><w>40</w><h>90</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>16;12;20;70</additional_attributes></element><element><id>Relation</id><coordinates><x>130</x><y>150</y><w>40</w><h>90</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>16;12;20;70</additional_attributes></element></diagram>

@@ -8,6 +8,7 @@
 *.sln.docstates
 CMakeFiles
 out
+.idea
 
 # Build-Ergebnisse (Binaries)
 [Bb]in/
