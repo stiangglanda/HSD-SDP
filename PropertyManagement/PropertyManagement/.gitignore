@@ -1,0 +1,78 @@
+## Visual Studio und MSBuild temporäre Dateien & Build-Ausgaben
+
+# Benutzerdefinierte Einstellungen und Verzeichnis-Caches
+.vs/
+.vscode/
+*.user
+*.userosscache
+*.sln.docstates
+
+# Build-Ergebnisse (Binaries)
+[Bb]in/
+[Oo]bj/
+[Ll]og/
+[Ll]ogs/
+x64/
+x86/
+[Aa]rm/
+[Aa]rm64/
+Debug/
+Release/
+
+# Executables & Binärdateien
+*.exe
+*.dll
+*.so
+*.dylib
+*.iso
+*.img
+
+# Temporäre Dateien von C++ / MSBuild
+*.obj
+*.i
+*.s
+*.res
+*.pch
+*.idb
+*.pdb
+*.ilk
+*.iobj
+*.ipdb
+*.pgc
+*.pgd
+*.rsp
+*.sbr
+*.tlb
+*.tli
+*.tlh
+*.tmp
+*.tmp_proj
+*_wpftmp.csproj
+*.log
+
+# Visual Studio Profiler & Diagnostik
+*.vsp
+*.vspx
+*.sap
+*.diagsession
+
+# Test-Ergebnisse
+[Tt]est[Rr]esult*/
+[Bb]uild[Ll]og.*
+*.trx
+
+# Visual Studio Solution-Optionen (SUO) & Quellcodeverwaltung
+*.suo
+*.userlibraries
+*.vspscc
+*.vssscc
+
+# NuGet Packages
+*.nupkg
+**/packages/*
+!**/packages/repositories.config
+!**/packages/packages.config
+
+# ReSharper / JetBrains (falls verwendet)
+_ReSharper*/
+*.StackTrace*.txt
