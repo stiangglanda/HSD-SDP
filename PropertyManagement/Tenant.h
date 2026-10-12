@@ -46,4 +46,4 @@ private:
     size_t mBirthYear;
 };
 
-#endif // TENANT_H
+#endif

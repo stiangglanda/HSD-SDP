@@ -50,4 +50,4 @@ private:
     const Tenant* mTenant;
 };
 
-#endif // FLAT_H
+#endif

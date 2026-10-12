@@ -40,4 +40,4 @@ private:
     std::vector<Flat> mFlats;
 };
 
-#endif // FLOOR_H
+#endif
