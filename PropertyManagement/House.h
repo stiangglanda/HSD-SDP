@@ -12,4 +12,4 @@ private:
 	std::string mAddress;
 };
 
-#endif HOUSE_H
+#endif

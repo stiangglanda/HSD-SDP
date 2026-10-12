@@ -1,10 +1,10 @@
 <diagram program="umletino" version="15.1"><zoom_level>10</zoom_level>
-<element><id>UMLClass</id><coordinates><x>60</x><y>20</y><w>380</w><h>90</h></coordinates><panel_attributes>PropertyManagement
+<element><id>UMLClass</id><coordinates><x>60</x><y>20</y><w>420</w><h>90</h></coordinates><panel_attributes>PropertyManagement
 -
 -
 + AddHouse(house : const House&amp;) : bool
 + Print() : void</panel_attributes><additional_attributes></additional_attributes></element>
-<element><id>UMLClass</id><coordinates><x>60</x><y>210</y><w>380</w><h>190</h></coordinates><panel_attributes>House
+<element><id>UMLClass</id><coordinates><x>60</x><y>210</y><w>420</w><h>210</h></coordinates><panel_attributes>House
 -
 - mStreet : string
 - mZip : string
@@ -15,22 +15,30 @@
 + HasAddress(street : const string&amp;, zip : const string&amp;,
           city : const string&amp;) : bool
 + Print() : void</panel_attributes><additional_attributes></additional_attributes></element>
-<element><id>UMLClass</id><coordinates><x>60</x><y>500</y><w>380</w><h>110</h></coordinates><panel_attributes>Floor
+<element><id>UMLClass</id><coordinates><x>60</x><y>520</y><w>420</w><h>150</h></coordinates><panel_attributes>Floor
 -
 - mNumber : size_t
 -
 + Floor(number : size_t, flats : const vector&lt;Flat&gt;&amp;)
++ GetNumber() : size_t
++ GetFlatCount() : size_t
++ GetFlat(index : size_t) : Flat&amp;
 + Print() : void</panel_attributes><additional_attributes></additional_attributes></element>
-<element><id>UMLClass</id><coordinates><x>60</x><y>710</y><w>380</w><h>170</h></coordinates><panel_attributes>Flat
+<element><id>UMLClass</id><coordinates><x>60</x><y>770</y><w>420</w><h>240</h></coordinates><panel_attributes>Flat
 -
 - mNumber : size_t
 - mArea : float
 - mHasBalcony : bool
 -
 + Flat(number : size_t, area : float, hasBalcony : bool,
-          tenant : const Tenant*)
+          tenant : const Tenant* = nullptr)
++ GetNumber() : size_t
++ GetArea() : float
++ HasBalcony() : bool
++ GetTenant() : const Tenant*
++ SetTenant(tenant : const Tenant*) : void
 + Print() : void</panel_attributes><additional_attributes></additional_attributes></element>
-<element><id>UMLClass</id><coordinates><x>60</x><y>980</y><w>380</w><h>170</h></coordinates><panel_attributes>Tenant
+<element><id>UMLClass</id><coordinates><x>60</x><y>1110</y><w>420</w><h>240</h></coordinates><panel_attributes>Tenant
 -
 - mFirstName : string
 - mLastName : string
@@ -38,21 +46,26 @@
 -
 + Tenant(firstName : const string&amp;, lastName : const string&amp;,
           birthYear : size_t)
++ GetFirstName() : const string&amp;
++ GetLastName() : const string&amp;
++ GetBirthYear() : size_t
++ SetFirstName(firstName : const string&amp;) : void
++ SetLastName(lastName : const string&amp;) : void
 + Print() : void</panel_attributes><additional_attributes></additional_attributes></element>
 <element><id>Relation</id><coordinates><x>190</x><y>110</y><w>70</w><h>100</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
 m1=1
 m2=0..*
 mHouses</panel_attributes><additional_attributes>20;10;20;90</additional_attributes></element>
-<element><id>Relation</id><coordinates><x>190</x><y>400</y><w>70</w><h>100</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
+<element><id>Relation</id><coordinates><x>190</x><y>420</y><w>70</w><h>100</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
 m1=1
 m2=1..*
 mFloors</panel_attributes><additional_attributes>20;10;20;90</additional_attributes></element>
-<element><id>Relation</id><coordinates><x>190</x><y>610</y><w>70</w><h>100</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
+<element><id>Relation</id><coordinates><x>190</x><y>670</y><w>70</w><h>100</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
 m1=1
 m2=1..*
 mFlats</panel_attributes><additional_attributes>20;10;20;90</additional_attributes></element>
-<element><id>Relation</id><coordinates><x>190</x><y>880</y><w>70</w><h>100</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-
+<element><id>Relation</id><coordinates><x>190</x><y>1010</y><w>70</w><h>100</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-
 m1=0..*
-m2=1
+m2=0..1
 mTenant</panel_attributes><additional_attributes>20;10;20;90</additional_attributes></element>
 </diagram>
