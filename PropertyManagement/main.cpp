@@ -66,4 +66,25 @@ void RunTestDriver()
     if (e1.GetFlat(1).GetTenant()->GetBirthYear() == 1960) std::cout << "Getter GetTenant && GetBirthYear passed." << std::endl;
     if (e1.GetFlat(1).GetTenant()->GetFirstName() == "Hubert") std::cout << "Getter GetTenant && GetFirstName passed." << std::endl;
     if (e1.GetFlat(1).GetTenant()->GetLastName() == "von Goisern") std::cout << "Getter GetTenant && GetLastName passed." << std::endl;
+
+    try
+    {
+        House h11{ {"", "4711", "Hagenberg"}, house1 };
+    }
+    catch (std::invalid_argument& e)
+    {
+        std::cout << e.what() << std::endl;
+    }
+    std::cout << "Catching Error for empty Address: passed.";
+    try
+    {
+        std::vector<Floor> emptyhouse{};
+        House h11{ {"Softwarepark 11", "4711", "Hagenberg"}, emptyhouse };
+    }
+    catch (std::invalid_argument& e)
+    {
+        std::cout << e.what() << std::endl;
+    }
+    std::cout << "Catching Error for empty house vector: passed.";
+
 }
