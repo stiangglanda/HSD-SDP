@@ -2,7 +2,6 @@
 /// \brief Test driver. Runs all tests and prints the results.
 /// \author Leander Kieweg
 
-#include "TestLowerHalf.h"
 #include "PropertyManagement.h"
 #include <iostream>
 
@@ -23,7 +22,7 @@ void RunTestDriver()
     Tenant t2{ "Jakob", "Schubert", 1990 };
     Tenant t3{ "Ayrton", "Senna", 1950 };
     Tenant t4{ "Maximilian", "Laimer", 1960 };
-    Tenant t5{ "Leander", "Müller", 2000 };
+    Tenant t5{ "Leander", "Mï¿½ller", 2000 };
     Tenant t6{ "Manuel", "Hundstorfer", 1995 };
     Tenant t7{ "Daniel", "Moser", 1949 };
 
