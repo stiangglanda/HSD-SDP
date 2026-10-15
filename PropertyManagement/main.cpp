@@ -1,6 +1,6 @@
 /// \file main.cpp
 /// \brief Test driver. Runs all tests and prints the results.
-/// \author Leander Kieweg
+/// \author Leander Kieweg, Julian Rieger
 
 #include "PropertyManagement.h"
 #include <iostream>
@@ -75,7 +75,7 @@ void RunTestDriver()
     {
         std::cout << e.what() << std::endl;
     }
-    std::cout << "Catching Error for empty Address: passed.";
+    std::cout << "Catching Error for empty Address: passed." << std::endl;
     try
     {
         std::vector<Floor> emptyhouse{};
