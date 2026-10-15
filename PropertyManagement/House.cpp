@@ -13,10 +13,6 @@ House::House(const Address &address, const std::vector<Floor>& floors) :
 	{
 		throw std::invalid_argument("Invalid vector: Cannot add empty floor vector to object house.");
 	}
-	if (mAddress.GetZip().empty() || mAddress.GetStreet().empty())
-	{
-		throw std::invalid_argument("Invalid Address: Cannot create house without ZIP or Street.");
-	}
 }
 
 Address House::GetAddress() const
