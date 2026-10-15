@@ -20,7 +20,7 @@ size_t Floor::GetFlatCount() const { return mFlats.size(); }
 Flat& Floor::GetFlat(size_t number) {
     auto it = std::find_if(mFlats.begin(), mFlats.end(),
         [number](const Flat& f) { return f.GetNumber() == number; });
-    if (it == mFlats.cend()) {
+    if (it == mFlats.end()) {
         throw std::out_of_range("Flat not found");
     }
     return *it;
