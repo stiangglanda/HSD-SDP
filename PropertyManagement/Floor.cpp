@@ -22,5 +22,6 @@ void Floor::Print() const {
     std::cout << "  Floor " << mNumber << "\n";
     for (const Flat& flat : mFlats) {
         flat.Print();
+        std::cout << std::endl;
     }
 }
