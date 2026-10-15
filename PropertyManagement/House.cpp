@@ -24,6 +24,11 @@ Address House::GetAddress() const
 	return mAddress;
 }
 
+size_t House::GetFloorCount() const
+{
+	return mFloors.size();
+}
+
 void House::Print() const
 {
 	for (const auto& floor : mFloors)

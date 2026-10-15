@@ -33,5 +33,5 @@ std::string Address::GetCity() const
 
 void Address::Print() const
 {
-	std::cout << mStreet << " ," << mZip << " " << mCity;
+	std::cout << mStreet << ", " << mZip << " " << mCity;
 }

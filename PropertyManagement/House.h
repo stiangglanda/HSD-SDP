@@ -24,6 +24,9 @@ public:
 
 /// \brief Returns member mAddress.
 	Address GetAddress() const;
+
+/// \brief Returns number of floors
+	size_t GetFloorCount() const;
 private:
 	std::vector<Floor> mFloors;
 	Address mAddress;
