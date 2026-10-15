@@ -4,7 +4,7 @@
 #include "PropertyManagement.h"
 #include <iostream>
 
-void PropertyManagement::Print()
+void PropertyManagement::Print() const
 {
 	for (const auto &house : mHouses)
 	{

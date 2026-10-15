@@ -19,13 +19,13 @@ public:
 	Address(std::string street, std::string zip, std::string city);
 
 	/// \brief Returns member mZip.
-	std::string GetZip();
+	std::string GetZip() const;
 
 	/// \brief Returns member mStreet.
-	std::string GetStreet();
+	std::string GetStreet() const;
 
 	/// \brief Returns member mCity.
-	std::string GetCity();
+	std::string GetCity() const;
 
 	///	\brief Prints Address formated on console.
 	void Print() const;

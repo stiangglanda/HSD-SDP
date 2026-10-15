@@ -15,7 +15,7 @@ class PropertyManagement
 public:
 
 /// \brief Object containing existing houses and underlying objects.
-	void Print();
+	void Print() const;
 
 /// \brief Object containing existing houses and underlying objects.
 	void AddHouse(const House& house);

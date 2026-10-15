@@ -16,17 +16,17 @@ Address::Address(std::string street, std::string zip, std::string city) :
 	}
 }
 
-std::string Address::GetZip()
+std::string Address::GetZip() const
 {
 	return mZip;
 }
 
-std::string Address::GetStreet()
+std::string Address::GetStreet() const
 {
 	return mStreet;
 }
 
-std::string Address::GetCity()
+std::string Address::GetCity() const
 {
 	return mCity;
 }
