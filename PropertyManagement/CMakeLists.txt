@@ -13,8 +13,6 @@ project ("PropertyManagement")
 
 # Add source to this project's executable.
 add_executable (PropertyManagement "PropertyManagement.cpp" "PropertyManagement.h" "House.cpp" "House.h" "Floor.cpp" "Floor.h" "Flat.cpp" "Flat.h" "Tenant.cpp" "Tenant.h"
-        TestLowerHalf.cpp
-        TestLowerHalf.h
         main.cpp "Address.h"  "Address.cpp")
 
 if (CMAKE_VERSION VERSION_GREATER 3.12)
