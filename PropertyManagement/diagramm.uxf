@@ -59,9 +59,19 @@
 + GetZip() : const string&amp;
 + GetCity() : const string&amp;
 + operator==(other : const Address&amp;) : bool
-+ Print() : void</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>230</x><y>130</y><w>80</w><h>110</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-
-mHouses</panel_attributes><additional_attributes>10;10;10;90</additional_attributes></element><element><id>Relation</id><coordinates><x>230</x><y>350</y><w>70</w><h>110</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-
-mFloors</panel_attributes><additional_attributes>10;10;10;90</additional_attributes></element><element><id>Relation</id><coordinates><x>230</x><y>590</y><w>70</w><h>110</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-
-mFlats</panel_attributes><additional_attributes>10;10;10;90</additional_attributes></element><element><id>Relation</id><coordinates><x>520</x><y>760</y><w>130</w><h>40</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-
-mTenant</panel_attributes><additional_attributes>10;20;110;20</additional_attributes></element><element><id>Relation</id><coordinates><x>480</x><y>270</y><w>150</w><h>40</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-
-mAddress</panel_attributes><additional_attributes>10;20;130;20</additional_attributes></element></diagram>
++ Print() : void</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>230</x><y>130</y><w>90</w><h>110</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-
+mHouses
+m1=1
+m2=0..*</panel_attributes><additional_attributes>10;10;10;90</additional_attributes></element><element><id>Relation</id><coordinates><x>230</x><y>350</y><w>80</w><h>110</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-
+mFloors
+m1=1
+m2=1..*</panel_attributes><additional_attributes>10;10;10;90</additional_attributes></element><element><id>Relation</id><coordinates><x>230</x><y>590</y><w>80</w><h>110</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-
+mFlats
+m1=1
+m2=1..*</panel_attributes><additional_attributes>10;10;10;90</additional_attributes></element><element><id>Relation</id><coordinates><x>520</x><y>760</y><w>130</w><h>60</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-
+mTenant
+m1=*
+m2=0..1</panel_attributes><additional_attributes>10;20;110;20</additional_attributes></element><element><id>Relation</id><coordinates><x>480</x><y>270</y><w>150</w><h>60</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-
+mAddress
+m1=1
+m2=1</panel_attributes><additional_attributes>10;20;130;20</additional_attributes></element></diagram>
