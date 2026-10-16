@@ -1,25 +1,34 @@
-<diagram program="umletino" version="15.1"><zoom_level>10</zoom_level><element><id>UMLClass</id><coordinates><x>360</x><y>0</y><w>260</w><h>190</h></coordinates><panel_attributes>AddressManager
+<diagram program="umletino" version="15.1"><zoom_level>10</zoom_level><help_text>Space for diagram notes</help_text><element><id>UMLClass</id><coordinates><x>360</x><y>0</y><w>260</w><h>190</h></coordinates><panel_attributes>AddressManager
 --
 - mPersons vector&lt;Person&gt;
 - mAddresses vector&lt;Address&gt;
 -
 + ReadFile(string path, Reader rdr)
 + WriteAddresses(string path, Writer wrt)
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>240</x><y>440</y><w>210</w><h>190</h></coordinates><panel_attributes>PersonReader
+# AddPerson()
+# AddAddress()
+# GetAddress(index : size_t)
+# GetPerson(index : size_t)</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>240</x><y>440</y><w>210</w><h>190</h></coordinates><panel_attributes>PersonReader
 --
-/+ Read(string path)/</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>0</x><y>440</y><w>210</w><h>190</h></coordinates><panel_attributes>AddressReader
+ParseLine(const string&amp; line, AddressManager&amp; man)
+- is friend of AddPerson</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>0</x><y>440</y><w>210</w><h>190</h></coordinates><panel_attributes>AddressReader
 --
-/+ Read(string path)/</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>730</x><y>440</y><w>210</w><h>190</h></coordinates><panel_attributes>AsciiWriter
+ParseLine(const string&amp; line, AddressManager&amp; man)
+- is friend of AddAddress</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>730</x><y>440</y><w>210</w><h>190</h></coordinates><panel_attributes>AsciiWriter
 --
-/+ Write()/</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>500</x><y>440</y><w>210</w><h>190</h></coordinates><panel_attributes>HtmlWriter
++ WriteLine</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>500</x><y>440</y><w>210</w><h>190</h></coordinates><panel_attributes>HtmlWriter
 --
-/+ Write()/</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>610</x><y>220</y><w>210</w><h>190</h></coordinates><panel_attributes>Writer
++ WriteLine
+
+consider html overhead</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>610</x><y>220</y><w>210</w><h>190</h></coordinates><panel_attributes>Writer
 --
-/+ Write()/</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>130</x><y>220</y><w>210</w><h>190</h></coordinates><panel_attributes>Reader
+/+ Write(string path,  AddressManager&amp; man)/
++ WriteLine()</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>130</x><y>220</y><w>330</w><h>190</h></coordinates><panel_attributes>Reader
 -
-- file
---
-/+ Read(string path)/</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>870</x><y>230</y><w>280</w><h>190</h></coordinates><panel_attributes>Address
+/+ Read(string path,  AddressManager&amp; man)/ 
+# SkipHeader()
++ ParseLine(const string&amp; line, AddressManager&amp; man)
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>870</x><y>230</y><w>280</w><h>190</h></coordinates><panel_attributes>Address
 -
 - mStreet : string
 - mNumber : size_t
@@ -43,4 +52,4 @@
 + GetFirstName()
 + GetLastName()
 + GetAddressID()
-</panel_attributes><additional_attributes></additional_attributes></element></diagram>
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>740</x><y>400</y><w>70</w><h>60</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;50;40</additional_attributes></element><element><id>Relation</id><coordinates><x>640</x><y>400</y><w>50</w><h>60</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>30;10;10;40</additional_attributes></element><element><id>Relation</id><coordinates><x>320</x><y>400</y><w>50</w><h>60</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;30;40</additional_attributes></element><element><id>Relation</id><coordinates><x>140</x><y>400</y><w>120</w><h>60</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>100;10;10;40</additional_attributes></element><element><id>Relation</id><coordinates><x>610</x><y>130</y><w>140</w><h>110</h></coordinates><panel_attributes>lt=&lt;..</panel_attributes><additional_attributes>10;10;60;40;120;90</additional_attributes></element><element><id>Relation</id><coordinates><x>290</x><y>170</y><w>90</w><h>70</h></coordinates><panel_attributes>lt=&lt;..</panel_attributes><additional_attributes>70;10;10;50</additional_attributes></element><element><id>Relation</id><coordinates><x>610</x><y>70</y><w>470</w><h>180</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;10;270;90;450;160</additional_attributes></element><element><id>Relation</id><coordinates><x>610</x><y>20</y><w>670</w><h>230</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;10;650;210</additional_attributes></element><element><id>Relation</id><coordinates><x>120</x><y>410</y><w>980</w><h>310</h></coordinates><panel_attributes>lt=&lt;..</panel_attributes><additional_attributes>10;220;960;290;950;10</additional_attributes></element><element><id>Relation</id><coordinates><x>440</x><y>410</y><w>770</w><h>280</h></coordinates><panel_attributes>lt=&lt;..</panel_attributes><additional_attributes>10;220;570;260;750;10</additional_attributes></element></diagram>
