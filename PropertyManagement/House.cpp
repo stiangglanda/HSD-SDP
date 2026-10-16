@@ -15,7 +15,7 @@ House::House(const Address &address, const std::vector<Floor>& floors) :
 	}
 }
 
-Address House::GetAddress() const
+const Address& House::GetAddress() const
 {
 	return mAddress;
 }
@@ -27,12 +27,11 @@ size_t House::GetFloorCount() const
 
 void House::Print() const
 {
+	std::cout << "House: ";
+	mAddress.Print();
+	std::cout << ", " << mFloors.size() << " floors\n";
 	for (const auto& floor : mFloors)
 	{
-		std::cout << "House: ";
-		mAddress.Print();
-		std::cout << ", " << mFloors.size() << " floors" << std::endl;
 		floor.Print();
 	}
-
 }

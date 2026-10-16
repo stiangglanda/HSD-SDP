@@ -26,6 +26,15 @@ Flat& Floor::GetFlat(size_t number) {
     return *it;
 }
 
+const Flat& Floor::GetFlat(size_t number) const {
+    auto it = std::find_if(mFlats.cbegin(), mFlats.cend(),
+        [number](const Flat& f) { return f.GetNumber() == number; });
+    if (it == mFlats.cend()) {
+        throw std::out_of_range("Flat not found");
+    }
+    return *it;
+}
+
 void Floor::Print() const {
     std::cout << "  Floor " << mNumber << "\n";
     for (const Flat& flat : mFlats) {

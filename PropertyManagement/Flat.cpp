@@ -25,5 +25,4 @@ void Flat::Print() const {
     } else {
         std::cout << "vacant";
     }
-    std::cout << "\n";
 }

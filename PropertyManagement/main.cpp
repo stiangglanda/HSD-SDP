@@ -73,7 +73,7 @@ void RunTestDriver()
     }
     catch (std::invalid_argument& e)
     {
-        std::cout << e.what() << std::endl;
+        std::cerr << e.what() << std::endl;
     }
     std::cout << "Catching Error for empty Address: passed." << std::endl;
     try
@@ -83,7 +83,7 @@ void RunTestDriver()
     }
     catch (std::invalid_argument& e)
     {
-        std::cout << e.what() << std::endl;
+        std::cerr << e.what() << std::endl;
     }
     std::cout << "Catching Error for empty house vector: passed.";
 

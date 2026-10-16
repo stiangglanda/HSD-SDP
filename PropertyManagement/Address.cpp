@@ -5,7 +5,7 @@
 #include <stdexcept>
 #include <iostream>
 
-Address::Address(std::string street, std::string zip, std::string city) :
+Address::Address(const std::string& street, const std::string& zip, const std::string& city) :
 	mZip(zip),
 	mStreet(street),
 	mCity(city)

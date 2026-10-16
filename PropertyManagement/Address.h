@@ -16,7 +16,7 @@ public:
 	/// \param zip The Zipcode of the address
 	/// \param street The sreet of the address
 	/// \throws std::invalid_argument if either argument is empty.
-	Address(std::string street, std::string zip, std::string city);
+	Address(const std::string& street, const std::string& zip, const std::string& city);
 
 	/// \brief Returns member mZip.
 	std::string GetZip() const;

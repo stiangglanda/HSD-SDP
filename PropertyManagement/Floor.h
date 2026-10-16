@@ -26,11 +26,17 @@ public:
     /// \return The number of flats on this floor.
     size_t GetFlatCount() const;
 
-    /// \brief Gets a flat so its tenant can be changed.
-    /// \param index Position of the flat on this floor, starting at 0.
+    /// \brief Gets a flat by its door number so its tenant can be changed.
+    /// \param number Door number of the flat.
     /// \return Reference to the flat.
-    /// \throws std::out_of_range If index is too big.
-    Flat& GetFlat(size_t index);
+    /// \throws std::out_of_range If no flat with this number exists.
+    Flat& GetFlat(size_t number);
+
+    /// \brief Gets a flat by its door number for read-only access.
+    /// \param number Door number of the flat.
+    /// \return Const reference to the flat.
+    /// \throws std::out_of_range If no flat with this number exists.
+    const Flat& GetFlat(size_t number) const;
 
     /// \brief Prints the floor with 2 spaces indent, followed by its flats.
     void Print() const;
