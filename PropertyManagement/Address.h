@@ -18,6 +18,11 @@ public:
 	/// \throws std::invalid_argument if either argument is empty.
 	Address(const std::string& street, const std::string& zip, const std::string& city);
 
+	/// \brief Compares two addresses for equality.
+    /// \param other The address to compare with.
+    /// \return True if street, zip, and city match.
+    bool operator==(const Address& other) const;
+
 	/// \brief Returns member mZip.
 	std::string GetZip() const;
 

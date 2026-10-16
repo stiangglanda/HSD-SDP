@@ -16,6 +16,11 @@ Address::Address(const std::string& street, const std::string& zip, const std::s
 	}
 }
 
+bool Address::operator==(const Address& other) const
+{
+    return mStreet == other.mStreet && mZip == other.mZip && mCity == other.mCity;
+}
+
 std::string Address::GetZip() const
 {
 	return mZip;
