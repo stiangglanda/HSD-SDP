@@ -1,61 +1,67 @@
-<diagram program="umletino" version="15.1"><zoom_level>10</zoom_level><help_text>Space for diagram notes</help_text><element><id>UMLClass</id><coordinates><x>55</x><y>0</y><w>420</w><h>90</h></coordinates><panel_attributes>PropertyManagement
--
--
+<diagram program="umletino" version="15.1"><zoom_level>10</zoom_level><help_text>Space for diagram notes</help_text><element><id>UMLClass</id><coordinates><x>40</x><y>10</y><w>450</w><h>130</h></coordinates><panel_attributes>PropertyManagement
+--
+- mHouses : vector&lt;House&gt;
+--
 + AddHouse(house : const House&amp;) : void
-+ Print() : void</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>55</x><y>190</y><w>420</w><h>130</h></coordinates><panel_attributes>House
--
--
++ RemoveHouse(address : const Address&amp;) : void
++ GetHouseCount() : size_t
++ Print() : void</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>40</x><y>220</y><w>450</w><h>140</h></coordinates><panel_attributes>House
+--
+- mAddress : Address
+- mFloors : vector&lt;Floor&gt;
+--
 + House(address : const Address&amp;, floors : const vector&lt;Floor&gt;&amp;)
-+ GetFloorCount() : size_t
 + GetAddress() : const Address&amp;
-+ Print() : void</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>55</x><y>410</y><w>420</w><h>150</h></coordinates><panel_attributes>Floor
--
++ GetFloorCount() : size_t
++ Print() : void</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>40</x><y>440</y><w>450</w><h>160</h></coordinates><panel_attributes>Floor
+--
 - mNumber : size_t
--
+- mFlats : vector&lt;Flat&gt;
+--
 + Floor(number : size_t, flats : const vector&lt;Flat&gt;&amp;)
-+ GetNumber() : const size_t
-+ GetFlatCount() : const size_t
-+ GetFlat(index : size_t) : const Flat&amp;
-+ Print() : void</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>55</x><y>630</y><w>420</w><h>240</h></coordinates><panel_attributes>Flat
--
++ GetNumber() : size_t
++ GetFlatCount() : size_t
++ GetFlat(number : size_t) : Flat&amp;
++ GetFlat(number : size_t) : const Flat&amp;
++ Print() : void</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>40</x><y>680</y><w>490</w><h>210</h></coordinates><panel_attributes>Flat
+--
 - mNumber : size_t
 - mArea : float
 - mHasBalcony : bool
--
-+ Flat(number : size_t, area : float, hasBalcony : bool,
-          tenant : const Tenant* = nullptr)
+- mTenant : const Tenant*
+--
++ Flat(number : size_t, area : float, hasBalcony : bool, tenant : const Tenant* = nullptr)
 + GetNumber() : size_t
 + GetArea() : float
 + HasBalcony() : bool
 + GetTenant() : const Tenant*
 + SetTenant(tenant : const Tenant*) : void
-+ Print() : void</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>615</x><y>620</y><w>420</w><h>240</h></coordinates><panel_attributes>Tenant
--
++ Print() : void</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>630</x><y>680</y><w>460</w><h>210</h></coordinates><panel_attributes>Tenant
+--
 - mFirstName : string
 - mLastName : string
 - mBirthYear : size_t
--
-+ Tenant(firstName : const string&amp;, lastName : const string&amp;,
-          birthYear : size_t)
+--
++ Tenant(firstName : const string&amp;, lastName : const string&amp;, birthYear : size_t)
 + GetFirstName() : const string&amp;
 + GetLastName() : const string&amp;
 + GetBirthYear() : size_t
 + SetFirstName(firstName : const string&amp;) : void
 + SetLastName(lastName : const string&amp;) : void
-+ Print() : void</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>195</x><y>80</y><w>80</w><h>130</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-
-mHouses</panel_attributes><additional_attributes>10;10;10;110</additional_attributes></element><element><id>Relation</id><coordinates><x>195</x><y>310</y><w>70</w><h>120</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-
-mFloors</panel_attributes><additional_attributes>10;10;10;100</additional_attributes></element><element><id>Relation</id><coordinates><x>195</x><y>550</y><w>70</w><h>100</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-
-mFlats</panel_attributes><additional_attributes>10;10;10;80</additional_attributes></element><element><id>Relation</id><coordinates><x>465</x><y>720</y><w>170</w><h>40</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-
-mTenant</panel_attributes><additional_attributes>10;20;150;20</additional_attributes></element><element><id>UMLClass</id><coordinates><x>595</x><y>240</y><w>310</w><h>180</h></coordinates><panel_attributes>Address
--
++ Print() : void</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>610</x><y>220</y><w>430</w><h>170</h></coordinates><panel_attributes>Address
+--
 - mStreet : string
 - mZip : string
 - mCity : string
--
-+ Address(street : const string&amp;, 
-                   zip : const string&amp;, city : const string&amp;)
+--
++ Address(street : const string&amp;, zip : const string&amp;, city : const string&amp;)
 + GetStreet() : const string&amp;
 + GetZip() : const string&amp;
 + GetCity() : const string&amp;
-+ Print() : void</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>465</x><y>270</y><w>150</w><h>40</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-
++ operator==(other : const Address&amp;) : bool
++ Print() : void</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>230</x><y>130</y><w>80</w><h>110</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-
+mHouses</panel_attributes><additional_attributes>10;10;10;90</additional_attributes></element><element><id>Relation</id><coordinates><x>230</x><y>350</y><w>70</w><h>110</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-
+mFloors</panel_attributes><additional_attributes>10;10;10;90</additional_attributes></element><element><id>Relation</id><coordinates><x>230</x><y>590</y><w>70</w><h>110</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-
+mFlats</panel_attributes><additional_attributes>10;10;10;90</additional_attributes></element><element><id>Relation</id><coordinates><x>520</x><y>760</y><w>130</w><h>40</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-
+mTenant</panel_attributes><additional_attributes>10;20;110;20</additional_attributes></element><element><id>Relation</id><coordinates><x>480</x><y>270</y><w>150</w><h>40</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-
 mAddress</panel_attributes><additional_attributes>10;20;130;20</additional_attributes></element></diagram>
