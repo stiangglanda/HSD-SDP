@@ -6,16 +6,16 @@
 #include <iostream>
 #include <string>
 
-/// \brief Helper function to report test outcomes uniformly.
+/// \brief Helper function to report test outcomes.
 void CheckTest(bool condition, const std::string& testName)
 {
     if (condition)
     {
-        std::cout << "[SUCCESS] " << testName << "\n";
+        std::cout << "[SUCCESS] " << testName << std::endl;
     }
     else
     {
-        std::cerr << "[FAILED]  " << testName << "\n";
+        std::cerr << "[FAILED]  " << testName << std::endl;
     }
 }
 
@@ -71,7 +71,7 @@ void RunTestDriver()
 
     // Demonstration output
     prop.Print();
-    std::cout << "\n";
+    std::cout << std::endl;
 
     // Getter tests
     CheckTest(h1.GetAddress().GetCity() == "Hagenberg", "Address::GetCity()");
@@ -95,7 +95,7 @@ void RunTestDriver()
     const Floor& constFloorRef = e1;
     CheckTest(constFloorRef.GetFlat(1).GetNumber() == 1, "Floor::GetFlat() const overload");
 
-    // Mutation tests: changing tenant
+    // Changing tenant
     e1.GetFlat(1).SetTenant(&t7);
     CheckTest(e1.GetFlat(1).GetTenant() == &t7, "Flat::SetTenant(newTenant)");
 
