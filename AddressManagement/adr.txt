@@ -1,0 +1,9 @@
+#########################################################
+# Datei: adr.txt
+# erstellt am: 01.10.2022
+# Beschreibung: Datei speichert die Adressen von Personen
+#########################################################
+Kellergasse 3 4287 Radburg
+Diemstrasse 1 2345 Hinterhof
+Waldstrasse 45 6785 Burghausen
+Domweg 123 9865 Mixbergen

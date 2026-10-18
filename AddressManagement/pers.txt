@@ -1,0 +1,11 @@
+##########################
+# Datei: pers.txt
+# erstellt am: 01.10.2022 
+########################## 
+Donald Duck 0
+Dagobert Duck 1
+Daniel Düsentrieb 2
+Max Möchtegern 2
+Brid Patt 0
+Jack Unterweger 1
+Frank Gust 2
