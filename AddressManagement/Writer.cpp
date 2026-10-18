@@ -3,3 +3,8 @@
 //
 
 #include "Writer.h"
+#include "AddressManager.h"
+
+void Writer::Write(std::string path, AddressManager &man) {
+    
+}

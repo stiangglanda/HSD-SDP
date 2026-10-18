@@ -5,6 +5,10 @@
 #include <iostream>
 #include <string>
 
+#include "Address.h"
+#include "AddressManager.h"
+#include "Person.h"
+
 /// \brief Helper function to report test outcomes.
 void CheckTest(bool condition, const std::string& testName)
 {
@@ -22,6 +26,13 @@ void CheckTest(bool condition, const std::string& testName)
 /// \return 0.
 int main()
 {
+    AddressManager addressManager;
+    Person person{"John", "Doe", 1};
+    Address address{"Main St", 123, 12345, "Anytown"};
+    addressManager.AddPerson(person);
+    addressManager.AddAddress(address);
+
+
     std::cout << "Starting Property Management Test Driver..." << std::endl;
     return 0;
 }

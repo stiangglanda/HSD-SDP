@@ -1,13 +1,12 @@
-//
-// Created by stiangglanda on 2026-10-18.
-//
+#ifndef WRITER_H
+#define WRITER_H
+#include <string>
 
-#ifndef ADDRESSMANAGEMENT_WRITER_H
-#define ADDRESSMANAGEMENT_WRITER_H
-
+class AddressManager;
 
 class Writer {
+public:
+    void Write(std::string path,  AddressManager& man);
 };
 
-
-#endif //ADDRESSMANAGEMENT_WRITER_H
+#endif
