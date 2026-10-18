@@ -12,7 +12,17 @@ endif()
 project ("AddressManagement")
 
 # Add source to this project's executable.
-add_executable (AddressManagement main.cpp)
+add_executable (AddressManagement main.cpp
+        AddressManager.cpp
+        AddressManager.h
+        Reader.cpp
+        Reader.h
+        Writer.cpp
+        Writer.h
+        Person.cpp
+        Person.h
+        Address.cpp
+        Address.h)
 
 if (CMAKE_VERSION VERSION_GREATER 3.12)
   set_property(TARGET AddressManagement PROPERTY CXX_STANDARD 20)

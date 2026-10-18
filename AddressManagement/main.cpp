@@ -2,7 +2,6 @@
 /// \brief Test driver. Runs all tests and prints the results.
 /// \author Leander Kieweg, Julian Rieger
 
-#include "PropertyManagement.h"
 #include <iostream>
 #include <string>
 
