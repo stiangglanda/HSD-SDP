@@ -4,7 +4,7 @@
 void AddressManager::ReadFile(std::string path, Reader rdr) {
 }
 
-void AddressManager::WriteAddresses(std::string path, Writer wrt) {
+void AddressManager::WriteAddresses(std::string path, Writer& wrt) {
 
 }
 

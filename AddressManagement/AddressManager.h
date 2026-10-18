@@ -11,7 +11,7 @@ class Writer;
 class AddressManager {
 public:
     void ReadFile(std::string path, Reader rdr);
-    void WriteAddresses(std::string path, Writer wrt);
+    void WriteAddresses(std::string path, Writer& wrt);
     void AddPerson(const Person& person);
     void AddAddress(const Address& address);
     void GetAddress(size_t index);
