@@ -24,7 +24,9 @@ add_executable (AddressManagement main.cpp
         Address.cpp
         Address.h
         AsciiWriter.cpp
-        AsciiWriter.h)
+        AsciiWriter.h
+        HtmlWriter.cpp
+        HtmlWriter.h)
 
 if (CMAKE_VERSION VERSION_GREATER 3.12)
   set_property(TARGET AddressManagement PROPERTY CXX_STANDARD 20)

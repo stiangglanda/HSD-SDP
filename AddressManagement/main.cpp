@@ -8,6 +8,7 @@
 #include "Address.h"
 #include "AddressManager.h"
 #include "AsciiWriter.h"
+#include "HtmlWriter.h"
 #include "Person.h"
 
 /// \brief Helper function to report test outcomes.
@@ -27,13 +28,13 @@ void CheckTest(bool condition, const std::string& testName)
 /// \return 0.
 int main()
 {
-    AsciiWriter asciiWriter;
+    HtmlWriter htmlWriter;
     AddressManager addressManager;
     Person person{"John", "Doe", 0};
     Address address{"Main St", 123, 12345, "Anytown"};
     addressManager.AddPerson(person);
     addressManager.AddAddress(address);
-    addressManager.WriteAddresses("path", asciiWriter);
+    addressManager.WriteAddresses("path.html", htmlWriter);
 
     std::cout << "Starting Property Management Test Driver..." << std::endl;
     return 0;
