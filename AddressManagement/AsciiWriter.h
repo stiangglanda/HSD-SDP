@@ -11,7 +11,8 @@ class AsciiWriter : public Writer {
 public:
     void WriteHeader(std::ofstream& out) override;
     void WriteFooter(std::ofstream& out) override;
-
+    void WriteAddress(std::ofstream & out, const Address& address) override;
+    void WritePerson(std::ofstream & out, const Person& person) override;
 };
 
 #endif

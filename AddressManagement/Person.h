@@ -5,9 +5,9 @@
 class Person {
 public:
     Person(std::string firstName, std::string lastName, size_t addressID);
-    std::string getFirstName() const;
-    std::string getLastName() const;
-    size_t getAddressID() const;
+    std::string GetFirstName() const;
+    std::string GetLastName() const;
+    size_t GetAddressID() const;
 
 private:
     std::string mFirstName;

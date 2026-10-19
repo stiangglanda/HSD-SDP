@@ -7,4 +7,13 @@ void AsciiWriter::WriteHeader(std::ofstream &out) {
 }
 
 void AsciiWriter::WriteFooter(std::ofstream &out) {
+    out << "\n==================\n";
+}
+
+void AsciiWriter::WriteAddress(std::ofstream &out, const Address &address) {
+    out << "Adresse: " << address.GetStreet() << ", " << address.GetCity() << std::endl;
+}
+
+void AsciiWriter::WritePerson(std::ofstream &out, const Person &person) {
+    out << "  Person: " << person.GetFirstName() << " " << person.GetLastName() << std::endl;
 }

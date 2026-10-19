@@ -10,3 +10,19 @@ Address::Address(const std::string& street, size_t number, size_t zip, const std
       mZip(zip),
       mCity(city) {
 }
+
+std::string Address::GetStreet() const {
+    return mStreet;
+}
+
+size_t Address::GetNumber() const {
+    return mNumber;
+}
+
+size_t Address::GetZip() const {
+    return mZip;
+}
+
+std::string Address::GetCity() const {
+    return mCity;
+}

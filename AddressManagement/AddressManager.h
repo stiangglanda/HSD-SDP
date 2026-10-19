@@ -14,9 +14,10 @@ public:
     void WriteAddresses(const std::string& path, Writer& wrt);
     void AddPerson(const Person& person);
     void AddAddress(const Address& address);
-    void GetAddress(size_t index);
-    void GetPerson(size_t index);
+    const Address& GetAddress(size_t index);
+    const Person& GetPerson(size_t index);
     size_t GetAddressCount() const;
+    size_t GetPersonCount() const;
 private:
     std::vector<Person> mPersons;
     std::vector<Address> mAddresses;

@@ -6,14 +6,14 @@ Person::Person(std::string firstName, std::string lastName, size_t addressID)
       mAddressID(addressID) {
 }
 
-std::string Person::getFirstName() const {
+std::string Person::GetFirstName() const {
     return mFirstName;
 }
 
-std::string Person::getLastName() const {
+std::string Person::GetLastName() const {
     return mLastName;
 }
 
-size_t Person::getAddressID() const {
+size_t Person::GetAddressID() const {
     return mAddressID;
 }
