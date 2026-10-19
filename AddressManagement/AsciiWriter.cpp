@@ -1,19 +1,24 @@
 #include "AsciiWriter.h"
-#include <ostream>
 
-void AsciiWriter::WriteHeader(std::ofstream &out) {
-    out << "Adressen mit zugeordneten Personen" << std::endl;
-    out << "==================\n\n";
+void AsciiWriter::WriteHeader(std::ostream& out) const
+{
+    const std::string title = "Adressen mit zugeordneten Personen";
+    out << title << '\n'
+        << std::string(title.size(), '-') << '\n';   // line as long as the title
 }
 
-void AsciiWriter::WriteFooter(std::ofstream &out) {
-    out << "\n==================\n";
+void AsciiWriter::WriteAddress(std::ostream& out, const Address& address) const
+{
+    out << address.GetZip() << ' ' << address.GetCity() << '\n'
+        << address.GetStreet() << ' ' << address.GetNumber() << '\n';
 }
 
-void AsciiWriter::WriteAddress(std::ofstream &out, const Address &address) {
-    out << "Adresse: " << address.GetStreet() << ", " << address.GetCity() << std::endl;
+void AsciiWriter::WritePerson(std::ostream& out, const Person& person) const
+{
+    out << "    " << person.GetFirstName() << ' ' << person.GetLastName() << '\n';
 }
 
-void AsciiWriter::WritePerson(std::ofstream &out, const Person &person) {
-    out << "  Person: " << person.GetFirstName() << " " << person.GetLastName() << std::endl;
+void AsciiWriter::WriteAddressEnd(std::ostream& out) const
+{
+    out << '\n';
 }

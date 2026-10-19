@@ -34,7 +34,7 @@ int main()
     Address address{"Main St", 123, 12345, "Anytown"};
     addressManager.AddPerson(person);
     addressManager.AddAddress(address);
-    addressManager.WriteAddresses("path.html", htmlWriter);
+    addressManager.WriteAddresses("path.html", &htmlWriter);
 
     std::cout << "Starting Property Management Test Driver..." << std::endl;
     return 0;
