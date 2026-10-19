@@ -29,7 +29,7 @@ int main()
 {
     AsciiWriter asciiWriter;
     AddressManager addressManager;
-    Person person{"John", "Doe", 1};
+    Person person{"John", "Doe", 0};
     Address address{"Main St", 123, 12345, "Anytown"};
     addressManager.AddPerson(person);
     addressManager.AddAddress(address);
