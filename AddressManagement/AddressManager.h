@@ -10,12 +10,13 @@ class Writer;
 
 class AddressManager {
 public:
-    void ReadFile(std::string path, Reader rdr);
-    void WriteAddresses(std::string path, Writer& wrt);
+    void ReadFile(const std::string& path, Reader rdr);
+    void WriteAddresses(const std::string& path, Writer& wrt);
     void AddPerson(const Person& person);
     void AddAddress(const Address& address);
     void GetAddress(size_t index);
     void GetPerson(size_t index);
+    size_t GetAddressCount() const;
 private:
     std::vector<Person> mPersons;
     std::vector<Address> mAddresses;

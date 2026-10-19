@@ -10,6 +10,7 @@
 class AsciiWriter : public Writer {
 public:
     void WriteHeader(std::ofstream& out) override;
+    void WriteFooter(std::ofstream& out) override;
 
 };
 

@@ -17,8 +17,8 @@ void Writer::Write(const std::string& path, AddressManager& man)
 
     WriteHeader(out);
 
-    // for (size_t a = 0; a < man.GetAddressCount(); ++a)
-    // {
+    for (size_t a = 0; a < man.GetAddressCount(); ++a)
+    {
     //     WriteAddress(out, man.GetAddress(a));
     //
     //     // alle Personen suchen, die auf diese Adresse zeigen
@@ -27,7 +27,7 @@ void Writer::Write(const std::string& path, AddressManager& man)
     //         if (man.GetPerson(p).GetAddressID() == a)
     //             WritePerson(out, man.GetPerson(p));
     //     }
-    // }
+    }
     //
     // WriteFooter(out);
 }

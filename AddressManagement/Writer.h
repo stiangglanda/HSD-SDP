@@ -9,6 +9,7 @@ class Writer {
 public:
     virtual ~Writer() = default;
     virtual void WriteHeader(std::ofstream & out) = 0;
+    virtual void WriteFooter(std::ofstream & out) = 0;
 
     void Write(const std::string& path, AddressManager& man);
 };

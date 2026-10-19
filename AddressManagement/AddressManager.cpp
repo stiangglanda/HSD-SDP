@@ -1,10 +1,10 @@
 #include "AddressManager.h"
 #include "Writer.h"
 
-void AddressManager::ReadFile(std::string path, Reader rdr) {
+void AddressManager::ReadFile(const std::string& path, Reader rdr) {
 }
 
-void AddressManager::WriteAddresses(std::string path, Writer& wrt) {
+void AddressManager::WriteAddresses(const std::string& path, Writer& wrt) {
 
 }
 
@@ -20,4 +20,8 @@ void AddressManager::GetAddress(size_t index) {
 }
 
 void AddressManager::GetPerson(size_t index) {
+}
+
+size_t AddressManager::GetAddressCount() const {
+    return mAddresses.size();
 }
