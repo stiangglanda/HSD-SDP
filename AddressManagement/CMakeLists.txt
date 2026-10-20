@@ -26,7 +26,7 @@ add_executable (AddressManagement main.cpp
         AsciiWriter.cpp
         AsciiWriter.h
         HtmlWriter.cpp
-        HtmlWriter.h)
+        HtmlWriter.h "PersonReader.h" "PersonReader.cpp" "AddressReader.cpp")
 
 if (CMAKE_VERSION VERSION_GREATER 3.12)
   set_property(TARGET AddressManagement PROPERTY CXX_STANDARD 20)
