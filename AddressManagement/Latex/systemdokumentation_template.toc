@@ -1,0 +1,15 @@
+\babel@toc {ngerman}{}\relax 
+\contentsline {section}{\numberline {1}Organisatorisches}{2}{section.1}%
+\contentsline {subsection}{\numberline {1.1}Team}{2}{subsection.1.1}%
+\contentsline {subsection}{\numberline {1.2}Aufteilung der Verantwortungsbereiche}{2}{subsection.1.2}%
+\contentsline {subsection}{\numberline {1.3}Aufwand}{2}{subsection.1.3}%
+\contentsline {section}{\numberline {2}Anforderungsdefinition (Systemspezifikation)}{2}{section.2}%
+\contentsline {section}{\numberline {3}Systementwurf}{3}{section.3}%
+\contentsline {subsection}{\numberline {3.1}Klassendiagram}{3}{subsection.3.1}%
+\contentsline {subsection}{\numberline {3.2}Designentscheidungen}{3}{subsection.3.2}%
+\contentsline {section}{\numberline {4}Komponentenentwurf}{4}{section.4}%
+\contentsline {section}{\numberline {5}Testprotokollierung}{4}{section.5}%
+\contentsline {subsection}{\numberline {5.1}Ausgabe Konsole Testtreiber}{4}{subsection.5.1}%
+\contentsline {subsection}{\numberline {5.2}Ascii Output File}{5}{subsection.5.2}%
+\contentsline {subsection}{\numberline {5.3}Html Output File}{6}{subsection.5.3}%
+\contentsline {section}{\numberline {6}Quellcode}{7}{section.6}%
