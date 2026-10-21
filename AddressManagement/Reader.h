@@ -9,10 +9,11 @@
 class Reader {
 public:
 	void Read(std::string& path, AddressManager& man);
-	void ParseLine(const std::string& line, AddressManager& man);
+	virtual void ParseLine(const std::string& line, AddressManager& man);
 protected:
-	void SkipHeader();
+	Reader() = default;
 private:
+	void SkipHeader(std::ifstream& file);
 };
 
 

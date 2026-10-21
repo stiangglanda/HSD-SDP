@@ -6,10 +6,20 @@
 
 static const std::string cFileErr{ "Error in AddressReader: Could not open file." };
 
-
-void Reader::SkipHeader()
+void Reader::SkipHeader(std::ifstream& file)
 {
-
+    std::string line{ "" };
+    while (std::getline(file, line))
+    {
+        if (line[0] == '#')
+        {
+            continue;
+        }
+        else
+        {
+            break;
+        }
+    }
 }
 
 void Reader::Read(std::string& path, AddressManager& man)
@@ -18,18 +28,13 @@ void Reader::Read(std::string& path, AddressManager& man)
     if (!file.is_open()) {
         throw std::runtime_error(cFileErr);
     }
+    SkipHeader(file);
+
     std::string line{""};
     while (std::getline(file, line))
     {
         ParseLine(line, man);
     }
-    
-}
-
-void Reader::ParseLine(const std::string& line, AddressManager& man)
-{
-    if (line.empty()) return; // Skip empty lines
-    if (line[0] == '#') return; // Skip Header
     
 }
 

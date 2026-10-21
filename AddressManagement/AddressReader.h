@@ -2,13 +2,13 @@
 #define ADDRESSREADER_H
 
 #include "AddressManager.h"
+#include "Reader.h"
 #include <string>
 
-class AddressReader
+class AddressReader : public Reader
 {
 public:
-	void ParseLine(const std::string& line, AddressManager& man);
-private:
+	void ParseLine(const std::string& line, AddressManager& man) override;
 };
 
 #endif //ADDRESSREADER_H
