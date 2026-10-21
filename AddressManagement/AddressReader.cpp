@@ -1,7 +1,6 @@
 #include "AddressReader.h"
 #include <sstream>
-
-static const std::string cErrStream{ "Error in AddressReader: bad stream" };
+#include <stdexcept>
 
 void AddressReader::ParseLine(const std::string& line, AddressManager& man) const
 {
@@ -19,7 +18,6 @@ void AddressReader::ParseLine(const std::string& line, AddressManager& man) cons
 	}
 	else
 	{
-		throw std::runtime_error(cErrStream);
+		throw std::runtime_error("Error in AddressReader: bad stream");
 	}
 }
-

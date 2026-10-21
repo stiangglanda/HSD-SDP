@@ -1,7 +1,6 @@
 #include "PersonReader.h"
 #include <sstream>
-
-static const std::string cErrStream{ "Error in PersonReader: bad stream" };
+#include <stdexcept>
 
 void PersonReader::ParseLine(const std::string& line, AddressManager& man) const
 {
@@ -18,6 +17,6 @@ void PersonReader::ParseLine(const std::string& line, AddressManager& man) const
 	}
 	else
 	{
-		throw std::runtime_error(cErrStream);
+		throw std::runtime_error("Error in PersonReader: bad stream");
 	}
 }

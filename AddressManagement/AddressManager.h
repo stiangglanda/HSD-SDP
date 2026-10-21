@@ -55,7 +55,7 @@ private:
    /// Only the readers are allowed to add new entries.
    friend class PersonReader;
    friend class AddressReader;
-public: // remove
+
    /// @brief Adds a person to the manager.
    /// @param[in] person is the person to store.
    void AddPerson(const Person& person);
@@ -63,7 +63,7 @@ public: // remove
    /// @brief Adds an address to the manager.
    /// @param[in] address is the address to store.
    void AddAddress(const Address& address);
-private: // remove
+
    /// @brief All persons in the order they were read.
    std::vector<Person> mPersons;
 

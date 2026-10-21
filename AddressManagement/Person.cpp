@@ -1,19 +1,19 @@
 #include "Person.h"
 
-Person::Person(std::string firstName, std::string lastName, size_t addressID)
+Person::Person(const std::string& firstName, const std::string& lastName, std::size_t addressID)
     : mFirstName(firstName),
-      mLastName(lastName),
-      mAddressID(addressID) {
+    mLastName(lastName),
+    mAddressID(addressID) {
 }
 
-std::string Person::GetFirstName() const {
+const std::string& Person::GetFirstName() const {
     return mFirstName;
 }
 
-std::string Person::GetLastName() const {
+const std::string& Person::GetLastName() const {
     return mLastName;
 }
 
-size_t Person::GetAddressID() const {
+std::size_t Person::GetAddressID() const {
     return mAddressID;
 }
