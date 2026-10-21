@@ -14,7 +14,7 @@ class AddressManager;
 /// The class uses the design pattern Template Method. The method Write
 /// defines the fixed order of the output. The derived classes only
 /// implement the steps and so decide about the file format.
-class Writer
+class Writer : public Object
 {
 public:
    /// @brief Virtual destructor, because writers are used by pointer.
@@ -32,6 +32,9 @@ public:
    void Write(const std::string& path, const AddressManager& man) const;
 
 protected:
+   /// @brief Protected default constructor that makes the class abstract.
+   Writer() = default;
+
    /// @brief Writes the beginning of the file.
    /// @param[in] out is the stream to write to.
    virtual void WriteHeader(std::ostream& out) const = 0;
