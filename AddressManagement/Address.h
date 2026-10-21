@@ -1,6 +1,3 @@
-//
-// Created by stiangglanda on 2026-10-18.
-//
 
 #ifndef ADDRESS_H
 #define ADDRESS_H
@@ -20,4 +17,4 @@ private:
     std::string mCity;
 };
 
-#endif
+#endif // ADDRESS_H

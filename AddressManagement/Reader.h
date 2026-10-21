@@ -1,12 +1,18 @@
-//
-// Created by stiangglanda on 2026-10-18.
-//
+
 
 #ifndef ADDRESSMANAGEMENT_READER_H
 #define ADDRESSMANAGEMENT_READER_H
 
+#include "AddressManager.h"
+#include <string>
 
 class Reader {
+public:
+	void Read(std::string& path, AddressManager& man);
+	void ParseLine(const std::string& line, AddressManager& man);
+protected:
+	void SkipHeader();
+private:
 };
 
 
