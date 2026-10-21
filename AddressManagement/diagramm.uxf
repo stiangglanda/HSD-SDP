@@ -1,55 +1,88 @@
-<diagram program="umletino" version="15.1"><zoom_level>10</zoom_level><help_text>Space for diagram notes</help_text><element><id>UMLClass</id><coordinates><x>360</x><y>0</y><w>260</w><h>190</h></coordinates><panel_attributes>AddressManager
+<diagram program="umletino" version="15.1"><zoom_level>8</zoom_level><help_text>Address Management Class Diagram</help_text><element><id>UMLClass</id><coordinates><x>536</x><y>0</y><w>160</w><h>72</h></coordinates><panel_attributes>/Object/
 --
-- mPersons vector&lt;Person&gt;
-- mAddresses vector&lt;Address&gt;
--
-+ ReadFile(string path, Reader rdr)
-+ WriteAddresses(string path, Writer wrt)
-# AddPerson()
-# AddAddress()
-# GetAddress(index : size_t)
-# GetPerson(index : size_t)</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>240</x><y>440</y><w>210</w><h>190</h></coordinates><panel_attributes>PersonReader
+# Object()
+/+ ~Object()/
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>504</x><y>184</y><w>304</w><h>216</h></coordinates><panel_attributes>AddressManager
 --
-ParseLine(const string&amp; line, AddressManager&amp; man)
-- is friend of AddPerson</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>0</x><y>440</y><w>210</w><h>190</h></coordinates><panel_attributes>AddressReader
+- mPersons: std::vector&lt;Person&gt;
+- mAddresses: std::vector&lt;Address&gt;
 --
-ParseLine(const string&amp; line, AddressManager&amp; man)
-- is friend of AddAddress</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>730</x><y>440</y><w>210</w><h>190</h></coordinates><panel_attributes>AsciiWriter
++ ReadFile(path: const std::string&amp;, rdr: const Reader*): void
++ WriteAddresses(path: const std::string&amp;, wrt: const Writer*): void
++ GetAddress(index: size_t): const Address&amp;
++ GetPerson(index: size_t): const Person&amp;
++ GetAddressCount(): size_t
++ GetPersonCount(): size_t
+- AddPerson(person: const Person&amp;): void
+- AddAddress(address: const Address&amp;): void
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>328</x><y>528</y><w>312</w><h>160</h></coordinates><panel_attributes>Address
 --
-+ WriteLine</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>500</x><y>440</y><w>210</w><h>190</h></coordinates><panel_attributes>HtmlWriter
+- mStreet: std::string
+- mNumber: std::size_t
+- mZip: std::size_t
+- mCity: std::string
 --
-+ WriteLine
-
-consider html overhead</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>610</x><y>220</y><w>210</w><h>190</h></coordinates><panel_attributes>Writer
++ Address(street: const std::string&amp;, number: std::size_t,
+          zip: std::size_t, city: const std::string&amp;)
++ GetStreet(): const std::string&amp;
++ GetNumber(): std::size_t
++ GetZip(): std::size_t
++ GetCity(): const std::string&amp;
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>664</x><y>528</y><w>312</w><h>144</h></coordinates><panel_attributes>Person
 --
-/+ Write(string path,  AddressManager&amp; man)/
-+ WriteLine()</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>130</x><y>220</y><w>330</w><h>190</h></coordinates><panel_attributes>Reader
--
-/+ Read(string path,  AddressManager&amp; man)/ 
-# SkipHeader()
-+ ParseLine(const string&amp; line, AddressManager&amp; man)
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>870</x><y>230</y><w>280</w><h>190</h></coordinates><panel_attributes>Address
--
-- mStreet : string
-- mNumber : size_t
-- mZip : size_t
-- mCity : string
--
-+ Address(mStreet : string, mNumber : size_t, 
-                 mZip : size_t, mCity : string)
-+ GetStreet()
-+ GetNumber()
-+ GetZip()
-+ GetCity()</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1170</x><y>230</y><w>200</w><h>190</h></coordinates><panel_attributes>Person
--
-- mFirstName : string
-- mLastName : string
-- mAddressID : size_t
--
-+ Person(mFirstName : string, 
-                mLastName : string, 
-                mAddressID : size_t)
-+ GetFirstName()
-+ GetLastName()
-+ GetAddressID()
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>740</x><y>400</y><w>70</w><h>60</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;50;40</additional_attributes></element><element><id>Relation</id><coordinates><x>640</x><y>400</y><w>50</w><h>60</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>30;10;10;40</additional_attributes></element><element><id>Relation</id><coordinates><x>320</x><y>400</y><w>50</w><h>60</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;30;40</additional_attributes></element><element><id>Relation</id><coordinates><x>140</x><y>400</y><w>120</w><h>60</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>100;10;10;40</additional_attributes></element><element><id>Relation</id><coordinates><x>610</x><y>130</y><w>140</w><h>110</h></coordinates><panel_attributes>lt=&lt;..</panel_attributes><additional_attributes>10;10;60;40;120;90</additional_attributes></element><element><id>Relation</id><coordinates><x>290</x><y>170</y><w>90</w><h>70</h></coordinates><panel_attributes>lt=&lt;..</panel_attributes><additional_attributes>70;10;10;50</additional_attributes></element><element><id>Relation</id><coordinates><x>610</x><y>70</y><w>470</w><h>180</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;10;270;90;450;160</additional_attributes></element><element><id>Relation</id><coordinates><x>610</x><y>20</y><w>670</w><h>230</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;10;650;210</additional_attributes></element><element><id>Relation</id><coordinates><x>120</x><y>410</y><w>980</w><h>310</h></coordinates><panel_attributes>lt=&lt;..</panel_attributes><additional_attributes>10;220;960;290;950;10</additional_attributes></element><element><id>Relation</id><coordinates><x>440</x><y>410</y><w>770</w><h>280</h></coordinates><panel_attributes>lt=&lt;..</panel_attributes><additional_attributes>10;220;570;260;750;10</additional_attributes></element></diagram>
+- mFirstName: std::string
+- mLastName: std::string
+- mAddressID: std::size_t
+--
++ Person(firstName: const std::string&amp;,
+         lastName: const std::string&amp;,
+         addressID: std::size_t)
++ GetFirstName(): const std::string&amp;
++ GetLastName(): const std::string&amp;
++ GetAddressID(): std::size_t
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>56</x><y>152</y><w>336</w><h>112</h></coordinates><panel_attributes>/Reader/
+--
+# Reader()
+/+ ~Reader()/
++ Read(path: const std::string&amp;, man: AddressManager&amp;): void
+/# ParseLine(line: const std::string&amp;, man: AddressManager&amp;): void/
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>952</x><y>168</y><w>352</w><h>160</h></coordinates><panel_attributes>/Writer/
+--
+# Writer()
+/+ ~Writer()/
++ Write(path: const std::string&amp;, man: const AddressManager&amp;): void
+/# WriteHeader(out: std::ostream&amp;): void/
+/# WriteAddress(out: std::ostream&amp;, address: const Address&amp;): void/
+/# WritePerson(out: std::ostream&amp;, person: const Person&amp;): void/
+/# WriteAddressEnd(out: std::ostream&amp;): void/
+# WriteFooter(out: std::ostream&amp;): void
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>0</x><y>352</y><w>192</w><h>64</h></coordinates><panel_attributes>AddressReader
+--
+# ParseLine(line: const std::string&amp;,
+            man: AddressManager&amp;): void
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>216</x><y>352</y><w>192</w><h>64</h></coordinates><panel_attributes>PersonReader
+--
+# ParseLine(line: const std::string&amp;,
+            man: AddressManager&amp;): void
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>864</x><y>368</y><w>280</w><h>120</h></coordinates><panel_attributes>HtmlWriter
+--
+# WriteHeader(out: std::ostream&amp;): void
+# WriteAddress(out: std::ostream&amp;, address: const Address&amp;): void
+# WritePerson(out: std::ostream&amp;, person: const Person&amp;): void
+# WriteAddressEnd(out: std::ostream&amp;): void
+# WriteFooter(out: std::ostream&amp;): void
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1160</x><y>368</y><w>280</w><h>104</h></coordinates><panel_attributes>AsciiWriter
+--
+# WriteHeader(out: std::ostream&amp;): void
+# WriteAddress(out: std::ostream&amp;, address: const Address&amp;): void
+# WritePerson(out: std::ostream&amp;, person: const Person&amp;): void
+# WriteAddressEnd(out: std::ostream&amp;): void
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>232</x><y>64</y><w>360</w><h>104</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>430;10;10;110</additional_attributes></element><element><id>Relation</id><coordinates><x>648</x><y>64</y><w>400</w><h>120</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;480;130</additional_attributes></element><element><id>Relation</id><coordinates><x>88</x><y>256</y><w>96</w><h>112</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>100;10;10;120</additional_attributes></element><element><id>Relation</id><coordinates><x>232</x><y>256</y><w>80</w><h>112</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;80;120</additional_attributes></element><element><id>Relation</id><coordinates><x>1008</x><y>320</y><w>96</w><h>64</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>100;10;10;60</additional_attributes></element><element><id>Relation</id><coordinates><x>1168</x><y>320</y><w>72</w><h>64</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;70;60</additional_attributes></element><element><id>Relation</id><coordinates><x>480</x><y>392</y><w>104</w><h>152</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-
+m2=0..*
+mAddresses</panel_attributes><additional_attributes>80;10;10;170</additional_attributes></element><element><id>Relation</id><coordinates><x>680</x><y>392</y><w>104</w><h>152</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-
+m2=0..*
+mPersons</panel_attributes><additional_attributes>10;10;100;170</additional_attributes></element><element><id>Relation</id><coordinates><x>384</x><y>192</y><w>136</w><h>32</h></coordinates><panel_attributes>lt=&lt;..
+&lt;&lt;use&gt;&gt;</panel_attributes><additional_attributes>10;20;150;20</additional_attributes></element><element><id>Relation</id><coordinates><x>800</x><y>192</y><w>168</w><h>32</h></coordinates><panel_attributes>lt=&lt;..
+&lt;&lt;use&gt;&gt;</panel_attributes><additional_attributes>190;20;10;20</additional_attributes></element><element><id>Relation</id><coordinates><x>152</x><y>368</y><w>368</w><h>104</h></coordinates><panel_attributes>lt=&lt;..
+&lt;&lt;friend / use&gt;&gt;</panel_attributes><additional_attributes>440;10;330;110;70;110;10;60</additional_attributes></element><element><id>Relation</id><coordinates><x>400</x><y>344</y><w>120</w><h>56</h></coordinates><panel_attributes>lt=&lt;..
+&lt;&lt;friend / use&gt;&gt;</panel_attributes><additional_attributes>130;10;10;50</additional_attributes></element></diagram>
