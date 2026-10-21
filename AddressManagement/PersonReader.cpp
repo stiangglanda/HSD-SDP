@@ -3,7 +3,7 @@
 
 static const std::string cErrStream{ "Error in PersonReader: bad stream" };
 
-void PersonReader::ParseLine(const std::string& line, AddressManager& man)
+void PersonReader::ParseLine(const std::string& line, AddressManager& man) const
 {
 	std::string firstname;
 	std::string lastname;

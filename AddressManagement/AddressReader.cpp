@@ -3,7 +3,7 @@
 
 static const std::string cErrStream{ "Error in AddressReader: bad stream" };
 
-void AddressReader::ParseLine(const std::string& line, AddressManager& man)
+void AddressReader::ParseLine(const std::string& line, AddressManager& man) const
 {
 	std::string street;
 	std::size_t number;

@@ -10,6 +10,8 @@
 #include "AsciiWriter.h"
 #include "HtmlWriter.h"
 #include "Person.h"
+#include "PersonReader.h"
+#include "AddressReader.h"
 
 /// \brief Helper function to report test outcomes.
 void CheckTest(bool condition, const std::string& testName)
@@ -24,18 +26,33 @@ void CheckTest(bool condition, const std::string& testName)
     }
 }
 
+void RunTestDriver();
+
 /// \brief Starts the program.
 /// \return 0.
 int main()
 {
-    HtmlWriter htmlWriter;
-    AddressManager addressManager;
-    Person person{"John", "Doe", 0};
-    Address address{"Main St", 123, 12345, "Anytown"};
-    addressManager.AddPerson(person);
-    addressManager.AddAddress(address);
-    addressManager.WriteAddresses("path.html", &htmlWriter);
+    RunTestDriver();
 
-    std::cout << "Starting Property Management Test Driver..." << std::endl;
     return 0;
+}
+
+void RunTestDriver()
+{
+    AddressManager man;
+    PersonReader pReader;
+    AddressReader aReader;
+    HtmlWriter hWriter;
+    AsciiWriter aWriter;
+
+    const std::string personPath{ "../../../pers.txt" };
+    const std::string addressPath{ "../../../adr.txt" };
+    const std::string resultPathHtml{ "../../../result.html" };
+    const std::string resultPathAscii{ "../../../result.txt" };
+
+
+    man.ReadFile(personPath, &pReader);
+    man.ReadFile(addressPath, &aReader);
+    man.WriteAddresses(resultPathAscii, &aWriter);
+    man.WriteAddresses(resultPathHtml, &hWriter);
 }

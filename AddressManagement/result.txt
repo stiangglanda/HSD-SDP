@@ -1,0 +1,21 @@
+Adressen mit zugeordneten Personen
+----------------------------------
+4287 Radburg
+Kellergasse 3
+    Donald Duck
+    Brid Patt
+
+2345 Hinterhof
+Diemstrasse 1
+    Dagobert Duck
+    Jack Unterweger
+
+6785 Burghausen
+Waldstrasse 45
+    Daniel Düsentrieb
+    Max Möchtegern
+    Frank Gust
+
+9865 Mixbergen
+Domweg 123
+

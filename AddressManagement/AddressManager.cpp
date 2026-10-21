@@ -7,7 +7,7 @@ void AddressManager::ReadFile(const std::string& path, const Reader* rdr)
 {
     if (rdr == nullptr)
         throw std::invalid_argument("Reader is a null pointer");
-    //rdr->Read(path, *this);
+    rdr->Read(path, *this);
 }
 
 void AddressManager::WriteAddresses(const std::string& path, const Writer* wrt) const

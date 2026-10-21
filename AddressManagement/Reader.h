@@ -4,16 +4,16 @@
 #define ADDRESSMANAGEMENT_READER_H
 
 #include "AddressManager.h"
+#include "Object.h"
 #include <string>
 
-class Reader {
+class Reader : public Object
+{
 public:
-	void Read(std::string& path, AddressManager& man);
-	virtual void ParseLine(const std::string& line, AddressManager& man);
+	void Read(const std::string& path, AddressManager& man) const;
+	virtual void ParseLine(const std::string& line, AddressManager& man) const = 0;
 protected:
 	Reader() = default;
-private:
-	void SkipHeader(std::ifstream& file);
 };
 
 

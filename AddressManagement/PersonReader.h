@@ -8,7 +8,7 @@
 class PersonReader : public Reader
 {
 public:
-	void ParseLine(const std::string& line, AddressManager& man) override;
+	void ParseLine(const std::string& line, AddressManager& man) const override;
 };
 
 #endif //PERSONREADER_H
