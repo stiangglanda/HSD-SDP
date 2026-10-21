@@ -4,6 +4,7 @@
 #include <string>
 #include "Address.h"
 #include "Person.h"
+#include "Object.h"
 
 class AddressManager;
 
