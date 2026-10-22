@@ -1,4 +1,4 @@
-<diagram program="umletino" version="15.1"><zoom_level>12</zoom_level><help_text>Space for diagram notes</help_text><element><id>UMLClass</id><coordinates><x>1260</x><y>624</y><w>384</w><h>228</h></coordinates><panel_attributes>MusicPlayer
+<diagram program="umletino" version="15.1"><zoom_level>7</zoom_level><help_text>Space for diagram notes</help_text><element><id>UMLClass</id><coordinates><x>735</x><y>364</y><w>224</w><h>133</h></coordinates><panel_attributes>MusicPlayer
 --
 - size_t mVolume
 - size_t mIndex
@@ -11,7 +11,7 @@
 + size_t GetCount() const;
 + void IncreaseVol(size_t const vol);
 + void DecreaseVol(size_t const vol);
-+ void Add(std::string const&amp; name, size_t const dur);</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>0</x><y>684</y><w>588</w><h>264</h></coordinates><panel_attributes>VideoPlayer
++ void Add(std::string const&amp; name, size_t const dur);</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>0</x><y>399</y><w>343</w><h>154</h></coordinates><panel_attributes>VideoPlayer
 -
 - size_t mVolume
 - size_t mIndex
@@ -24,7 +24,7 @@
 + std::string const ActVideo() const;
 + void SetVolume(size_t const vol);
 + size_t GetVolume() const;
-+ void Add(std::string const&amp; name, size_t const dur, VideoFormat const&amp; format);</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1284</x><y>0</y><w>348</w><h>192</h></coordinates><panel_attributes>&lt;&lt;interface&gt;&gt;
++ void Add(std::string const&amp; name, size_t const dur, VideoFormat const&amp; format);</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>749</x><y>0</y><w>203</w><h>112</h></coordinates><panel_attributes>&lt;&lt;interface&gt;&gt;
 /Player/
 -
 + void Play();
@@ -33,7 +33,7 @@
 + void Stop();
 + void Next();
 + void Prev();
-+ void Select(std::string const&amp; name);</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>156</x><y>432</y><w>312</w><h>168</h></coordinates><panel_attributes>VideoAdapter
++ void Select(std::string const&amp; name);</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>91</x><y>259</y><w>182</w><h>98</h></coordinates><panel_attributes>VideoAdapter
 -
 + void Play();
 + void VolInc();
@@ -41,7 +41,7 @@
 + void Stop();
 + void Next();
 + void Prev();
-+ void Select(std::string const&amp; name);</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1260</x><y>360</y><w>348</w><h>168</h></coordinates><panel_attributes>MusicAdapter
++ void Select(std::string const&amp; name);</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>735</x><y>210</y><w>203</w><h>98</h></coordinates><panel_attributes>MusicAdapter
 -
 + void Play();
 + void VolInc();
@@ -49,7 +49,7 @@
 + void Stop();
 + void Next();
 + void Prev();
-+ void Select(std::string const&amp; name);</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1488</x><y>180</y><w>36</w><h>204</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>10;10;10;150</additional_attributes></element><element><id>Relation</id><coordinates><x>1476</x><y>516</y><w>36</w><h>132</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;10;10;90</additional_attributes></element><element><id>Relation</id><coordinates><x>384</x><y>144</y><w>924</w><h>312</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>750;10;570;10;570;200;10;200;10;240</additional_attributes></element><element><id>Relation</id><coordinates><x>276</x><y>588</y><w>36</w><h>120</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;10;10;80</additional_attributes></element><element><id>UMLClass</id><coordinates><x>168</x><y>84</y><w>276</w><h>240</h></coordinates><panel_attributes>PlayerClient
++ void Select(std::string const&amp; name);</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>868</x><y>105</y><w>21</w><h>119</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>10;10;10;150</additional_attributes></element><element><id>Relation</id><coordinates><x>861</x><y>301</y><w>21</w><h>77</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;10;10;90</additional_attributes></element><element><id>Relation</id><coordinates><x>224</x><y>84</y><w>539</w><h>189</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>750;10;570;10;570;200;10;200;10;250</additional_attributes></element><element><id>Relation</id><coordinates><x>161</x><y>350</y><w>21</w><h>63</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;10;10;70</additional_attributes></element><element><id>UMLClass</id><coordinates><x>98</x><y>49</y><w>161</w><h>140</h></coordinates><panel_attributes>PlayerClient
 -
 + void TestPlayer()
 + SetPlayer(Player player)
@@ -59,19 +59,19 @@
 + void Stop()
 + void Next()
 + void Prev()
-+ void Select()</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>432</x><y>72</y><w>876</w><h>48</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-
-- mPlayer</panel_attributes><additional_attributes>10;20;710;20</additional_attributes></element><element><id>UMLClass</id><coordinates><x>768</x><y>912</y><w>156</w><h>84</h></coordinates><panel_attributes>Video
++ void Select()</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>252</x><y>42</y><w>511</w><h>28</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-
+- mPlayer</panel_attributes><additional_attributes>10;20;710;20</additional_attributes></element><element><id>UMLClass</id><coordinates><x>448</x><y>532</y><w>91</w><h>49</h></coordinates><panel_attributes>Video
 -
 + Format mFormat
 
-define enum here</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>996</x><y>912</y><w>144</w><h>84</h></coordinates><panel_attributes>Song
+define enum here</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>581</x><y>532</y><w>84</w><h>49</h></coordinates><panel_attributes>Song
 -
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>888</x><y>684</y><w>168</w><h>96</h></coordinates><panel_attributes>&lt;&lt;abstract&gt;&gt;
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>518</x><y>399</y><w>98</w><h>56</h></coordinates><panel_attributes>&lt;&lt;abstract&gt;&gt;
 Media
 -
 - string mName
-- size_t mDuration</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>984</x><y>768</y><w>84</w><h>168</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;50;120</additional_attributes></element><element><id>Relation</id><coordinates><x>816</x><y>768</y><w>108</w><h>168</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>70;10;10;120</additional_attributes></element><element><id>Relation</id><coordinates><x>1128</x><y>828</y><w>156</w><h>144</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>110;10;10;100</additional_attributes></element><element><id>Relation</id><coordinates><x>576</x><y>840</y><w>216</w><h>132</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;10;160;90</additional_attributes></element><element><id>UMLClass</id><coordinates><x>852</x><y>456</y><w>240</w><h>108</h></coordinates><panel_attributes>&lt;&lt;abstract&gt;&gt;
+- size_t mDuration</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>574</x><y>448</y><w>49</w><h>98</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;50;120</additional_attributes></element><element><id>Relation</id><coordinates><x>476</x><y>448</y><w>63</w><h>98</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>70;10;10;120</additional_attributes></element><element><id>Relation</id><coordinates><x>658</x><y>483</y><w>91</w><h>84</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>110;10;60;10;60;100;10;100</additional_attributes></element><element><id>Relation</id><coordinates><x>336</x><y>490</y><w>126</w><h>77</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;10;120;10;120;90;160;90</additional_attributes></element><element><id>UMLClass</id><coordinates><x>497</x><y>266</y><w>140</w><h>63</h></coordinates><panel_attributes>&lt;&lt;abstract&gt;&gt;
 /Object/
 --
 # Object()
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1080</x><y>420</y><w>204</w><h>108</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;70;150;10</additional_attributes></element><element><id>Relation</id><coordinates><x>456</x><y>492</y><w>420</w><h>48</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>330;20;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>948</x><y>552</y><w>36</w><h>156</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;10;110</additional_attributes></element><element><id>Relation</id><coordinates><x>432</x><y>180</y><w>468</w><h>300</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>370;230;370;20;10;10</additional_attributes></element></diagram>
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>630</x><y>245</y><w>119</w><h>63</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;70;80;70;80;10;150;10</additional_attributes></element><element><id>Relation</id><coordinates><x>266</x><y>294</y><w>245</w><h>21</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>330;10;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>553</x><y>322</y><w>21</w><h>91</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;10;110</additional_attributes></element><element><id>Relation</id><coordinates><x>252</x><y>112</y><w>308</w><h>168</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>420;220;420;10;10;10</additional_attributes></element></diagram>
