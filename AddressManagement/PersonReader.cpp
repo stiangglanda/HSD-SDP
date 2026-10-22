@@ -2,7 +2,7 @@
 #include <sstream>
 #include <stdexcept>
 
-void PersonReader::ParseLine(const std::string& line, AddPersonAddress& man) const
+void PersonReader::ParseLine(const std::string& line, IWriteOnlyAddressManager& man) const
 {
 	std::string firstname;
 	std::string lastname;

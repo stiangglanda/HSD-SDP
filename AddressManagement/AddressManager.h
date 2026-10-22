@@ -5,8 +5,8 @@
 #include <vector>
 #include "Person.h"
 #include "Address.h"
-#include "AddPersonAddress.h"
-#include "GetPersonAddress.h"
+#include "IWriteOnlyAddressManager.h"
+#include "IReadOnlyAddressManager.h"
 
 class Reader;
 class Writer;
@@ -18,7 +18,7 @@ class Writer;
 /// A person refers to its address by an index. The manager reads its data
 /// with a Reader and writes it with a Writer. Both are passed as pointers,
 /// so the caller decides which file format is used.
-class AddressManager : public AddPersonAddress, public GetPersonAddress, public Object
+class AddressManager : public IWriteOnlyAddressManager, public IReadOnlyAddressManager, public Object
 {
 public:
    /// @brief Reads a file with the given reader.

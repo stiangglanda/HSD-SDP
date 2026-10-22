@@ -18,7 +18,7 @@ protected:
 	/// @param[in] line is the line to parse.
 	/// @param[in,out] man is the manager that stores the person.
 	/// @throws std::runtime_error if the line is not "firstname lastname index".
-	void ParseLine(const std::string& line, AddPersonAddress& man) const override;
+	void ParseLine(const std::string& line, IWriteOnlyAddressManager& man) const override;
 };
 
 #endif //PERSONREADER_H

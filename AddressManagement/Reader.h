@@ -3,7 +3,7 @@
 
 #include <string>
 #include "Object.h"
-#include "AddPersonAddress.h"
+#include "IWriteOnlyAddressManager.h"
 
 class AddressManager;
 
@@ -30,7 +30,7 @@ public:
 	/// @param[in,out] man is the manager that stores the parsed data.
 	/// @throws std::runtime_error if the file cannot be opened or read, or
 	///         if a line has a wrong format.
-	void Read(const std::string& path, AddPersonAddress& man) const;
+	void Read(const std::string& path, IWriteOnlyAddressManager& man) const;
 
 protected:
 	/// @brief Protected default constructor that makes the class abstract.
@@ -40,7 +40,7 @@ protected:
 	/// @param[in] line is the line to parse (without line break).
 	/// @param[in,out] man is the manager that stores the parsed data.
 	/// @throws std::runtime_error if the line has a wrong format.
-	virtual void ParseLine(const std::string& line, AddPersonAddress& man) const = 0;
+	virtual void ParseLine(const std::string& line, IWriteOnlyAddressManager& man) const = 0;
 };
 
 #endif //ADDRESSMANAGEMENT_READER_H

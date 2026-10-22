@@ -2,7 +2,7 @@
 #include <fstream>
 #include <stdexcept>
 
-void Reader::Read(const std::string& path, AddPersonAddress& man) const
+void Reader::Read(const std::string& path, IWriteOnlyAddressManager& man) const
 {
     std::ifstream file(path);
     if (!file.is_open()) {

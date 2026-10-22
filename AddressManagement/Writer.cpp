@@ -1,9 +1,8 @@
 #include "Writer.h"
 #include <fstream>
 #include <stdexcept>
-#include "AddressManager.h"
 
-void Writer::Write(const std::string& path, const GetPersonAddress& man) const
+void Writer::Write(const std::string& path, const IReadOnlyAddressManager& man) const
 {
     // Check first, so that no half written file is created.
     for (size_t p = 0; p < man.GetPersonCount(); ++p) {
