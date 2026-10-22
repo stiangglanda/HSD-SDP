@@ -37,34 +37,31 @@ public:
    /// @param[in] index is the position of the address.
    /// @returns a constant reference to the address.
    /// @throws std::out_of_range if the index does not exist.
-   const Address& GetAddress(size_t index) const;
+   const Address& GetAddress(size_t index) const override;
 
    /// @brief Access function for a person.
    /// @param[in] index is the position of the person.
    /// @returns a constant reference to the person.
    /// @throws std::out_of_range if the index does not exist.
-   const Person& GetPerson(size_t index) const;
+   const Person& GetPerson(size_t index) const override;
 
    /// @brief Access function for the number of addresses.
    /// @returns the number of stored addresses.
-   size_t GetAddressCount() const;
+   size_t GetAddressCount() const override;
 
    /// @brief Access function for the number of persons.
    /// @returns the number of stored persons.
-   size_t GetPersonCount() const;
-
-private:
-   /// Only the readers are allowed to add new entries.
-   friend class PersonReader;
-   friend class AddressReader;
+   size_t GetPersonCount() const override;
 
    /// @brief Adds a person to the manager.
    /// @param[in] person is the person to store.
-   void AddPerson(const Person& person);
+   void AddPerson(const Person& person) override;
 
    /// @brief Adds an address to the manager.
    /// @param[in] address is the address to store.
-   void AddAddress(const Address& address);
+   void AddAddress(const Address& address) override;
+
+private:
 
    /// @brief All persons in the order they were read.
    std::vector<Person> mPersons;
