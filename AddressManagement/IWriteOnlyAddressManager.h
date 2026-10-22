@@ -14,9 +14,6 @@
 class IWriteOnlyAddressManager
 {
 public:
-    /// @brief Virtual default destructor for safe polymorphic deletion.
-    virtual ~IWriteOnlyAddressManager() = default;
-
     /// @brief Adds a person to the manager.
     /// @param[in] person is the person to store.
     virtual void AddPerson(const Person& person) = 0;

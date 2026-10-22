@@ -15,9 +15,6 @@
 class IReadOnlyAddressManager
 {
 public:
-    /// @brief Virtual default destructor for safe polymorphic deletion.
-    virtual ~IReadOnlyAddressManager() = default;
-
     /// @brief Access function for an address.
     /// @param[in] index is the position of the address.
     /// @returns a constant reference to the address.
