@@ -1,4 +1,5 @@
-<diagram program="umletino" version="15.1"><zoom_level>8</zoom_level><help_text>Address Management Class Diagram</help_text><element><id>UMLClass</id><coordinates><x>536</x><y>112</y><w>160</w><h>72</h></coordinates><panel_attributes>/Object/
+<diagram program="umletino" version="15.1"><zoom_level>8</zoom_level><help_text>Address Management Class Diagram</help_text><element><id>UMLClass</id><coordinates><x>536</x><y>112</y><w>160</w><h>72</h></coordinates><panel_attributes>&lt;&lt;interface&gt;&gt;
+/Object/
 --
 # Object()
 /+ ~Object()/
@@ -40,13 +41,15 @@
 + GetFirstName(): const std::string&amp;
 + GetLastName(): const std::string&amp;
 + GetAddressID(): std::size_t
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>56</x><y>264</y><w>336</w><h>112</h></coordinates><panel_attributes>/Reader/
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>56</x><y>264</y><w>336</w><h>112</h></coordinates><panel_attributes>&lt;&lt;abstract&gt;&gt;
+/Reader/
 --
 # Reader()
 /+ ~Reader()/
 + Read(path: const std::string&amp;, man: AddressManager&amp;): void
 /# ParseLine(line: const std::string&amp;, man: AddressManager&amp;): void/
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1032</x><y>280</y><w>352</w><h>160</h></coordinates><panel_attributes>/Writer/
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1032</x><y>280</y><w>352</w><h>160</h></coordinates><panel_attributes>&lt;&lt;abstract&gt;&gt;
+/Writer/
 --
 # Writer()
 /+ ~Writer()/
@@ -77,7 +80,7 @@
 # WriteAddress(out: std::ostream&amp;, address: const Address&amp;): void
 # WritePerson(out: std::ostream&amp;, person: const Person&amp;): void
 # WriteAddressEnd(out: std::ostream&amp;): void
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>232</x><y>176</y><w>360</w><h>104</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>430;10;10;110</additional_attributes></element><element><id>Relation</id><coordinates><x>648</x><y>176</y><w>480</w><h>120</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;580;130</additional_attributes></element><element><id>Relation</id><coordinates><x>88</x><y>368</y><w>96</w><h>112</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>100;10;10;120</additional_attributes></element><element><id>Relation</id><coordinates><x>232</x><y>368</y><w>80</w><h>112</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;80;120</additional_attributes></element><element><id>Relation</id><coordinates><x>1128</x><y>432</y><w>56</w><h>64</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>50;10;10;60</additional_attributes></element><element><id>Relation</id><coordinates><x>1248</x><y>432</y><w>136</w><h>64</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;150;60</additional_attributes></element><element><id>Relation</id><coordinates><x>480</x><y>504</y><w>104</w><h>152</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>232</x><y>176</y><w>360</w><h>104</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>430;10;10;110</additional_attributes></element><element><id>Relation</id><coordinates><x>648</x><y>176</y><w>480</w><h>120</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>10;10;580;130</additional_attributes></element><element><id>Relation</id><coordinates><x>88</x><y>368</y><w>96</w><h>112</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>100;10;10;120</additional_attributes></element><element><id>Relation</id><coordinates><x>232</x><y>368</y><w>80</w><h>112</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;80;120</additional_attributes></element><element><id>Relation</id><coordinates><x>1128</x><y>432</y><w>56</w><h>64</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>50;10;10;60</additional_attributes></element><element><id>Relation</id><coordinates><x>1248</x><y>432</y><w>136</w><h>64</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;150;60</additional_attributes></element><element><id>Relation</id><coordinates><x>480</x><y>504</y><w>104</w><h>152</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-
 m2=0..*
 mAddresses</panel_attributes><additional_attributes>80;10;10;170</additional_attributes></element><element><id>Relation</id><coordinates><x>680</x><y>504</y><w>104</w><h>152</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-
 m2=0..*
