@@ -18,7 +18,7 @@ protected:
 	/// @param[in] line is the line to parse.
 	/// @param[in,out] man is the manager that stores the address.
 	/// @throws std::runtime_error if the line is not "street number zip city".
-	void ParseLine(const std::string& line, AddressManager& man) const override;
+	void ParseLine(const std::string& line, AddPersonAddress& man) const override;
 };
 
 #endif //ADDRESSREADER_H

@@ -2,7 +2,7 @@
 #include <sstream>
 #include <stdexcept>
 
-void AddressReader::ParseLine(const std::string& line, AddressManager& man) const
+void AddressReader::ParseLine(const std::string& line, AddPersonAddress& man) const
 {
 	std::string street;
 	std::size_t number;

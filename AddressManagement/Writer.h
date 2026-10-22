@@ -5,6 +5,7 @@
 #include "Address.h"
 #include "Person.h"
 #include "Object.h"
+#include "GetPersonAddress.h"
 
 class AddressManager;
 
@@ -30,7 +31,7 @@ public:
    /// @param[in] man is the manager that holds the data.
    /// @throws std::out_of_range if a person refers to an address that does not exist.
    /// @throws std::runtime_error if the file cannot be written.
-   void Write(const std::string& path, const AddressManager& man) const;
+   void Write(const std::string& path, const GetPersonAddress& man) const;
 
 protected:
    /// @brief Protected default constructor that makes the class abstract.

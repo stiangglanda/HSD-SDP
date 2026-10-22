@@ -2,6 +2,7 @@
 #define ADDRESS_H
 #include <cstddef>
 #include <string>
+#include "Object.h"
 
 /// @author Julian Rieger
 /// @date 21.10.2026
@@ -9,7 +10,7 @@
 ///
 /// The class is a simple value class. All data is set in the constructor
 /// and can only be read afterwards, so an address never changes.
-class Address {
+class Address : public Object {
 public:
     /// @brief Creates an address.
     /// @param[in] street is the name of the street.

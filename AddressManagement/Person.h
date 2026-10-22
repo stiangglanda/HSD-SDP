@@ -2,6 +2,7 @@
 #define PERSON_H
 #include <cstddef>
 #include <string>
+#include "Object.h"
 
 /// @author Julian Rieger
 /// @date 21.10.2026
@@ -10,7 +11,8 @@
 /// The link is the index of the address in the AddressManager. The person
 /// does not know the address itself, so persons and addresses can be read
 /// from files in any order.
-class Person {
+class Person : public Object
+{
 public:
     /// @brief Creates a person.
     /// @param[in] firstName is the first name of the person.
