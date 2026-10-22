@@ -81,7 +81,7 @@ FH-HAGENBERG
 \vspace{4cm}
 \begin{center}
 {\Huge \textbf{Systemdokumentation}}\\[1cm]
-{\Large \textbf{Addressverwaltung}}\\[0.5cm]
+{\Large \textbf{Adressverwaltung}}\\[0.5cm]
 {\large Version 1.0}\\[2cm]
 {\large J. Rieger, L. Kieweg}\\[0.5cm]
 {\large Hagenberg, 21. Oktober 2025}
@@ -101,7 +101,7 @@ Dieses Dokument zeigt den prinzipiellen Aufbau einer Systemdokumentation für So
 \section{Organisatorisches}
 \subsection {Team}
 \begin{itemize}
-\item Julian Rieger, Matr.-Nr: S2510306023, E-Mail: S25010306023@fhooe.at
+\item Julian Rieger, Matr.-Nr: S2510306023, E-Mail: S2510306023@fhooe.at
 \item Leander Kieweg, Matr.-Nr: S2510306014, E-Mail: S2510306014@fhooe.at
 \end{itemize}
 
@@ -115,7 +115,8 @@ Dieses Dokument zeigt den prinzipiellen Aufbau einer Systemdokumentation für So
     \end{itemize}
 \item Leander Kieweg
     \begin{itemize}
-        \item Implementierung der Klassen: AddressManager, HtmlWriter, AsciiWriter, Writer 
+        \item Implementierung der Klassen: AddressManager, HtmlWriter, AsciiWriter, Writer,
+        Object, IReadOnlyAddressManager, IWriteOnlyAddressManager
         \item Design des Klassendiagrams
         \item Implementierung des Testtreibers
 
@@ -124,32 +125,81 @@ Dieses Dokument zeigt den prinzipiellen Aufbau einer Systemdokumentation für So
 
 \subsection{Aufwand}
 \begin{itemize}
-\item Julian Rieger: geschätzt: 7h, tatsächlich 8h
-\item Leander Kieweg: geschätzt 7h, tatsächlich 8h
+\item Julian Rieger: geschätzt: 7h, tatsächlich 11h
+\item Leander Kieweg: geschätzt 7h, tatsächlich 11h
 \end{itemize}
 % -- Kapitel 2 --
 \section{Anforderungsdefinition (Systemspezifikation)}
-Es wird eine Verwaltungssoftware für eine Adressverwaltung bereitgestellt. Das Programm liest aus seperaten Textdateien die Adressen, sowie die Personen ein, und erstellt intern eine Zuweisung der beiden Daten. Das System beruht auf einem Template Method Pattern und besitzt eine abstrakte übergeordnete Basisklasse 'Object'. Die Addressverwaltung erfolgt ausschließlich durch die Klasse AddressManager, und liefert folgende Funktionalität:
+Es wird eine Software zur Verwaltung von Adressen und Personen entwickelt. Sie liest
+Personen und Adressen aus Textdateien ein, verknüpft jede Person mit ihrer Adresse und
+gibt alle Adressen samt zugeordneter Personen im ASCII- oder HTML-Format aus.
+
+\subsection*{Funktionale Anforderungen}
 \begin{itemize}
-    \item Das Hinzufügen von Adressen durch Auslesen einer Textdatei
-    \item Das Hinzufügen von Personen durch Auslesen eienr Textdatei
-    \item Das Ausgeben der registrierten Datenpaaren formatiert in HTML- und ASCII-Format.
+  \item \textbf{Personendatei:} eine Zeile pro Person im Format \texttt{Vorname Nachname Index}.
+        Der Index (0-basiert) verweist auf die Position der Adresse in der Adressdatei.
+        Personen können auf mehrere Dateien verteilt sein.
+  \item \textbf{Adressdatei:} eine Zeile pro Adresse im Format \texttt{Strasse Hausnummer PLZ Ort}.
+        Die Zeilenreihenfolge ergibt den Index.
+  \item Zeilen, die mit \texttt{\#} beginnen (Header), sowie Leerzeilen werden ignoriert.
+  \item Die Reihenfolge, in der Dateien eingelesen werden, ist beliebig.
+  \item Ausgabe: je Adresse PLZ und Ort, Strasse und Hausnummer, danach alle zugehörigen
+        Personen; wahlweise als ASCII- oder HTML-Datei.
+  \item Anlegen von Personen und Adressen erfolgt ausschließlich durch die Reader;
+        der \texttt{AddressManager} bietet keinen öffentlichen Schreibzugriff.
 \end{itemize}
-Das Anlegen von Addressen oder Personen wird ausschließlich vom Reader ausgeführt. Das manuelle Manipulieren von den Daten des AddressManager ist nicht möglich bzw. vorgesehen. Für das Lesen und Schreiben verwendet der AddressManager intern ein dediziertes Reader und Writer Objekt, welches diese Funktionalität vollständig übernimmt. Der PersonReader und der AddressReader sind als friend-Klassen beim AddressManager definiert, sodass diese von außen den alleinigen Zugriff auf die Add-Funktionen besitzen.
+
+\subsection*{Fehlerbehandlung}
+Fehler werden über Exceptions gemeldet: \texttt{std::invalid\_argument} (Null-Zeiger für
+Reader/Writer), \texttt{std::runtime\_error} (Datei nicht les-/schreibbar, falsches
+Zeilenformat) und \texttt{std::out\_of\_range} (ungültiger Index, Person verweist auf
+nicht vorhandene Adresse).
 % -- Kapitel 3 -- 
 \section{Systementwurf}
 \subsection{Klassendiagram}
 
 \begin{figure}[htbp]
   \centering
-  \makebox[\textwidth][c]{\includegraphics[width=1.25\textwidth]{addressmanager.png}}
+  \makebox[\textwidth][c]{\includegraphics[width=1.3\textwidth]{diagramm.png}}
   \caption{Klassendiagramm AddressManager}
 \end{figure}
 
 Anmerkung: Das Klassendiagram steht für bessere Lesbarkeit ebenfalls im Sysdoku-Ordner zur Verfügung.
 
 \subsection{Designentscheidungen}
-Als Design Pattern wurde das Template Method Pattern festgelegt. Es wird für die Reader und Writer Vererbung genutzt, wobei beide auch von Object erben, um den virtual destructor zu gewährleisten. Dazu zählt der AddressReader, PersonReader, HtmlWriter und AsciiWriter. Diese implementieren ihre eigenen ParseLine() bzw. WriteLine() Funktionen, je nach gewünschtem Format. Diese Funktionen sind in den Basisklassen als pure virtual markiert. Die Funktionen Read() und Write() der Basisklassen sind jedoch bereits in den Basisklassen implementiert. Reader und Writer sind beides abstrakte Klassen, d.h. ihre Konstruktoren sind als protected festgelegt, sodass diese nicht von außen zugänglich sind.
+Das Template Method Pattern wird für Reader und Writer eingesetzt. \texttt{Reader::Read()}
+legt den Ablauf fest (Datei öffnen, Header und Leerzeilen überspringen, jede Datenzeile
+an \texttt{ParseLine()} übergeben); \texttt{AddressReader} und \texttt{PersonReader}
+implementieren nur \texttt{ParseLine()}. \texttt{Writer::Write()} legt die Reihenfolge
+Header $\rightarrow$ je Adresse (Adresse, Personen, Adressende) $\rightarrow$ Footer fest;
+\texttt{HtmlWriter} und \texttt{AsciiWriter} implementieren die Schritte
+\texttt{WriteHeader}, \texttt{WriteAddress}, \texttt{WritePerson} und
+\texttt{WriteAddressEnd}. Diese sind pure virtual; \texttt{WriteFooter} ist ein Hook mit
+leerer Standardimplementierung, den nur der \texttt{HtmlWriter} überschreibt.
+Reader und Writer sind abstrakt (protected Konstruktor) und zustandslos, daher sind alle
+Methoden \texttt{const}.
+
+\paragraph{Interfaces.} Reader kennen nur \texttt{IWriteOnlyAddressManager},
+Writer nur \texttt{IReadOnlyAddressManager}. Der \texttt{AddressManager} erbt von
+\texttt{IWriteOnlyAddressManager} privat, daher kann niemand von außen Daten einfügen.
+Alle Klassen außer den Interfaces erben direkt oder indirekt von \texttt{Object}.
+
+\paragraph{Verknüpfung über Index.} Personen speichern den Index ihrer Adresse statt eines
+Zeigers. Dadurch ist die Einlesereihenfolge beliebig, und es entstehen keine hängenden
+Zeiger beim Wachsen der \texttt{std::vector}-Container.
+
+\paragraph{Prüfung beim Schreiben.} Ob ein Adressindex gültig ist, lässt sich erst prüfen,
+wenn alle Dateien gelesen sind. \texttt{Writer::Write()} prüft deshalb vor dem Öffnen der
+Ausgabedatei alle Personen und wirft \texttt{std::out\_of\_range}, sodass keine halb
+geschriebene Datei entsteht.
+
+\paragraph{Value Classes.} \texttt{Person} und \texttt{Address} sind unveränderlich
+(Werte nur im Konstruktor gesetzt).
+
+\paragraph{Fehlerstrategie.} Fehler werden als Exceptions gemeldet. Der \texttt{Reader}
+ergänzt Dateiname und Zeilennummer. Reader und Writer werden als Zeiger übergeben
+(Vorgabe der Schnittstelle), der \texttt{AddressManager} übernimmt keinen Besitz und
+prüft auf \texttt{nullptr}.
 
 % -- Kapitel 4 --
 \section{Komponentenentwurf}
@@ -212,23 +262,25 @@ Domweg 123
 \newpage
 \section{Quellcode}
 \hfile{../Object}
-\cppfile{../Address}
+\hfile{../IReadOnlyAddressManager}
+\hfile{../IWriteOnlyAddressManager}
 \hfile{../Address}
-\cppfile{../Person}
+\cppfile{../Address}
 \hfile{../Person}
-\cppfile{../Reader}
+\cppfile{../Person}
 \hfile{../Reader}
-\cppfile{../AddressReader}
+\cppfile{../Reader}
 \hfile{../AddressReader}
-\cppfile{../PersonReader}
+\cppfile{../AddressReader}
 \hfile{../PersonReader}
-\cppfile{../Writer}
+\cppfile{../PersonReader}
 \hfile{../Writer}
-\cppfile{../HtmlWriter}
+\cppfile{../Writer}
 \hfile{../HtmlWriter}
-\cppfile{../AsciiWriter}
+\cppfile{../HtmlWriter}
 \hfile{../AsciiWriter}
-\cppfile{../AddressManager}
+\cppfile{../AsciiWriter}
 \hfile{../AddressManager}
+\cppfile{../AddressManager}
 \cppfile{../main}
 \end{document}
