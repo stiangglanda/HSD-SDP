@@ -1,0 +1,77 @@
+<diagram program="umletino" version="15.1"><zoom_level>10</zoom_level><help_text>Space for diagram notes</help_text><element><id>UMLClass</id><coordinates><x>970</x><y>500</y><w>320</w><h>190</h></coordinates><panel_attributes>MusicPlayer
+--
+- size_t mVolume
+- size_t mIndex
+-
++ void Start();
++ void Stop();
++ void SwitchNext();
++ size_t GetActIndex() const;
++ bool Find(std::string const&amp; name);
++ size_t GetCount() const;
++ void IncreaseVol(size_t const vol);
++ void DecreaseVol(size_t const vol);
++ void Add(std::string const&amp; name, size_t const dur);</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>0</x><y>550</y><w>490</w><h>220</h></coordinates><panel_attributes>VideoPlayer
+-
+- size_t mVolume
+- size_t mIndex
+-
++ void Play() const;
++ void Stop() const;
++ bool First();
++ bool Next();
++ size_t ActIndex() const;
++ std::string const ActVideo() const;
++ void SetVolume(size_t const vol);
++ size_t GetVolume() const;
++ void Add(std::string const&amp; name, size_t const dur, VideoFormat const&amp; format);</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>740</x><y>100</y><w>290</w><h>160</h></coordinates><panel_attributes>&lt;&lt;interface&gt;&gt;
+/Player/
+-
++ void Play();
++ void VolInc();
++ void VolDec();
++ void Stop();
++ void Next();
++ void Prev();
++ void Select(std::string const&amp; name);</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>280</x><y>340</y><w>260</w><h>140</h></coordinates><panel_attributes>VideoAdapter
+-
++ void Play();
++ void VolInc();
++ void VolDec();
++ void Stop();
++ void Next();
++ void Prev();
++ void Select(std::string const&amp; name);</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>740</x><y>340</y><w>290</w><h>140</h></coordinates><panel_attributes>MusicAdapter
+-
++ void Play();
++ void VolInc();
++ void VolDec();
++ void Stop();
++ void Next();
++ void Prev();
++ void Select(std::string const&amp; name);</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>910</x><y>250</y><w>90</w><h>110</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>10;10;70;90</additional_attributes></element><element><id>Relation</id><coordinates><x>860</x><y>470</y><w>240</w><h>50</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;10;220;30</additional_attributes></element><element><id>Relation</id><coordinates><x>410</x><y>250</y><w>420</w><h>110</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>400;10;10;90</additional_attributes></element><element><id>Relation</id><coordinates><x>230</x><y>470</y><w>130</w><h>100</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>110;10;10;80</additional_attributes></element><element><id>UMLClass</id><coordinates><x>60</x><y>130</y><w>230</w><h>200</h></coordinates><panel_attributes>PlayerClient
+-
++ void TestPlayer()
++ SetPlayer(Player player)
++ void Play()
++ void VolInc()
++ void VolDec()
++ void Stop()
++ void Next()
++ void Prev()
++ void Select()</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>280</x><y>130</y><w>480</w><h>70</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-
+- mPlayer</panel_attributes><additional_attributes>10;10;460;50</additional_attributes></element><element><id>UMLClass</id><coordinates><x>580</x><y>670</y><w>130</w><h>70</h></coordinates><panel_attributes>Video
+-
++ Format mFormat
+
+define enum here</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>740</x><y>680</y><w>120</w><h>70</h></coordinates><panel_attributes>Song
+-
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>640</x><y>550</y><w>140</w><h>80</h></coordinates><panel_attributes>&lt;&lt;abstract&gt;&gt;
+Media
+-
+- string mName
+- size_t mDuration</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>720</x><y>620</y><w>80</w><h>80</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;60;60</additional_attributes></element><element><id>Relation</id><coordinates><x>620</x><y>620</y><w>50</w><h>70</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>30;10;10;50</additional_attributes></element><element><id>Relation</id><coordinates><x>850</x><y>670</y><w>140</w><h>60</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>120;10;10;40</additional_attributes></element><element><id>Relation</id><coordinates><x>480</x><y>680</y><w>120</w><h>40</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;10;100;20</additional_attributes></element><element><id>UMLClass</id><coordinates><x>490</x><y>0</y><w>200</w><h>90</h></coordinates><panel_attributes>&lt;&lt;abstract&gt;&gt;
+/Object/
+--
+# Object()
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>600</x><y>80</y><w>360</w><h>280</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;70;190;340;260</additional_attributes></element><element><id>Relation</id><coordinates><x>530</x><y>80</y><w>50</w><h>280</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>30;10;10;260</additional_attributes></element><element><id>Relation</id><coordinates><x>570</x><y>80</y><w>150</w><h>490</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;130;470</additional_attributes></element><element><id>Relation</id><coordinates><x>222</x><y>80</y><w>310</w><h>70</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>290;10;70;10;10;50</additional_attributes></element></diagram>
