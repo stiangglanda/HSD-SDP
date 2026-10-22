@@ -17,9 +17,6 @@
 class Writer : public Object
 {
 public:
-   /// @brief Virtual destructor, because writers are used by pointer.
-   virtual ~Writer() = default;
-
    /// @brief Writes all addresses with their persons to a file.
    ///
    /// This is the template method. The order is: header, then for each

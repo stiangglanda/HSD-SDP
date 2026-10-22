@@ -1,11 +1,9 @@
-#ifndef ADDRESSMANAGEMENT_READER_H
-#define ADDRESSMANAGEMENT_READER_H
+#ifndef READER_H
+#define READER_H
 
 #include <string>
 #include "Object.h"
 #include "IWriteOnlyAddressManager.h"
-
-class AddressManager;
 
 /// @author Julian Rieger
 /// @date 21.10.2026
@@ -18,9 +16,6 @@ class AddressManager;
 class Reader : public Object
 {
 public:
-	/// @brief Virtual destructor, because readers are used by pointer.
-	virtual ~Reader() = default;
-
 	/// @brief Reads a file and stores its content in the manager.
 	///
 	/// This is the template method. Lines that start with '#' (header) and
@@ -43,4 +38,4 @@ protected:
 	virtual void ParseLine(const std::string& line, IWriteOnlyAddressManager& man) const = 0;
 };
 
-#endif //ADDRESSMANAGEMENT_READER_H
+#endif // READER_H
