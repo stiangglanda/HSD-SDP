@@ -3,17 +3,12 @@
 #include "Object.h"
 #include "Player.h"
 
-/// @author Leander Kieweg
+/// @author Julian Rieger
 /// @date 27.10.2026
 /// @brief Uses a player through the Player interface.
 class PlayerClient : public Object
 {
-private:
-   Player* mPlayer;
-
 public:
-   /// @brief Tests all functions of the current player.
-   void TestPlayer();
 
    /// @brief Sets the player to use.
    /// @param[in] player is the player to use.
@@ -40,6 +35,10 @@ public:
    /// @brief Selects an entry by its name.
    /// @param[in] name is the name of the entry.
    void Select(std::string const& name);
+
+private:
+	Player* mPlayer;
+
 };
 
 #endif //PLAYERCLIENT_H

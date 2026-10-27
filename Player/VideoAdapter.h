@@ -4,14 +4,11 @@
 #include "Player.h"
 #include "VideoPlayer.h"
 
-/// @author Leander Kieweg
+/// @author Julian Rieger
 /// @date 27.10.2026
 /// @brief Makes the VideoPlayer usable as a Player.
 class VideoAdapter : public Object, public Player
 {
-private:
-   VideoPlayer mVideoPlayer;
-
 public:
    /// @brief Starts playing.
    void Play() override;
@@ -34,6 +31,10 @@ public:
    /// @brief Selects a video by its name.
    /// @param[in] name is the name of the video.
    void Select(std::string const& name) override;
+
+private:
+	VideoPlayer mVideoPlayer;
+
 };
 
 #endif //VIDEOADAPTER_H

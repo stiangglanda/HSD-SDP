@@ -5,7 +5,7 @@
 #include <vector>
 #include "Video.h"
 
-/// @author Leander Kieweg
+/// @author Julian Rieger
 /// @date 27.10.2026
 /// @brief Plays videos from a list.
 class VideoPlayer
