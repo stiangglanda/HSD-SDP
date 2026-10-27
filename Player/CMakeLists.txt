@@ -33,7 +33,6 @@ add_executable (Player main.cpp
         MusicAdapter.h
         MusicAdapter.cpp
         MusicPlayer.cpp
-        Media.cpp
         Media.cpp)
 
 if (CMAKE_VERSION VERSION_GREATER 3.12)
