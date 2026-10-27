@@ -47,8 +47,8 @@ public:
    void Add(std::string const& name, size_t const dur);
 
 private:
-   size_t mVolume;
-   size_t mIndex;
+   size_t mVolume = 15;
+   size_t mIndex = 0;
    std::vector<Song> mSongs;
 };
 

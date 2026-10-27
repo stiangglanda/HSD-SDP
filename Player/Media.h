@@ -9,6 +9,15 @@
 /// @brief Abstract base class of all media with a name and a duration.
 class Media : public Object
 {
+public:
+   /// @brief Name Getter
+   /// @returns the Name
+   const std::string& GetName() const;
+
+   /// @brief Duration Getter
+   /// @returns the Duration
+   size_t GetDuration() const;
+
 protected:
    /// @brief Creates a media.
    /// @param[in] name is the name of the media.
