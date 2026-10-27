@@ -1,0 +1,39 @@
+#ifndef VIDEOADAPTER_H
+#define VIDEOADAPTER_H
+#include "Object.h"
+#include "Player.h"
+#include "VideoPlayer.h"
+
+/// @author Leander Kieweg
+/// @date 27.10.2026
+/// @brief Makes the VideoPlayer usable as a Player.
+class VideoAdapter : public Object, public Player
+{
+private:
+   VideoPlayer mVideoPlayer;
+
+public:
+   /// @brief Starts playing.
+   void Play() override;
+
+   /// @brief Increases the volume.
+   void VolInc() override;
+
+   /// @brief Decreases the volume.
+   void VolDec() override;
+
+   /// @brief Stops playing.
+   void Stop() override;
+
+   /// @brief Switches to the next video.
+   void Next() override;
+
+   /// @brief Switches to the previous video.
+   void Prev() override;
+
+   /// @brief Selects a video by its name.
+   /// @param[in] name is the name of the video.
+   void Select(std::string const& name) override;
+};
+
+#endif //VIDEOADAPTER_H
