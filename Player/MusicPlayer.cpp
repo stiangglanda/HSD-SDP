@@ -3,19 +3,42 @@
 #include <iostream>
 
 void MusicPlayer::Start() {
-    std::cout << "Start " << mSongs[mIndex].GetName() << std::endl;
+    if (mSongs.empty()) {
+        std::cout << "no song in playlist!" << std::endl;
+        return;
+    }
+
+    if (mIndex >= mSongs.size()) {
+        mIndex = 0;
+    }
+
+    const Song& song = mSongs[mIndex];
+    std::cout << "playing song number " << mIndex + 1 << ": "
+              << song.GetName() << " (" << song.GetDuration() << " sec)"
+              << std::endl;
 }
 
 void MusicPlayer::Stop() {
-    std::cout << "Stop " << mSongs[mIndex].GetName() << std::endl;
+    if (mSongs.empty()) {
+        std::cout << "no song in playlist!" << std::endl;
+        return;
+    }
+
+    if (mIndex >= mSongs.size()) {
+        mIndex = 0;
+    }
+
+    const Song& song = mSongs[mIndex];
+    std::cout << "stop song: " << song.GetName() << " ("
+              << song.GetDuration() << " sec)" << std::endl;
 }
 
 void MusicPlayer::SwitchNext() {
-    if(mIndex >= mSongs.size()) {
-        mIndex = 0;
-    } else {
-        mIndex++;
+    if (mSongs.empty()) {
+        return;
     }
+
+    mIndex = (mIndex + 1) % mSongs.size();
 }
 
 size_t MusicPlayer::GetActIndex() const {
@@ -29,6 +52,7 @@ bool MusicPlayer::Find(std::string const& name) {
         });
 
     if (it == mSongs.end()) {
+        std::cout << "song: " << name << " not found!" << std::endl;
         return false;
     }
 
@@ -41,23 +65,23 @@ size_t MusicPlayer::GetCount() const {
 }
 
 void MusicPlayer::IncreaseVol(size_t const vol) {
-    if (mVolume+vol >= 100) {
+    if (vol >= 100 - mVolume) {
         mVolume = 100;
     }
     else {
         mVolume += vol;
     }
-    return;
+    std::cout << "volume is now -> " << mVolume << std::endl;
 }
 
 void MusicPlayer::DecreaseVol(size_t const vol) {
-    if (mVolume-vol <= 0) {
+    if (vol >= mVolume) {
         mVolume = 0;
     }
     else {
         mVolume -= vol;
     }
-    return;
+    std::cout << "volume is now -> " << mVolume << std::endl;
 }
 
 void MusicPlayer::Add(std::string const& name, size_t const dur) {

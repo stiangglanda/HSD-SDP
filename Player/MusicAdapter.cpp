@@ -45,11 +45,5 @@ void MusicAdapter::Prev()
 
 void MusicAdapter::Select(std::string const& name)
 {
-    bool exists = mMusicPlayer.Find(name);
-    if (!exists) {
-        std::cout << "Song not found: " << name << std::endl;
-    }
-    else {
-        std::cout << "Song selected: " << name << std::endl;
-    }
+    mMusicPlayer.Find(name);
 }
