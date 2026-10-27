@@ -14,7 +14,6 @@ project ("Player")
 # Add source to this project's executable.
 add_executable (Player main.cpp
         Object.h
-        Object.cpp
         Player.h
         PlayerClient.cpp
         PlayerClient.h
@@ -31,7 +30,11 @@ add_executable (Player main.cpp
         VideoAdapter.cpp
         VideoAdapter.h
         MusicAdapter.cpp
-        MusicAdapter.h)
+        MusicAdapter.h
+        MusicAdapter.cpp
+        MusicPlayer.cpp
+        Media.cpp
+        Media.cpp)
 
 if (CMAKE_VERSION VERSION_GREATER 3.12)
   set_property(TARGET Player PROPERTY CXX_STANDARD 20)

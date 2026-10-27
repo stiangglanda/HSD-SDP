@@ -9,9 +9,6 @@
 /// @brief Makes the MusicPlayer usable as a Player.
 class MusicAdapter : public Object, public Player
 {
-private:
-   MusicPlayer mMusicPlayer;
-
 public:
    /// @brief Starts playing.
    void Play() override;
@@ -34,6 +31,9 @@ public:
    /// @brief Selects a song by its name.
    /// @param[in] name is the name of the song.
    void Select(std::string const& name) override;
+
+private:
+   MusicPlayer mMusicPlayer;
 };
 
 #endif //MUSICADAPTER_H

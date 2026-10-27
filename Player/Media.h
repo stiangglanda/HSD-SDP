@@ -9,15 +9,15 @@
 /// @brief Abstract base class of all media with a name and a duration.
 class Media : public Object
 {
-private:
-   std::string mName;
-   size_t mDuration;
-
 protected:
    /// @brief Creates a media.
    /// @param[in] name is the name of the media.
    /// @param[in] dur is the duration of the media.
    Media(std::string const& name, size_t const dur);
+
+private:
+   std::string mName;
+   size_t mDuration;
 };
 
 #endif //MEDIA_H
