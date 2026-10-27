@@ -2,6 +2,10 @@
 
 void VideoPlayer::Play() const
 {
+	//playing video number 1: Die Sendung mit der Maus [duration -> 55 min], AVI-Format
+	std::count << "playing video number " << mIndex << ": " << mVideos.at(mIndex).mName
+		<< "[duration -> " (mVideos.at(mIndex).mDuration / 60) << "min], "
+		<< mVideos.at(mIndex).mFormat << "-Format" << std::cout;
 }
 
 void VideoPlayer::Stop() const
@@ -15,7 +19,7 @@ bool VideoPlayer::First()
 
 bool VideoPlayer::Next()
 {
-
+	return false;
 }
 
 size_t VideoPlayer::ActIndex() const
