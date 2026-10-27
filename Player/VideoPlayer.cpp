@@ -67,7 +67,7 @@ std::string const VideoPlayer::ActVideo() const
 	return nullptr;
 }
 
-void VideoPlayer::SetVolume(uint8_t const vol)
+void VideoPlayer::SetVolume(size_t const vol)
 {
 	if (vol > 50)
 	{
@@ -81,7 +81,7 @@ void VideoPlayer::SetVolume(uint8_t const vol)
 	}
 }
 
-uint8_t VideoPlayer::GetVolume() const
+size_t VideoPlayer::GetVolume() const
 {
 	return mVolume;
 }
@@ -90,5 +90,4 @@ void VideoPlayer::Add(std::string const& name, size_t const dur, VideoFormat con
 {
 	mVideos.push_back({ name, dur, format });
 }
-
 

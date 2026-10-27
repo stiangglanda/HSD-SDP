@@ -9,7 +9,7 @@ void VideoAdapter::Play()
 void VideoAdapter::VolInc()
 {
 	//exception handling in videoplayer.cpp
-	uint8_t vol = mVideoPlayer.GetVolume();
+	size_t vol = mVideoPlayer.GetVolume();
 	vol += 1;
 	mVideoPlayer.SetVolume(vol);
 }
@@ -17,7 +17,7 @@ void VideoAdapter::VolInc()
 void VideoAdapter::VolDec()
 {
 	//exception handling in videoplayer.cpp
-	uint8_t vol = mVideoPlayer.GetVolume();
+	size_t vol = mVideoPlayer.GetVolume();
 	vol -= 1;
 	mVideoPlayer.SetVolume(vol);
 }

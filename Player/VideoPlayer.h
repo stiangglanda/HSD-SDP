@@ -35,11 +35,11 @@ public:
 
    /// @brief Sets the volume.
    /// @param[in] vol is the new volume.
-   void SetVolume(uint8_t const vol);
+   void SetVolume(size_t const vol);
 
    /// @brief Gets the volume.
    /// @return the current volume.
-   uint8_t GetVolume() const;
+   size_t GetVolume() const;
 
    /// @brief Adds a video to the list.
    /// @param[in] name is the name of the video.
@@ -50,7 +50,7 @@ public:
 private:
 	std::vector<Video> mVideos;
 	size_t mIndex;
-	uint8_t mVolume;
+	size_t mVolume;
 };
 
 #endif //VIDEOPLAYER_H
