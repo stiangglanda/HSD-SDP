@@ -6,13 +6,13 @@
 /// @brief Abstract base class of all classes.
 class Object
 {
-protected:
-   /// @brief Creates an object. Only derived classes can call it.
-   Object();
-
 public:
    /// @brief Destroys the object.
    virtual ~Object() = default;
+
+protected:
+   /// @brief Creates an object. Only derived classes can call it.
+   Object() = default;
 };
 
 #endif //OBJECT_H
