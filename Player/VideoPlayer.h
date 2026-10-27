@@ -10,11 +10,6 @@
 /// @brief Plays videos from a list.
 class VideoPlayer
 {
-private:
-   size_t mVolume;
-   size_t mIndex;
-   std::vector<Video> mVideos;
-
 public:
    /// @brief Starts playing the current video.
    void Play() const;
@@ -40,17 +35,22 @@ public:
 
    /// @brief Sets the volume.
    /// @param[in] vol is the new volume.
-   void SetVolume(size_t const vol);
+   void SetVolume(uint8_t const vol);
 
    /// @brief Gets the volume.
    /// @return the current volume.
-   size_t GetVolume() const;
+   uint8_t GetVolume() const;
 
    /// @brief Adds a video to the list.
    /// @param[in] name is the name of the video.
    /// @param[in] dur is the duration of the video.
    /// @param[in] format is the format of the video.
    void Add(std::string const& name, size_t const dur, VideoFormat const& format);
+
+private:
+	std::vector<Video> mVideos;
+	size_t mIndex;
+	uint8_t mVolume;
 };
 
 #endif //VIDEOPLAYER_H
