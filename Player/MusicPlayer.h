@@ -10,11 +10,6 @@
 /// @brief Plays songs from a list.
 class MusicPlayer
 {
-private:
-   size_t mVolume;
-   size_t mIndex;
-   std::vector<Song> mSongs;
-
 public:
    /// @brief Starts playing the current song.
    void Start();
@@ -50,6 +45,11 @@ public:
    /// @param[in] name is the name of the song.
    /// @param[in] dur is the duration of the song.
    void Add(std::string const& name, size_t const dur);
+
+private:
+   size_t mVolume;
+   size_t mIndex;
+   std::vector<Song> mSongs;
 };
 
 #endif //MUSICPLAYER_H
