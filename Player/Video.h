@@ -24,6 +24,11 @@ public:
    /// @param[in] format is the format of the video.
    Video(std::string const& name, size_t const dur, VideoFormat const& format);
 
+   /// @brief Returns mFormat
+   VideoFormat GetFormat() const;
+
+   static std::string FormatToString(VideoFormat format);
+
 private:
 	VideoFormat mFormat;
 

@@ -34,7 +34,7 @@ public:
 
 private:
 	VideoPlayer mVideoPlayer;
-
+	size_t GetSize();
 };
 
 #endif //VIDEOADAPTER_H
