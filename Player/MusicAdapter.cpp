@@ -1,4 +1,5 @@
 #include "MusicAdapter.h"
+#include <iostream>
 
 void MusicAdapter::Play()
 {

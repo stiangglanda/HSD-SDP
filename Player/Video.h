@@ -27,6 +27,8 @@ public:
    /// @brief Returns mFormat
    VideoFormat GetFormat() const;
 
+   static std::string FormatToString(VideoFormat format);
+
 private:
 	VideoFormat mFormat;
 

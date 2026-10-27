@@ -2,13 +2,14 @@
 #include <iostream>
 #include <stdexcept>
 
+
 void VideoPlayer::Play() const
 {
 	//intended format:
 	//playing video number 1: Die Sendung mit der Maus [duration -> 55 min], AVI-Format
 	std::cout << "playing video number " << mIndex << ": " << mVideos.at(mIndex).GetName()
 		<< "[duration -> " << (mVideos.at(mIndex).GetDuration() / 60) << "min], "
-		<< mVideos.at(mIndex).GetFormat() << "-Format" << std::endl;
+		<< Video::FormatToString(mVideos.at(mIndex).GetFormat()) << "-Format" << std::endl;
 }
 
 void VideoPlayer::Stop() const
@@ -17,12 +18,21 @@ void VideoPlayer::Stop() const
 	//stop video: Pulp Fiction [duration -> 126 min], MKV-Format
 	std::cout << "stop video: " << mVideos.at(mIndex).GetName() << " "
 		<< "[duration -> " << (mVideos.at(mIndex).GetDuration() / 60) << "min], "
-		<< mVideos.at(mIndex).GetFormat() << "-Format" << std::endl;
+		<< Video::FormatToString(mVideos.at(mIndex).GetFormat()) << "-Format" << std::endl;
 }
 
 bool VideoPlayer::First()
 {
-	mIndex = 0;
+	if (mVideos.size() > 0)
+	{
+		mIndex = 0;
+		return true;
+	}
+	else
+	{
+		throw std::invalid_argument("Playlist is empty.");
+		return false;
+	}
 }
 
 bool VideoPlayer::Next()
