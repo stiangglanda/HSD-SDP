@@ -1,4 +1,4 @@
-<diagram program="umletino" version="15.1"><zoom_level>7</zoom_level><help_text>Space for diagram notes</help_text><element><id>UMLClass</id><coordinates><x>735</x><y>364</y><w>224</w><h>133</h></coordinates><panel_attributes>MusicPlayer
+<diagram program="umletino" version="15.1"><zoom_level>7</zoom_level><help_text>Space for diagram notes</help_text><element><id>UMLClass</id><coordinates><x>735</x><y>364</y><w>224</w><h>154</h></coordinates><panel_attributes>MusicPlayer
 --
 - size_t mVolume
 - size_t mIndex
