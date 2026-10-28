@@ -44,7 +44,8 @@ void MusicAdapter::Prev()
     }
 }
 
-void MusicAdapter::Select(std::string const& name)
-{
-    mMusicPlayer.Find(name);
+void MusicAdapter::Select(std::string const& name) {
+    if (mMusicPlayer.Find(name)) {
+        mMusicPlayer.Start();
+    }
 }

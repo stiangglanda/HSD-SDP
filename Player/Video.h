@@ -7,7 +7,7 @@
 /// @brief The formats a video can have.
 enum class VideoFormat
 {
-   MP4,
+   WMV,
    AVI,
    MKV
 };

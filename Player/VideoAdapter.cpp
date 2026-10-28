@@ -6,20 +6,18 @@ void VideoAdapter::Play()
 	mVideoPlayer.Play();
 }
 
-void VideoAdapter::VolInc()
-{
-	//exception handling in videoplayer.cpp
-	size_t vol = mVideoPlayer.GetVolume();
-	vol += 1;
-	mVideoPlayer.SetVolume(vol);
+void VideoAdapter::VolDec() {
+    size_t vol = mVideoPlayer.GetVolume();
+    if (vol > 0) {
+        mVideoPlayer.SetVolume(vol - 1);
+    }
 }
 
-void VideoAdapter::VolDec()
-{
-	//exception handling in videoplayer.cpp
-	size_t vol = mVideoPlayer.GetVolume();
-	vol -= 1;
-	mVideoPlayer.SetVolume(vol);
+void VideoAdapter::VolInc() {
+    size_t vol = mVideoPlayer.GetVolume();
+    if (vol < 50) {
+        mVideoPlayer.SetVolume(vol + 1);
+    }
 }
 
 void VideoAdapter::Stop()
@@ -51,20 +49,20 @@ void VideoAdapter::Prev()
 	}
 }
 
-void VideoAdapter::Select(std::string const& name)
-{
-	size_t playlistSize = GetSize();
+void VideoAdapter::Select(std::string const& name) {
+    if (!mVideoPlayer.First()) {
+        std::cout << "video: " << name << " not found!" << std::endl;
+        return;
+    }
 
-	//iterate through all videos and compare name
-	for(size_t i = 0; i < playlistSize; i++)
-	{
-		if (mVideoPlayer.ActVideo() == name)
-		{
-			Play();
-			return;
-		}
-	}
-	throw std::invalid_argument("Cannot find the given title in playlist.");
+    do {
+        if (mVideoPlayer.ActVideo() == name) {
+            Play();
+            return;
+        }
+    } while (mVideoPlayer.Next());
+
+    std::cout << "video: " << name << " not found!" << std::endl;
 }
 
 size_t VideoAdapter::GetSize()

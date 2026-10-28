@@ -1,41 +1,63 @@
 #include "PlayerClient.h"
+#include <iostream>
 
-void PlayerClient::SetPlayer(Player *player)
+void PlayerClient::SetPlayer(Player& player)
 {
-	mPlayer = player;
+    mPlayer = &player;
 }
 
 void PlayerClient::Play()
 {
-	mPlayer->Play();
+    if (mPlayer != nullptr)
+    {
+        mPlayer->Play();
+    }
 }
 
 void PlayerClient::VolInc()
 {
-	mPlayer->VolInc();
+    if (mPlayer != nullptr)
+    {
+        mPlayer->VolInc();
+    }
 }
 
 void PlayerClient::VolDec()
 {
-	mPlayer->VolDec();
+    if (mPlayer != nullptr)
+    {
+        mPlayer->VolDec();
+    }
 }
 
 void PlayerClient::Stop()
 {
-	mPlayer->Stop();
+    if (mPlayer != nullptr)
+    {
+        mPlayer->Stop();
+    }
 }
 
 void PlayerClient::Next()
 {
-	mPlayer->Next();
+    if (mPlayer != nullptr)
+    {
+        mPlayer->Next();
+    }
 }
 
 void PlayerClient::Prev()
 {
-	mPlayer->Prev();
+    if (mPlayer != nullptr)
+    {
+        mPlayer->Prev();
+    }
 }
 
 void PlayerClient::Select(std::string const& name)
 {
-	mPlayer->Select(name);
+    if (mPlayer != nullptr)
+    {
+        mPlayer->Select(name);
+    }
 }
