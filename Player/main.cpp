@@ -53,6 +53,19 @@ static void TestMusicPlayer()
    player.Stop();
 }
 
+/// @brief Tests all functions of the player of a client.
+/// @param[in] client is the client to test.
+static void TestClient(PlayerClient& client)
+{
+   client.Play();
+   client.VolInc();
+   client.VolDec();
+   client.Next();
+   client.Prev();
+   client.Select("Test");
+   client.Stop();
+}
+
 /// @brief Tests both adapters through the PlayerClient.
 static void TestAdapters()
 {
