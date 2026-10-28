@@ -37,7 +37,7 @@ public:
    void Select(std::string const& name) override;
 
 private:
-	VideoPlayer mVideoPlayer;
+	VideoPlayer& mVideoPlayer;
 };
 
 #endif //VIDEOADAPTER_H

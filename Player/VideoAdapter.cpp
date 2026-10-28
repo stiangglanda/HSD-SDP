@@ -19,7 +19,7 @@ void VideoAdapter::VolDec() {
 
 void VideoAdapter::VolInc() {
     size_t vol = mVideoPlayer.GetVolume();
-    if (vol < 50) {
+    if (vol < VideoPlayer::maxVolume) {
         mVideoPlayer.SetVolume(vol + 1);
     }
 }
