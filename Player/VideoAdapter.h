@@ -12,7 +12,7 @@ class VideoAdapter : public Object, public Player
 public:
    /// @brief Constructs a new VideoAdapter.
    /// @param[in] player is the VideoPlayer to adapt.
-   explicit VideoAdapter(VideoPlayer& player) : mVideoPlayer{ player } {}
+   explicit VideoAdapter(VideoPlayer& player);
 
    /// @brief Starts playing.
    void Play() override;

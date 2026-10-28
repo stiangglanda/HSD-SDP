@@ -41,22 +41,3 @@ private:
 };
 
 #endif //MUSICADAPTER_H
-
-
-// MusicAdapter.h
-class MusicAdapter : public Object, public Player {
-public:
-    explicit MusicAdapter(MusicPlayer& player) : mMusicPlayer{ player } {}
-    // ...
-private:
-     // Referenz statt leere eigene Instanz!
-};
-
-// VideoAdapter.h
-class VideoAdapter : public Object, public Player {
-public:
-    explicit VideoAdapter(VideoPlayer& player) : mVideoPlayer{ player } {}
-    // ...
-private:
-    VideoPlayer& mVideoPlayer; // Referenz!
-};
