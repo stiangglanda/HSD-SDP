@@ -12,7 +12,7 @@ public:
 
    /// @brief Sets the player to use.
    /// @param[in] player is the player to use.
-   void SetPlayer(Player& player);
+   void SetPlayer(Player *player);
 
    /// @brief Starts playing.
    void Play();
@@ -37,7 +37,7 @@ public:
    void Select(std::string const& name);
 
 private:
-	Player* mPlayer;
+	Player* mPlayer = nullptr;
 
 };
 

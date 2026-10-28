@@ -1,0 +1,86 @@
+
+%****************** self defined commands ***************************
+%include a .cpp source file
+%usage: \cppfile{../path_to_your_file/filename}
+\newcommand{\cppfile}[1]{
+\begin{itemize}
+\item[]\lstinputlisting[label={lst:\detokenize{#1}}, style=customcpp,
+    caption=\texttt{\detokenize{#1.cpp}}]{#1.cpp}
+\end{itemize}
+}
+
+%include a .h source file
+%usage: \hfile{../path_to_your_file/filename}
+\newcommand{\hfile}[1]{
+\begin{itemize}
+\item[]\lstinputlisting[label={lst:\detokenize{#1}}, style=customcpp,
+    caption=\texttt{\detokenize{#1.h}}
+]{#1.h}
+\end{itemize}
+}
+
+%include a module (.cpp and .h)
+%usage: \hfile{../path_to_your_file/filename}
+\newcommand{\cppmodul}[1]{
+\begin{itemize}
+\item[]\lstinputlisting[caption=#1.h,label="lst:#1-header", style=customcpp]{#1.h}
+\item[]\lstinputlisting[caption=#1.cpp,label="lst:#1-impl", style=customcpp]{#1.cpp}
+\end{itemize}
+}
+
+%include a code snippet
+%usage: \hfile{../path_to_your_file/filename}{startline}{endline}
+\newcommand{\snippet}[3]{
+\begin{itemize}
+\item[]\lstinputlisting[caption=#1.cpp,label="lst:#1-snip", style=customcpp, firstline=#2,lastline=#3]{#1.cpp}
+\end{itemize}
+}
+
+%include a test-output file 
+%usage: \testoutput{../path_to_your_file/filename}
+\newcommand{\testoutput}[1]{
+\begin{itemize}
+\item[]\lstinputlisting[caption=#1]{#1.txt}
+\end{itemize}
+}
+
+%include a figure -> ensure that the picture is in the pics directory
+%usage: \fig{name_of_picture}{width}{caption text}
+%width between 0.0 - 1.0 -> correspond with textwidth
+\newcommand{\fig}[3]{
+\begin{figure}[H]
+\centering
+\includegraphics[width=#2\textwidth]{pics/#1.PNG}
+\caption{#3}
+\label{fig:#1}
+\end{figure}
+}
+
+\lstset{
+   literate={ö}{{\"o}}1
+           {ä}{{\"a}}1
+           {ü}{{\"u}}1
+           {ß}{{\ss}}1
+           {é}{{\'e}}1,
+   inputencoding=ansinew,
+   extendedchars=true,
+   basicstyle=\scriptsize\ttfamily,
+   numberstyle=\scriptsize,
+   breaklines=true,
+   tabsize=4,
+   numbersep=5pt
+}
+
+\lstdefinestyle{customcpp}{
+   language=C++,
+   frame=single,
+   %backgroundcolor=\color{mygray},
+   numbers=left,
+   keywordstyle=\color{blue}\bfseries,
+   stringstyle=\color{BrickRed}\ttfamily,
+   commentstyle=\color{OliveGreen}\ttfamily,
+   showspaces=false,
+   showstringspaces=false,
+   showtabs=false,
+   xleftmargin=5px
+}

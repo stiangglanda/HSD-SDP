@@ -60,11 +60,11 @@ static void TestAdapters()
 
    std::cout << "--- VideoAdapter ---" << std::endl;
    VideoAdapter videoAdapter;
-   client.SetPlayer(videoAdapter);
+   client.SetPlayer(&videoAdapter);
 
    std::cout << "--- MusicAdapter ---" << std::endl;
    MusicAdapter musicAdapter;
-   client.SetPlayer(musicAdapter);
+   client.SetPlayer(&musicAdapter);
 }
 
 int main()
