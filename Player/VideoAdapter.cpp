@@ -1,5 +1,5 @@
 #include "VideoAdapter.h"
-#include <stdexcept>
+#include <iostream>
 
 void VideoAdapter::Play()
 {

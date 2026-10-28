@@ -15,9 +15,9 @@ std::string Video::FormatToString(VideoFormat format)
 {
     switch (format)
     {
-    case VideoFormat::AVI: return "AVI";
-    case VideoFormat::MKV: return "MKV";
-    case VideoFormat::MP4: return "MP4";
-    default: return "NULL";
+        case VideoFormat::AVI: return "AVI";
+        case VideoFormat::MKV: return "MKV";
+        case VideoFormat::WMV: return "WMV";
+        default: return "NULL";
     }
 }

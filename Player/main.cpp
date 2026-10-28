@@ -11,7 +11,7 @@ static void TestVideoPlayer()
    std::cout << "--- VideoPlayer ---" << std::endl;
    VideoPlayer player;
 
-   player.Add("Video1", 120, VideoFormat::MP4);
+   player.Add("Video1", 120, VideoFormat::WMV);
    player.Add("Video2", 90, VideoFormat::AVI);
    player.Add("Video3", 200, VideoFormat::MKV);
 
@@ -73,11 +73,11 @@ static void TestAdapters()
 
    std::cout << "--- VideoAdapter ---" << std::endl;
    VideoAdapter videoAdapter;
-   client.SetPlayer(&videoAdapter);
+   client.SetPlayer(videoAdapter);
 
    std::cout << "--- MusicAdapter ---" << std::endl;
    MusicAdapter musicAdapter;
-   client.SetPlayer(&musicAdapter);
+   client.SetPlayer(musicAdapter);
 }
 
 int main()
