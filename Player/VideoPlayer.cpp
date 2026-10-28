@@ -64,7 +64,7 @@ size_t VideoPlayer::ActIndex() const
 
 std::string const VideoPlayer::ActVideo() const
 {
-	return nullptr;
+	return mVideos.at(mIndex).GetName();
 }
 
 void VideoPlayer::SetVolume(size_t const vol)
