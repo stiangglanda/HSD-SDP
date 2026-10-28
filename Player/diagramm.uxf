@@ -1,77 +1,113 @@
-<diagram program="umletino" version="15.1"><zoom_level>8</zoom_level><help_text>Space for diagram notes</help_text><element><id>UMLClass</id><coordinates><x>840</x><y>488</y><w>256</w><h>176</h></coordinates><panel_attributes>MusicPlayer
+<diagram program="umletino" version="15.1"><zoom_level>8</zoom_level><help_text>Space for diagram notes</help_text><element><id>UMLClass</id><coordinates><x>440</x><y>24</y><w>160</w><h>64</h></coordinates><panel_attributes>&lt;&lt;abstract&gt;&gt;
+/Object/
 --
-- size_t mVolume
-- size_t mIndex
--
-+ void Start();
-+ void Stop();
-+ void SwitchNext();
-+ size_t GetActIndex() const;
-+ bool Find(std::string const&amp; name);
-+ size_t GetCount() const;
-+ void IncreaseVol(size_t const vol);
-+ void DecreaseVol(size_t const vol);
-+ void Add(std::string const&amp; name, size_t const dur);</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>0</x><y>528</y><w>392</w><h>176</h></coordinates><panel_attributes>VideoPlayer
--
-- size_t mVolume
-- size_t mIndex
--
-+ void Play() const;
-+ void Stop() const;
-+ bool First();
-+ bool Next();
-+ size_t ActIndex() const;
-+ std::string const ActVideo() const;
-+ void SetVolume(size_t const vol);
-+ size_t GetVolume() const;
-+ void Add(std::string const&amp; name, size_t const dur, VideoFormat const&amp; format);</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>856</x><y>72</y><w>232</w><h>128</h></coordinates><panel_attributes>&lt;&lt;interface&gt;&gt;
+# Object()</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>752</x><y>24</y><w>184</w><h>152</h></coordinates><panel_attributes>&lt;&lt;interface&gt;&gt;
 /Player/
--
-+ void Play();
-+ void VolInc();
-+ void VolDec();
-+ void Stop();
-+ void Next();
-+ void Prev();
-+ void Select(std::string const&amp; name);</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>104</x><y>368</y><w>208</w><h>112</h></coordinates><panel_attributes>VideoAdapter
--
-+ void Play();
-+ void VolInc();
-+ void VolDec();
-+ void Stop();
-+ void Next();
-+ void Prev();
-+ void Select(std::string const&amp; name);</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>840</x><y>312</y><w>232</w><h>112</h></coordinates><panel_attributes>MusicAdapter
--
-+ void Play();
-+ void VolInc();
-+ void VolDec();
-+ void Stop();
-+ void Next();
-+ void Prev();
-+ void Select(std::string const&amp; name);</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>992</x><y>192</y><w>24</w><h>136</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>10;10;10;150</additional_attributes></element><element><id>Relation</id><coordinates><x>984</x><y>416</y><w>24</w><h>88</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;10;10;90</additional_attributes></element><element><id>Relation</id><coordinates><x>256</x><y>168</y><w>616</w><h>216</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>750;10;570;10;570;200;10;200;10;250</additional_attributes></element><element><id>Relation</id><coordinates><x>184</x><y>472</y><w>24</w><h>72</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;10;10;70</additional_attributes></element><element><id>UMLClass</id><coordinates><x>112</x><y>128</y><w>184</w><h>160</h></coordinates><panel_attributes>PlayerClient
--
-+ void TestPlayer()
-+ SetPlayer(Player player)
+--
+/+ void Play()/
+/+ void VolInc()/
+/+ void VolDec()/
+/+ void Stop()/
+/+ void Next()/
+/+ void Prev()/
+/+ void Select(string name)/</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>104</x><y>24</y><w>192</w><h>160</h></coordinates><panel_attributes>PlayerClient
+--
+- mPlayer: Player
+--
++ void SetPlayer(Player player)
 + void Play()
 + void VolInc()
 + void VolDec()
 + void Stop()
 + void Next()
 + void Prev()
-+ void Select()</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>288</x><y>120</y><w>584</w><h>32</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-
-- mPlayer</panel_attributes><additional_attributes>10;20;710;20</additional_attributes></element><element><id>UMLClass</id><coordinates><x>512</x><y>680</y><w>104</w><h>56</h></coordinates><panel_attributes>Video
--
-+ Format mFormat
-
-define enum here</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>664</x><y>680</y><w>96</w><h>56</h></coordinates><panel_attributes>Song
--
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>592</x><y>528</y><w>112</w><h>64</h></coordinates><panel_attributes>&lt;&lt;abstract&gt;&gt;
-Media
--
-- string mName
-- size_t mDuration</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>656</x><y>584</y><w>56</w><h>112</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;50;120</additional_attributes></element><element><id>Relation</id><coordinates><x>544</x><y>584</y><w>72</w><h>112</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>70;10;10;120</additional_attributes></element><element><id>Relation</id><coordinates><x>752</x><y>624</y><w>104</w><h>96</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>110;10;60;10;60;100;10;100</additional_attributes></element><element><id>Relation</id><coordinates><x>384</x><y>632</y><w>144</w><h>88</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;10;120;10;120;90;160;90</additional_attributes></element><element><id>UMLClass</id><coordinates><x>568</x><y>376</y><w>160</w><h>72</h></coordinates><panel_attributes>&lt;&lt;abstract&gt;&gt;
-/Object/
++ void Select(string name)</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>288</x><y>48</y><w>168</w><h>24</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>190;10;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>288</x><y>120</y><w>480</w><h>40</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-
+m1=1
+m2=0..1
+- mPlayer</panel_attributes><additional_attributes>10;20;580;20</additional_attributes></element><element><id>UMLClass</id><coordinates><x>80</x><y>248</y><w>240</w><h>160</h></coordinates><panel_attributes>VideoAdapter
 --
-# Object()
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>720</x><y>352</y><w>136</w><h>72</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;70;80;70;80;10;150;10</additional_attributes></element><element><id>Relation</id><coordinates><x>304</x><y>408</y><w>280</w><h>24</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>330;10;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>632</x><y>440</y><w>24</w><h>104</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;10;110</additional_attributes></element><element><id>Relation</id><coordinates><x>288</x><y>200</y><w>352</w><h>192</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>420;220;420;10;10;10</additional_attributes></element></diagram>
+- mVideoPlayer: VideoPlayer
+--
++ VideoAdapter(VideoPlayer player)
++ void Play()
++ void VolInc()
++ void VolDec()
++ void Stop()
++ void Next()
++ void Prev()
++ void Select(string name)</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>312</x><y>80</y><w>176</w><h>200</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>200;10;200;230;10;230</additional_attributes></element><element><id>Relation</id><coordinates><x>192</x><y>168</y><w>632</w><h>96</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>770;10;770;60;10;60;10;100</additional_attributes></element><element><id>UMLClass</id><coordinates><x>720</x><y>248</y><w>248</w><h>160</h></coordinates><panel_attributes>MusicAdapter
+--
+- mMusicPlayer: MusicPlayer
+--
++ MusicAdapter(MusicPlayer player)
++ void Play()
++ void VolInc()
++ void VolDec()
++ void Stop()
++ void Next()
++ void Prev()
++ void Select(string name)</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>576</x><y>80</y><w>160</w><h>200</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;10;230;180;230</additional_attributes></element><element><id>Relation</id><coordinates><x>840</x><y>168</y><w>24</w><h>96</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>10;10;10;100</additional_attributes></element><element><id>UMLClass</id><coordinates><x>0</x><y>472</y><w>392</w><h>216</h></coordinates><panel_attributes>VideoPlayer
+--
++ defVolume: size_t = 8
++ maxVolume: size_t = 50
+- mIndex: size_t
+- mVolume: size_t
+--
++ void Play()
++ void Stop()
++ bool First()
++ bool Next()
++ size_t ActIndex()
++ string ActVideo()
++ void SetVolume(size_t vol)
++ size_t GetVolume()
++ void Add(string name, size_t dur, VideoFormat format)</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>192</x><y>400</y><w>88</w><h>88</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-
+m1=1
+m2=1
+- mVideoPlayer</panel_attributes><additional_attributes>10;10;10;90</additional_attributes></element><element><id>UMLClass</id><coordinates><x>704</x><y>472</y><w>280</w><h>216</h></coordinates><panel_attributes>MusicPlayer
+--
++ defVolume: size_t = 15
++ maxVolume: size_t = 100
++ minVolume: size_t = 0
+- mIndex: size_t
+- mVolume: size_t
+--
++ void Start()
++ void Stop()
++ void SwitchNext()
++ size_t GetActIndex()
++ bool Find(string name)
++ size_t GetCount()
++ void IncreaseVol(size_t vol)
++ void DecreaseVol(size_t vol)
++ void Add(string name, size_t dur)</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>840</x><y>400</y><w>88</w><h>88</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-
+m1=1
+m2=1
+- mMusicPlayer</panel_attributes><additional_attributes>10;10;10;90</additional_attributes></element><element><id>UMLClass</id><coordinates><x>456</x><y>512</y><w>152</w><h>96</h></coordinates><panel_attributes>&lt;&lt;abstract&gt;&gt;
+Media
+--
+- mName: string
+- mDuration: size_t
+--
+# Media(string name, size_t dur)
++ string GetName()
++ size_t GetDuration()</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>520</x><y>80</y><w>24</w><h>448</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;10;540</additional_attributes></element><element><id>UMLClass</id><coordinates><x>344</x><y>720</y><w>208</w><h>88</h></coordinates><panel_attributes>Video
+--
+- mFormat: VideoFormat
+--
++ Video(string, size_t, VideoFormat)
++ VideoFormat GetFormat()
++ static string FormatToString(VideoFormat)</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>560</x><y>720</y><w>160</w><h>48</h></coordinates><panel_attributes>Song
+--
++ Song(string name, size_t dur)</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>496</x><y>600</y><w>24</w><h>136</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;10;150</additional_attributes></element><element><id>Relation</id><coordinates><x>568</x><y>600</y><w>24</w><h>136</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;10;150</additional_attributes></element><element><id>Relation</id><coordinates><x>384</x><y>632</y><w>112</w><h>104</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-
+m1=1
+m2=0..*
+- mVideos</panel_attributes><additional_attributes>10;10;70;10;70;110</additional_attributes></element><element><id>Relation</id><coordinates><x>648</x><y>632</y><w>72</w><h>104</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-
+m1=1
+m2=0..*
+- mSongs</panel_attributes><additional_attributes>70;10;10;10;10;110</additional_attributes></element><element><id>UMLClass</id><coordinates><x>160</x><y>768</y><w>104</w><h>80</h></coordinates><panel_attributes>&lt;&lt;enumeration&gt;&gt;
+VideoFormat
+--
+WMV
+AVI
+MKV</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>256</x><y>784</y><w>104</w><h>24</h></coordinates><panel_attributes>lt=.&gt;</panel_attributes><additional_attributes>110;10;10;10</additional_attributes></element></diagram>
