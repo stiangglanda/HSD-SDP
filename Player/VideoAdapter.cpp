@@ -1,6 +1,10 @@
 #include "VideoAdapter.h"
 #include <iostream>
 
+VideoAdapter::VideoAdapter(VideoPlayer& player) : mVideoPlayer{ player } {
+
+}
+
 void VideoAdapter::Play()
 {
 	mVideoPlayer.Play();
@@ -28,25 +32,16 @@ void VideoAdapter::Stop()
 void VideoAdapter::Next()
 {
 	mVideoPlayer.Next();
-	Play();
 }
 
-void VideoAdapter::Prev()
-{
-	size_t prevIndex = mVideoPlayer.ActIndex();
-	if (prevIndex != 0)
-	{
-		prevIndex -= 1;
-		while (mVideoPlayer.ActIndex() != prevIndex)
-		{
-			mVideoPlayer.Next();
-		}
-		Play();
-	}
-	else
-	{
-		throw std::invalid_argument("Cannot play previous Video because Index is 0.");
-	}
+void VideoAdapter::Prev() {
+    if (mVideoPlayer.ActIndex() > 0) {
+        size_t targetIndex = mVideoPlayer.ActIndex() - 1;
+        mVideoPlayer.First();
+        for (size_t i = 0; i < targetIndex; ++i) {
+            mVideoPlayer.Next();
+        }
+    }
 }
 
 void VideoAdapter::Select(std::string const& name) {
@@ -63,22 +58,4 @@ void VideoAdapter::Select(std::string const& name) {
     } while (mVideoPlayer.Next());
 
     std::cout << "video: " << name << " not found!" << std::endl;
-}
-
-size_t VideoAdapter::GetSize()
-{
-	size_t currIndex = mVideoPlayer.ActIndex();
-	size_t playlistSize = 0;
-
-	// skips to next song in playlist
-	mVideoPlayer.Next();
-	
-	//find playlist size to iterate through all videos
-	while (currIndex != mVideoPlayer.ActIndex())
-	{
-		mVideoPlayer.Next();
-		playlistSize++;
-	}
-
-	return playlistSize;
 }

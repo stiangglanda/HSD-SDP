@@ -48,9 +48,13 @@ public:
    void Add(std::string const& name, size_t const dur, VideoFormat const& format);
 
 private:
+   static constexpr size_t defVolume = 8;
+   static constexpr size_t maxVolume = 50;
+   static constexpr size_t minVolume = 0;
+
 	std::vector<Video> mVideos;
    size_t mIndex{ 0 };
-   size_t mVolume{ 8 };
+   size_t mVolume{ defVolume };
 };
 
 #endif //VIDEOPLAYER_H

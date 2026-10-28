@@ -51,8 +51,8 @@ std::string const VideoPlayer::ActVideo() const
 	return mVideos.at(mIndex).GetName();
 }
 void VideoPlayer::SetVolume(size_t const vol) {
-    if (vol > 50) {
-        mVolume = 50;
+    if (vol > maxVolume) {
+        mVolume = maxVolume;
     } else {
         mVolume = vol;
     }

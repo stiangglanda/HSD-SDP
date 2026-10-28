@@ -10,6 +10,10 @@
 class MusicAdapter : public Object, public Player
 {
 public:
+   /// @brief Constructs a new MusicAdapter.
+   /// @param[in] player is the MusicPlayer to adapt.
+   explicit MusicAdapter(MusicPlayer& player);
+   
    /// @brief Starts playing.
    void Play() override;
 
@@ -33,7 +37,26 @@ public:
    void Select(std::string const& name) override;
 
 private:
-   MusicPlayer mMusicPlayer;
+   MusicPlayer& mMusicPlayer;
 };
 
 #endif //MUSICADAPTER_H
+
+
+// MusicAdapter.h
+class MusicAdapter : public Object, public Player {
+public:
+    explicit MusicAdapter(MusicPlayer& player) : mMusicPlayer{ player } {}
+    // ...
+private:
+     // Referenz statt leere eigene Instanz!
+};
+
+// VideoAdapter.h
+class VideoAdapter : public Object, public Player {
+public:
+    explicit VideoAdapter(VideoPlayer& player) : mVideoPlayer{ player } {}
+    // ...
+private:
+    VideoPlayer& mVideoPlayer; // Referenz!
+};

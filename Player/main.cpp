@@ -67,17 +67,48 @@ static void TestClient(PlayerClient& client)
 }
 
 /// @brief Tests both adapters through the PlayerClient.
+/// @brief Tests both adapters through the PlayerClient.
 static void TestAdapters()
 {
    PlayerClient client;
 
-   std::cout << "--- VideoAdapter ---" << std::endl;
-   VideoAdapter videoAdapter;
-   client.SetPlayer(videoAdapter);
+   std::cout << "--- VideoAdapter via Client ---" << std::endl;
+   VideoPlayer videoPlayer;
+   videoPlayer.Add("Video1", 120, VideoFormat::WMV);
+   videoPlayer.Add("Video2", 90, VideoFormat::AVI);
+   videoPlayer.Add("Video3", 200, VideoFormat::MKV);
 
-   std::cout << "--- MusicAdapter ---" << std::endl;
-   MusicAdapter musicAdapter;
+   VideoAdapter videoAdapter(videoPlayer);
+   client.SetPlayer(videoAdapter);
+   
+   client.Play();
+   client.VolInc();
+   client.Next();
+   client.Play();
+   client.Prev();
+   client.Play();
+   client.Select("Video3");
+   client.Select("NonExisting");
+   client.Stop();
+
+   std::cout << "--- MusicAdapter via Client ---" << std::endl;
+   MusicPlayer musicPlayer;
+   musicPlayer.Add("Song1", 180);
+   musicPlayer.Add("Song2", 210);
+   musicPlayer.Add("Song3", 150);
+
+   MusicAdapter musicAdapter(musicPlayer);
    client.SetPlayer(musicAdapter);
+
+   client.Play();
+   client.VolDec();
+   client.Next();
+   client.Play();
+   client.Prev();
+   client.Play();
+   client.Select("Song2");
+   client.Select("NonExisting");
+   client.Stop();
 }
 
 int main()

@@ -47,7 +47,11 @@ public:
    void Add(std::string const& name, size_t const dur);
 
 private:
-   size_t mVolume{ 15 };
+   static constexpr size_t defVolume = 15;
+   static constexpr size_t maxVolume = 100;
+   static constexpr size_t minVolume = 0;
+
+   size_t mVolume{ defVolume };
    size_t mIndex{ 0 };
    std::vector<Song> mSongs;
 };

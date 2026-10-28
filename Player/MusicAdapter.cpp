@@ -1,6 +1,10 @@
 #include "MusicAdapter.h"
 #include <iostream>
 
+MusicAdapter::MusicAdapter(MusicPlayer& player) : mMusicPlayer{ player } {
+    
+}
+
 void MusicAdapter::Play()
 {
     mMusicPlayer.Start();

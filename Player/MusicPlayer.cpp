@@ -65,8 +65,8 @@ size_t MusicPlayer::GetCount() const {
 }
 
 void MusicPlayer::IncreaseVol(size_t const vol) {
-    if (vol >= 100 - mVolume) {
-        mVolume = 100;
+    if (vol >= maxVolume - mVolume) {
+        mVolume = maxVolume;
     }
     else {
         mVolume += vol;
@@ -76,7 +76,7 @@ void MusicPlayer::IncreaseVol(size_t const vol) {
 
 void MusicPlayer::DecreaseVol(size_t const vol) {
     if (vol >= mVolume) {
-        mVolume = 0;
+        mVolume = minVolume;
     }
     else {
         mVolume -= vol;
