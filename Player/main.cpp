@@ -1,3 +1,15 @@
+/// @mainpage Player Adapter Test Driver
+/// @brief Test driver for verifying the Player Adapter Pattern implementation.
+/// 
+/// Tests the direct usage of VideoPlayer and MusicPlayer, as well as their
+/// unified access through the PlayerClient using the Adapter Pattern (VideoAdapter
+/// and MusicAdapter). Additionally, edge cases such as empty playlists and
+/// uninitialized client pointers are verified.
+/// 
+/// @author Leander Kieweg, Julian Rieger
+/// @date 28.10.2026
+/// @version 1.0
+
 #include <iostream>
 #include "PlayerClient.h"
 #include "VideoAdapter.h"
@@ -97,6 +109,7 @@ static void TestAdapters()
    client.Stop();
 }
 
+/// @brief Tests edge cases like nullptr handling and empty playlists.
 static void TestEdgeCases()
 {
    std::cout << "--- Edge Cases ---" << std::endl;
@@ -116,6 +129,6 @@ int main()
    TestMusicPlayer();
    TestAdapters();
    TestEdgeCases();
-   
+
    return 0;
 }
