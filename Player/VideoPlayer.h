@@ -49,8 +49,8 @@ public:
 
 private:
 	std::vector<Video> mVideos;
-	size_t mIndex = 0;
-	size_t mVolume = 15;
+   size_t mIndex{ 0 };
+   size_t mVolume{ 8 };
 };
 
 #endif //VIDEOPLAYER_H
