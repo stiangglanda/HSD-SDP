@@ -5,7 +5,7 @@
 
 void VideoPlayer::Play() const {
     if (mVideos.empty()) {
-        std::cout << "no video in playlist!" << std::endl;
+        std::cerr << "no video in playlist!" << std::endl;
         return;
     }
     const auto& vid = mVideos.at(mIndex);
@@ -16,7 +16,7 @@ void VideoPlayer::Play() const {
 
 void VideoPlayer::Stop() const {
     if (mVideos.empty()) {
-        std::cout << "no video in playlist!" << std::endl;
+        std::cerr << "no video in playlist!" << std::endl;
         return;
     }
     const auto& vid = mVideos.at(mIndex);
@@ -50,6 +50,7 @@ std::string const VideoPlayer::ActVideo() const
 {
 	return mVideos.at(mIndex).GetName();
 }
+
 void VideoPlayer::SetVolume(size_t const vol) {
     if (vol > maxVolume) {
         mVolume = maxVolume;

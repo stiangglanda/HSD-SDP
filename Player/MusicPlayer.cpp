@@ -4,7 +4,7 @@
 
 void MusicPlayer::Start() {
     if (mSongs.empty()) {
-        std::cout << "no song in playlist!" << std::endl;
+        std::cerr << "no song in playlist!" << std::endl;
         return;
     }
 
@@ -20,7 +20,7 @@ void MusicPlayer::Start() {
 
 void MusicPlayer::Stop() {
     if (mSongs.empty()) {
-        std::cout << "no song in playlist!" << std::endl;
+        std::cerr << "no song in playlist!" << std::endl;
         return;
     }
 
@@ -52,7 +52,7 @@ bool MusicPlayer::Find(std::string const& name) {
         });
 
     if (it == mSongs.end()) {
-        std::cout << "song: " << name << " not found!" << std::endl;
+        std::cerr << "song: " << name << " not found!" << std::endl;
         return false;
     }
 

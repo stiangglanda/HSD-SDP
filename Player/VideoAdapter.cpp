@@ -46,7 +46,7 @@ void VideoAdapter::Prev() {
 
 void VideoAdapter::Select(std::string const& name) {
     if (!mVideoPlayer.First()) {
-        std::cout << "video: " << name << " not found!" << std::endl;
+        std::cerr << "video: " << name << " not found!" << std::endl;
         return;
     }
 
@@ -57,5 +57,5 @@ void VideoAdapter::Select(std::string const& name) {
         }
     } while (mVideoPlayer.Next());
 
-    std::cout << "video: " << name << " not found!" << std::endl;
+    std::cerr << "video: " << name << " not found!" << std::endl;
 }
