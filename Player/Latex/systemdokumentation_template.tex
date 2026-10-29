@@ -81,10 +81,10 @@ FH-HAGENBERG
 \vspace{4cm}
 \begin{center}
 {\Huge \textbf{Systemdokumentation}}\\[1cm]
-{\Large \textbf{Adressverwaltung}}\\[0.5cm]
+{\Large \textbf{Player-Schnittstelle}}\\[0.5cm]
 {\large Version 1.0}\\[2cm]
 {\large J. Rieger, L. Kieweg}\\[0.5cm]
-{\large Hagenberg, 21. Oktober 2025}
+{\large Hagenberg, 28. Oktober 2026}
 \end{center}
 
 \vspace{3cm}
@@ -109,14 +109,13 @@ Dieses Dokument zeigt den prinzipiellen Aufbau einer Systemdokumentation für So
 \begin{itemize}
 \item Julian Rieger
     \begin{itemize}
-        \item Implementierung der Klassen: Address, Person, Reader, AddressReader, PersonReader
+        \item Implementierung der Klassen: Video, PlayerClient, VideoPlayer, VideoAdapter
         \item Implementierung des Testtreibers
         \item Verfassen der Systemdokumentation
     \end{itemize}
 \item Leander Kieweg
     \begin{itemize}
-        \item Implementierung der Klassen: AddressManager, HtmlWriter, AsciiWriter, Writer,
-        Object, IReadOnlyAddressManager, IWriteOnlyAddressManager
+        \item Implementierung der Klassen: Player, MusicAdapter, MusicPlayer, Media, Song
         \item Design des Klassendiagrams
         \item Implementierung des Testtreibers
 
@@ -128,98 +127,112 @@ Dieses Dokument zeigt den prinzipiellen Aufbau einer Systemdokumentation für So
 \item Julian Rieger: geschätzt: 7h, tatsächlich 7h
 \item Leander Kieweg: geschätzt 7h, tatsächlich 7h
 \end{itemize}
+
+\newpage
 % -- Kapitel 2 --
 \section{Anforderungsdefinition (Systemspezifikation)}
-Es wird eine Software zur Verwaltung von Adressen und Personen entwickelt. Sie liest
-Personen und Adressen aus Textdateien ein, verknüpft jede Person mit ihrer Adresse und
-gibt alle Adressen samt zugeordneter Personen im ASCII- oder HTML-Format aus.
-
+Es wird eine Software zur generischen Bedienung von zwei verschiedenen Schnittstellen, die eines Video Players und die eines Music Players, und stellt eine einzige, für beide verwendbare Schnittstelle, bereit. Die Schnittstelle soll sieben verschiedene Methoden zur Verfügung stellen, die die Geräte steuern können.
 \subsection*{Funktionale Anforderungen}
 \begin{itemize}
-  \item \textbf{Personendatei:} eine Zeile pro Person im Format \texttt{Vorname Nachname Index}.
-        Der Index (0-basiert) verweist auf die Position der Adresse in der Adressdatei.
-        Personen können auf mehrere Dateien verteilt sein.
-  \item \textbf{Adressdatei:} eine Zeile pro Adresse im Format \texttt{Strasse Hausnummer PLZ Ort}.
-        Die Zeilenreihenfolge ergibt den Index.
-  \item Zeilen, die mit \texttt{\#} beginnen (Header), sowie Leerzeilen werden ignoriert.
-  \item Die Reihenfolge, in der Dateien eingelesen werden, ist beliebig.
-  \item Ausgabe: je Adresse PLZ und Ort, Strasse und Hausnummer, danach alle zugehörigen
-        Personen; wahlweise als ASCII- oder HTML-Datei.
-  \item Anlegen von Personen und Adressen erfolgt ausschließlich durch die Reader;
-        der \texttt{AddressManager} bietet keinen öffentlichen Schreibzugriff.
+    \item \textbf{Play():} Startet die Wiedergabe des Titels.
+    \item \textbf{Stop():} Beendet die Wiedergabe des Titels.
+    \item \textbf{Next():} Springt in der Playlist auf den nächsten Titel.
+    \item \textbf{Prev():} Springt in der Playlist auf den vorherige Titel.
+    \item \textbf{VolInc():} Erhöht die Lautstärke um den Wert 1.
+    \item \textbf{VolDec():} Verringert die Lautstärke um den Wert 1.
+    \item \textbf{Select(const std::string name):} Wählt einen bestimmten, in der Playlist vorhandenen, Titel aus und startet die Wiedergabe.
 \end{itemize}
 
 \subsection*{Fehlerbehandlung}
-Fehler werden über Exceptions gemeldet: \texttt{std::invalid\_argument} (Null-Zeiger für
-Reader/Writer), \texttt{std::runtime\_error} (Datei nicht les-/schreibbar, falsches
-Zeilenformat) und \texttt{std::out\_of\_range} (ungültiger Index, Person verweist auf
-nicht vorhandene Adresse).
+Fehler bei der Anwendung oder Bedienung des Programms werden abgefangen und es werden Rückmeldungen per std::cerr auf die Konsole ausgegeben und die Funktion wird mit return umgehend wieder verlassen. Zu diese Art von Fehlern zählen jegliche Fehlbedienungen der Schnittstelle. (z.B. Aufruf von Play bei leerer Playlist) Dabei kommt es zu keinen Einschränkungen der darauffolgenden Funktionsaufrufen, sofern ein korrekter Aufruf stattfindet.
+\newpage
 % -- Kapitel 3 -- 
 \section{Systementwurf}
-\subsection{Klassendiagram}
+\subsection{Klassendiagramm}
 
 \begin{figure}[htbp]
   \centering
-%  \makebox[\textwidth][c]{\includegraphics[width=1.3\textwidth]{diagramm.png}}
-  \caption{Klassendiagramm AddressManager}
+  \makebox[\textwidth][c]{%
+    \includegraphics[width=1.0\textwidth]{diagramm.png}% Ohne .png, falls pdflatex genutzt wird
+  }%
+  \caption{Klassendiagramm Player}
+  \label{fig:klassendiagramm}
 \end{figure}
-
 Anmerkung: Das Klassendiagram steht für bessere Lesbarkeit ebenfalls im Sysdoku-Ordner zur Verfügung.
 
+\newpage
 \subsection{Designentscheidungen}
-Das Template Method Pattern wird für Reader und Writer eingesetzt. \texttt{Reader::Read()}
-legt den Ablauf fest (Datei öffnen, Header und Leerzeilen überspringen, jede Datenzeile
-an \texttt{ParseLine()} übergeben); \texttt{AddressReader} und \texttt{PersonReader}
-implementieren nur \texttt{ParseLine()}. \texttt{Writer::Write()} legt die Reihenfolge
-Header $\rightarrow$ je Adresse (Adresse, Personen, Adressende) $\rightarrow$ Footer fest;
-\texttt{HtmlWriter} und \texttt{AsciiWriter} implementieren die Schritte
-\texttt{WriteHeader}, \texttt{WriteAddress}, \texttt{WritePerson} und
-\texttt{WriteAddressEnd}. Diese sind pure virtual; \texttt{WriteFooter} ist ein Hook mit
-leerer Standardimplementierung, den nur der \texttt{HtmlWriter} überschreibt.
-Reader und Writer sind abstrakt (protected Konstruktor) und zustandslos, daher sind alle
-Methoden \texttt{const}.
+Für die Konzeption und Implementierung der einheitlichen Player-Schnittstelle wurden gezielt objektorientierte Design-Prinzipien und Entwurfsmuster angewandt, um eine lose Kopplung und hohe Erweiterbarkeit zu garantieren.
 
-\paragraph{Interfaces.} Reader kennen nur \texttt{IWriteOnlyAddressManager},
-Writer nur \texttt{IReadOnlyAddressManager}. Der \texttt{AddressManager} erbt von
-\texttt{IWriteOnlyAddressManager} privat, daher kann niemand von außen Daten einfügen.
-Alle Klassen außer den Interfaces erben direkt oder indirekt von \texttt{Object}.
+\paragraph{Adapter-Pattern}
+Da die beiden vorgegebenen Fremdklassen \texttt{VideoPlayer} (von DonkeySoft) und \texttt{MusicPlayer} (von MonkeySoft) unterschiedliche, unveränderliche Schnittstellen besitzen, wurde das \textbf{Adapter-Pattern} eingesetzt. Die Klassen \texttt{VideoAdapter} und \texttt{MusicAdapter} implementieren jeweils das einheitliche \texttt{Player}-Interface und übersetzen die Methodenaufrufe in die jeweilige proprietäre Schnittstelle. Dadurch kann der \texttt{PlayerClient} beide Medientypen über eine gemeinsame, generische Schnittstelle steuern.
 
-\paragraph{Verknüpfung über Index.} Personen speichern den Index ihrer Adresse statt eines
-Zeigers. Dadurch ist die Einlesereihenfolge beliebig, und es entstehen keine hängenden
-Zeiger beim Wachsen der \texttt{std::vector}-Container.
+\paragraph{Vererbungshierarchie und gemeinsame Basisklassen}
+Zur Reduzierung von Code-Duplikaten und für ein sauberes Fundament erben alle zentralen Klassen von einer abstrakten Basisklasse \texttt{Object}. Zudem wurde für die Medienverwaltung die abstrakte Klasse \texttt{Media} eingeführt, von der die Klassen \texttt{Video} und \texttt{Song} abgeleitet sind. Gemeinsame Attribute wie Name und Dauer werden dadurch zentral in \texttt{Media} verwaltet.
 
-\paragraph{Prüfung beim Schreiben.} Ob ein Adressindex gültig ist, lässt sich erst prüfen,
-wenn alle Dateien gelesen sind. \texttt{Writer::Write()} prüft deshalb vor dem Öffnen der
-Ausgabedatei alle Personen und wirft \texttt{std::out\_of\_range}, sodass keine halb
-geschriebene Datei entsteht.
+\paragraph{Zustandsverwaltung und Kapselung}
+Der \texttt{PlayerClient} hält eine optionale Referenz auf ein \texttt{Player}-Interface und delegiert Befehle direkt an diesen. Zur Vermeidung von Nullzeiger-Zugriffen wird im Client stets geprüft, ob ein gültiger Player gesetzt ist. Die spezifischen Restriktionen der Player (unterschiedliche Lautstärkebereiche wie 0--50 beim VideoPlayer bzw. 0--100 beim MusicPlayer) werden innerhalb der jeweiligen Adapter und Player sicher gekapselt und abgefangen.
 
-\paragraph{Value Classes.} \texttt{Person} und \texttt{Address} sind unveränderlich
-(Werte nur im Konstruktor gesetzt).
-
-\paragraph{Fehlerstrategie.} Fehler werden als Exceptions gemeldet. Der \texttt{Reader}
-ergänzt Dateiname und Zeilennummer. Reader und Writer werden als Zeiger übergeben
-(Vorgabe der Schnittstelle), der \texttt{AddressManager} übernimmt keinen Besitz und
-prüft auf \texttt{nullptr}.
+\paragraph{Fehlerstrategie}
+Fehlbedienungen (wie beispielsweise der Versuch, ein Medium bei leerer Playlist abzuspielen) werden kontrolliert abgefangen. Entsprechend den Vorgaben werden aussagekräftige Fehlermeldungen auf der Konsole ausgegeben und die betroffenen Methoden kontrolliert verlassen, ohne das Gesamtsystem zu destabilisieren.
 
 % -- Kapitel 4 --
 \section{Komponentenentwurf}
 Die HTML-Startdatei befindet sich im Verzeichnis ./../doxy/html/index.html
+
+\newpage
 % -- Kapitel 5 --
 \section{Testprotokollierung}
 \subsection{Ausgabe Konsole Testtreiber}
 \begin{lstlisting}[style=textstyle]
-[SUCCESS] person and address file are read
-[SUCCESS] persons and addresses are stored
-[SUCCESS] first person is Donald Duck with address 0
-[SUCCESS] first address is Kellergasse 3, 4287 Radburg
-[SUCCESS] ascii and html file are written
-[SUCCESS] null reader -> invalid_argument
-[SUCCESS] null writer -> invalid_argument
-[SUCCESS] missing file -> runtime_error
-[SUCCESS] wrong line format -> runtime_error
-[SUCCESS] wrong address index -> out_of_range
-[SUCCESS] wrong person index -> out_of_range
-[SUCCESS] person without address -> out_of_range
+--- VideoPlayer ---
+volume is now -> 5
+Volume verified: 5
+Index 0: Video1
+playing video number 1: Video1 [duration -> 120 min], WMV-Format
+Index 1: Video2
+playing video number 2: Video2 [duration -> 90 min], AVI-Format
+Index 2: Video3
+playing video number 3: Video3 [duration -> 200 min], MKV-Format
+stop video: Video3 [duration -> 200 min], MKV-Format
+[SUCCESS] VideoPlayer passed
+
+--- MusicPlayer ---
+Count verified: 3
+volume is now -> 18
+volume is now -> 17
+playing song number 1: Song1 (180 sec)
+Index verified: 1
+song: Song9 not found!
+stop song: Song3 (150 sec)
+[SUCCESS] MusicPlayer passed
+
+--- VideoAdapter via Client ---
+playing video number 1: Video1 [duration -> 120 min], WMV-Format
+volume is now -> 9
+playing video number 2: Video2 [duration -> 90 min], AVI-Format
+playing video number 1: Video1 [duration -> 120 min], WMV-Format
+playing video number 3: Video3 [duration -> 200 min], MKV-Format
+video: NonExisting not found!
+stop video: Video3 [duration -> 200 min], MKV-Format
+--- MusicAdapter via Client ---
+playing song number 1: Song1 (180 sec)
+volume is now -> 14
+playing song number 2: Song2 (210 sec)
+playing song number 1: Song1 (180 sec)
+playing song number 2: Song2 (210 sec)
+song: NonExisting not found!
+stop song: Song2 (210 sec)
+[SUCCESS] Adapters passed
+
+--- Edge Cases ---
+no video in playlist!
+no song in playlist!
+[SUCCESS] EdgeCases passed
+
+All tests successfully executed and verified!
+
+
 \end{lstlisting}
 
 % -- Kapitel 6 --
@@ -234,12 +247,12 @@ Die HTML-Startdatei befindet sich im Verzeichnis ./../doxy/html/index.html
 \cppfile{../Song}
 \hfile{../VideoPlayer}
 \cppfile{../VideoPlayer}
-\hfile{../VideoPlayerAdapter}
-\cppfile{../VideoPlayerAdapter}
+\hfile{../VideoAdapter}
+\cppfile{../VideoAdapter}
 \hfile{../MusicPlayer}
 \cppfile{../MusicPlayer}
-\hfile{../MusicPlayerAdapter}
-\cppfile{../MusicPlayerAdapter}
+\hfile{../MusicAdapter}
+\cppfile{../MusicAdapter}
 \hfile{../Player}
 \hfile{../PlayerClient}
 \cppfile{../PlayerClient}
