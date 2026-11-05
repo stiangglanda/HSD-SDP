@@ -3,6 +3,7 @@
 #include <memory>
 #include <string>
 #include <vector>
+#include <fstream>
 #include "GraphicObject.h"
 #include "Object.h"
 
@@ -23,7 +24,7 @@ public:
 
 	/// @brief Adds a graphic object to the vector.
 	/// Uses push_back() internally.
-	void AddGraphicObect(std::unique_ptr<GraphicObject> obj);
+	void AddGraphicObject(std::unique_ptr<GraphicObject> obj);
 
 private:
 
@@ -32,6 +33,13 @@ private:
 
 	/// @brief All graphical objects of the image, owned by the image.
 	std::vector<std::unique_ptr<GraphicObject>> mGraphicObjects;
+
+	///	@brief Prints the formated header of the SVG file
+	void PrintHeader(std::ostream& ost) const;
+
+	///	@brief Prints the formated footer of the SVG file
+	void PrintFooter(std::ostream& ost) const;
+
 };
 
 #endif
