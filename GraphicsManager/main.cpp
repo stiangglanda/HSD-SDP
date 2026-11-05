@@ -1,14 +1,7 @@
 /// @mainpage Graphic Management Test Driver
 /// @brief Test driver for verifying the GraphicManagement system and SVG generation.
-/// 
-/// Tests the creation of scalable vector graphics (SVG) using different factory 
-/// implementations (BlankGraphicObjectFactory and FillGraphicObjectFactory). 
-/// It verifies the proper assembly of graphical objects within the Image container 
-/// via the GraphicManagement singleton and tests the export functionality. 
-/// Additionally, edge cases (empty containers, single-element images) and all 
-/// relevant exception cases (invalid geometric dimensions, invalid file paths, 
-/// and memory allocation errors) are thoroughly verified.
-/// 
+/// Tests blank and filled scenes, edge cases and exception handling.
+///
 /// @author Leander Kieweg, Julian Rieger
 /// @date 05.11.2026
 /// @version 1.0
@@ -24,73 +17,50 @@
 #include "FillGraphicObjectFactory.h"
 #include "GraphicManagement.h"
 
-namespace
+/// @brief Returns a reproducible pseudo-random number in [lo, hi].
+static int NextRandom(std::uint32_t& state, int lo, int hi)
 {
-    /// @brief Simple deterministic random number generator (LCG).
-    ///
-    /// A fixed seed is used on purpose: the blank and the filled image are
-    /// painted by two separate calls and must show exactly the same scene.
-    class Random
-    {
-    public:
-        explicit Random(std::uint32_t seed) : mState{ seed } {}
+    state = state * 1664525u + 1013904223u;
+    return lo + static_cast<int>((state >> 8) %
+        static_cast<std::uint32_t>(hi - lo + 1));
+}
 
-        /// @returns a number in the range [lo, hi].
-        int Next(int lo, int hi)
-        {
-            mState = mState * 1664525u + 1013904223u;
-            return lo + static_cast<int>((mState >> 8) % static_cast<std::uint32_t>(hi - lo + 1));
-        }
+/// @returns the color as "#rrggbb" string.
+static std::string Hex(int r, int g, int b)
+{
+    char buf[8];
+    std::snprintf(buf, sizeof(buf), "#%02x%02x%02x", r, g, b);
+    return buf;
+}
 
-    private:
-        std::uint32_t mState;
-    };
+/// @returns the linear interpolation of a and b (t in 0..100).
+static int Mix(int a, int b, int t)
+{
+    return a + (b - a) * t / 100;
+}
 
-    /// @returns the color as "#rrggbb" string.
-    std::string Hex(int r, int g, int b)
-    {
-        char buf[8];
-        std::snprintf(buf, sizeof(buf), "#%02x%02x%02x", r, g, b);
-        return buf;
-    }
-
-    /// @returns the linear interpolation of a and b (t in 0..100).
-    int Mix(int a, int b, int t)
-    {
-        return a + (b - a) * t / 100;
-    }
-} // namespace
-
-/// @brief Paints a night scene (800 x 600) with far more than 500 shapes.
-///
-/// Layers (painter's algorithm, later objects cover earlier ones):
-///   1. sky as 30 horizontal color bands (gradient)    ->  30 shapes
-///   2. 220 stars                                       -> 220 shapes
-///   3. moon with halo and craters                      ->  12 shapes
-///   4. mountain range                                  ->  15 shapes
-///   5. 26 houses with roofs, chimneys and windows      -> ~600 shapes
-///   6. street with lamps and their light cones         ->  ~60 shapes
+/// @brief Paints a night scene with more than 500 graphical objects.
 static void PaintNightCity(GraphicManagement& gm)
 {
-    Random rnd{ 2026 };
+    std::uint32_t randomState = 2026;
 
-    // ---------- 1. Sky gradient: deep blue on top, orange at the horizon ----------
+    // Sky
     for (int i = 0; i < 30; ++i) {
         int t = i * 100 / 29;
         gm.CreateRectangle(Hex(Mix(8, 232, t * t / 100), Mix(10, 120, t * t / 100), Mix(48, 90, t)),
             0, i * 14, 800, 14);
     }
 
-    // ---------- 2. Stars (more and bigger ones in the upper sky) ----------
+    // Stars
     for (int i = 0; i < 220; ++i) {
-        int x = rnd.Next(0, 800);
-        int y = rnd.Next(0, 330);
-        int size = rnd.Next(0, 9) == 0 ? 2 : 1;
-        int bright = rnd.Next(170, 255);
-        gm.CreateCircle(Hex(bright, bright, rnd.Next(190, 255)), x, y, size);
+        int x = NextRandom(randomState, 0, 800);
+        int y = NextRandom(randomState, 0, 330);
+        int size = NextRandom(randomState, 0, 9) == 0 ? 2 : 1;
+        int bright = NextRandom(randomState, 170, 255);
+        gm.CreateCircle(Hex(bright, bright, NextRandom(randomState, 190, 255)), x, y, size);
     }
 
-    // ---------- 3. Moon ----------
+    // Moon
     gm.CreateCircle("#2a3a78", 630, 110, 78);   // outer halo
     gm.CreateCircle("#3d4f95", 630, 110, 62);
     gm.CreateCircle("#f5f0c8", 630, 110, 46);   // moon disc
@@ -103,39 +73,39 @@ static void PaintNightCity(GraphicManagement& gm)
     gm.CreateCircle("#fffbe0", 598, 90, 3);     // highlights
     gm.CreateCircle("#fffbe0", 660, 140, 3);
 
-    // ---------- 4. Mountains: overlapping circles, two rows ----------
+    // Mountains
     for (int i = 0; i < 9; ++i)
-        gm.CreateCircle("#3a2a5c", i * 100 - 20, 440, rnd.Next(70, 120));   // far row
+        gm.CreateCircle("#3a2a5c", i * 100 - 20, 440, NextRandom(randomState, 70, 120));   // far row
     for (int i = 0; i < 6; ++i)
-        gm.CreateCircle("#241a40", i * 150 + 30, 470, rnd.Next(60, 95));    // near row
+        gm.CreateCircle("#241a40", i * 150 + 30, 470, NextRandom(randomState, 60, 95));    // near row
     gm.CreateRectangle("#1b1432", 0, 440, 800, 160);                         // ground below mountains
 
-    // ---------- 5. Houses ----------
+    // Houses
     // 26 houses of width 30 side by side, the bottom edge is y = 520.
     for (int h = 0; h < 26; ++h) {
         int x = h * 31;
         int width = 30;
-        int height = rnd.Next(90, 250);
+        int height = NextRandom(randomState, 90, 250);
         int top = 520 - height;
-        int shade = rnd.Next(0, 24);
+        int shade = NextRandom(randomState, 0, 24);
 
         gm.CreateRectangle(Hex(34 + shade, 28 + shade, 66 + shade), x, top, width, height);  // wall
         gm.CreateRectangle(Hex(60 + shade, 40 + shade, 90 + shade), x - 1, top - 5, width + 2, 6); // roof edge
-        if (rnd.Next(0, 2) == 0)
+        if (NextRandom(randomState, 0, 2) == 0)
             gm.CreateRectangle("#120d26", x + 20, top - 16, 5, 12);                          // chimney
 
         // windows: 2 columns, a new row every 14 pixels
         for (int wy = top + 10; wy < 512; wy += 14) {
             for (int wx = x + 6; wx < x + width - 6; wx += 12) {
-                bool lit = rnd.Next(0, 99) < 62;
-                std::string color = lit ? Hex(255, rnd.Next(200, 235), rnd.Next(80, 140))
+                bool lit = NextRandom(randomState, 0, 99) < 62;
+                std::string color = lit ? Hex(255, NextRandom(randomState, 200, 235), NextRandom(randomState, 80, 140))
                     : Hex(18, 16, 40);
                 gm.CreateRectangle(color, wx, wy, 7, 8);
             }
         }
     }
 
-    // ---------- 6. Street, lamps and puddles ----------
+    // Street
     gm.CreateRectangle("#2b2342", 0, 520, 800, 80);          // street
     gm.CreateRectangle("#4a3f6b", 0, 520, 800, 4);           // curb
     for (int i = 0; i < 8; ++i) {
@@ -149,10 +119,60 @@ static void PaintNightCity(GraphicManagement& gm)
         gm.CreateRectangle("#8e86ad", i * 70 + 10, 565, 36, 4);
 }
 
-/// @author Leander Kieweg, Julian Rieger
-/// @date 05.11.2026
+/// @brief Paints a neon cyberpunk scene.
+static void PaintCyberpunk(GraphicManagement& gm)
+{
+    gm.CreateRectangle("#09001f", 0, 0, 600, 400);
+    gm.CreateCircle("#160d45", 300, 135, 150);
+    gm.CreateCircle("#ff2bd6", 300, 135, 120);
+    gm.CreateCircle("#09001f", 300, 135, 104);
 
-/// @brief Test driver: creates images and tests functionality/error handling.
+    for (int i = 0; i < 9; ++i) {
+        int x = i * 75 - 10;
+        int height = 80 + (i % 4) * 28;
+        gm.CreateRectangle("#17103d", x, 360 - height, 60, height);
+        gm.CreateRectangle("#00e5ff", x + 12, 340 - height, 5, 12);
+        gm.CreateRectangle("#ff2bd6", x + 32, 315 - height, 5, 18);
+    }
+
+    gm.CreateRectangle("#241553", 0, 360, 600, 40);
+    for (int i = 0; i < 10; ++i) {
+        gm.CreateRectangle("#00e5ff", i * 68 + 8, 378, 38, 3);
+        gm.CreateCircle("#ff2bd6", i * 68 + 52, 367, 4);
+    }
+}
+
+/// @brief Runs the edge-case and exception tests.
+static bool TestEdgeCases(GraphicManagement& gm)
+{
+    bool passed = true;
+
+    gm.AddImage(FillGraphicObjectFactory::GetInstance(), "test-1-element.svg");
+    gm.CreateCircle("#ff0000", 100, 100, 50);
+    gm.AddImage(BlankGraphicObjectFactory::GetInstance(), "test-empty-image.svg");
+    gm.WriteSVG();
+
+    try {
+        gm.CreateCircle("#000000", 10, 10, 0);
+        passed = false;
+        std::cerr << "Edge-case test failed: zero radius was accepted.\n";
+    }
+    catch (const std::invalid_argument&) {
+    }
+
+    try {
+        gm.AddImage(BlankGraphicObjectFactory::GetInstance(),
+            "Y:/this/directory/does/not/exist/test.svg");
+        gm.WriteSVG();
+        passed = false;
+        std::cerr << "Edge-case test failed: invalid path was accepted.\n";
+    }
+    catch (const std::runtime_error&) {
+    }
+
+    return passed;
+}
+
 int main()
 {
     try {
@@ -160,82 +180,27 @@ int main()
 
         gm.AddImage(BlankGraphicObjectFactory::GetInstance(), "blank-nightcity.svg");
         PaintNightCity(gm);
-
         gm.AddImage(FillGraphicObjectFactory::GetInstance(), "filled-nightcity.svg");
         PaintNightCity(gm);
 
+        gm.AddImage(BlankGraphicObjectFactory::GetInstance(), "blank-cyberpunk.svg");
+        PaintCyberpunk(gm);
+        gm.AddImage(FillGraphicObjectFactory::GetInstance(), "filled-cyberpunk.svg");
+        PaintCyberpunk(gm);
+
         gm.WriteSVG();
+        if (!TestEdgeCases(gm))
+            return 1;
+    }
+    catch (const std::bad_alloc& e) {
+        std::cerr << "Memory allocation failed: " << e.what() << '\n';
+        return 1;
     }
     catch (const std::exception& e) {
-        std::cerr << "Error: " << e.what() << std::endl;
+        std::cerr << "Test driver failed: " << e.what() << '\n';
         return 1;
     }
 
-    std::cout << "Created blank-nightcity.svg and filled-nightcity.svg\n";
-        // Outline version: a neon portal above a futuristic skyline.
-        gm.AddImage(BlankGraphicObjectFactory::GetInstance(), "blank-cyberpunk.svg");
-        gm.CreateRectangle("#09001f", 0, 0, 600, 400);
-        gm.CreateCircle("#ff2bd6", 300, 135, 120);
-
-        // ---> HIER WIEDER DEINE RESTLICHEN KREISE & RECHTECKE EINFÜGEN <---
-
-        // Filled version: the same scene with intense neon colors.
-        gm.AddImage(FillGraphicObjectFactory::GetInstance(), "filled-cyberpunk.svg");
-        gm.CreateRectangle("#09001f", 0, 0, 600, 400);
-        gm.CreateCircle("#ff2bd6", 300, 135, 120);
-
-        // ---> HIER WIEDER DEINE RESTLICHEN KREISE & RECHTECKE EINFÜGEN <---
-
-
-        // --- Checklist Test Cases (1 element & empty container) ---
-
-        // Test: Container with exactly 1 element
-        gm.AddImage(FillGraphicObjectFactory::GetInstance(), "test-1-element.svg");
-        gm.CreateCircle("#ff0000", 100, 100, 50);
-
-        // Test: Empty container (0 elements)
-        gm.AddImage(BlankGraphicObjectFactory::GetInstance(), "test-empty-image.svg");
-        // Intentionally not adding any objects here!
-
-        gm.WriteSVG();
-        std::cout << "[SUCCESS] Images generated successfully.\n";
-
-    } catch (const std::bad_alloc& e) {
-        std::cerr << "[FATAL ERROR] Memory allocation failed: " << e.what() << "\n";
-        return 1;
-    } catch (const std::exception &e) {
-        std::cerr << "[ERROR] " << e.what() << "\n";
-        return 1;
-    }
-
-    // ==========================================
-    // TEST 2: Provoke and catch errors
-    // ==========================================
-
-    // Test: Check parameter validity (Checklist point 21)
-    try {
-        auto& gm = GraphicManagement::GetInstance();
-        std::cout << "Test: Attempting to create a circle with radius 0...\n";
-        gm.CreateCircle("#000000", 10, 10, 0); // Should throw an exception
-        std::cerr << "[FAIL] No exception thrown for radius 0!\n";
-    } catch (const std::invalid_argument& e) {
-        std::cout << "[EXPECTED] Exception caught: " << e.what() << "\n";
-    }
-
-    // Test: Empty/Invalid file path (Checklist point 21)
-    try {
-        auto& gm = GraphicManagement::GetInstance();
-        std::cout << "Test: Attempting to save to an invalid path...\n";
-        // An illegal path that should fail on any OS
-        gm.AddImage(BlankGraphicObjectFactory::GetInstance(), "Y:/this/directory/does/not/exist/test.svg");
-        gm.WriteSVG();
-        std::cerr << "[FAIL] File could be saved to an invalid path!\n";
-    } catch (const std::runtime_error& e) {
-        std::cout << "[EXPECTED] Exception caught: " << e.what() << "\n";
-    } catch (const std::exception& e) {
-        std::cout << "[EXPECTED] Exception caught: " << e.what() << "\n";
-    }
-
-    std::cout << "\nAll tests completed.\n";
+    std::cout << "SVG files created and edge cases passed.\n";
     return 0;
 }
