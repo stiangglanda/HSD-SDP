@@ -3,7 +3,7 @@
 #include <cstddef>
 #include <memory>
 #include <string>
-#include "IGraphicsObjectFactory.h"
+#include "IGraphicObjectFactory.h"
 #include "Object.h"
 #include "SingletonBase.h"
 
@@ -13,9 +13,9 @@
 ///
 /// The factory exists only once (singleton). It is created at the first call
 /// of GetInstance and released automatically when the program ends.
-class FillGraphicsObjectFactory : public IGraphicsObjectFactory, public SingletonBase<FillGraphicsObjectFactory>
+class FillGraphicObjectFactory : public IGraphicObjectFactory, public SingletonBase<FillGraphicObjectFactory>
 {
-   friend class SingletonBase<FillGraphicsObjectFactory>;
+   friend class SingletonBase<FillGraphicObjectFactory>;
 public:
 
    /// @brief Creates a filled circle.
@@ -37,7 +37,7 @@ public:
 
 private:
    /// @brief Private constructor, use GetInstance.
-   FillGraphicsObjectFactory() = default;
+   FillGraphicObjectFactory() = default;
 };
 
 #endif

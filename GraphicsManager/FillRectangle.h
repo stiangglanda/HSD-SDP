@@ -9,7 +9,7 @@
 /// @brief A filled rectangle.
 ///
 /// Objects of this class can only be created by the FillGraphicsObjectFactory.
-class FilledRectangle : public Rectangle
+class FillRectangle : public Rectangle
 {
 public:
    /// @brief Creates the SVG element of this filled rectangle.
@@ -22,7 +22,7 @@ public:
    /// @param[in] y is the y coordinate.
    /// @param[in] width is the width of the rectangle.
    /// @param[in] height is the height of the rectangle.
-   FilledRectangle(const std::string& stroke, int x, int y, size_t width, size_t height);
+   FillRectangle(const std::string& stroke, int x, int y, size_t width, size_t height);
 };
 
 #endif

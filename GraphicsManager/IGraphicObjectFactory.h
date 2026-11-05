@@ -13,11 +13,11 @@
 /// Every concrete factory creates a family of objects (e.g. only filled or
 /// only not filled ones). New families (hatched, dotted, ...) can be added by
 /// implementing this interface, without changing the existing classes.
-class IGraphicsObjectFactory
+class IGraphicObjectFactory
 {
 public:
    /// @brief Virtual destructor.
-   virtual ~IGraphicsObjectFactory() = default;
+   virtual ~IGraphicObjectFactory() = default;
 
    /// @brief Creates a circle.
    /// @param[in] stroke is the color of the outline.

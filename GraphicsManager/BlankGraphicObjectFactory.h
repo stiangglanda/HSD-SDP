@@ -3,7 +3,7 @@
 #include <cstddef>
 #include <memory>
 #include <string>
-#include "IGraphicsObjectFactory.h"
+#include "IGraphicObjectFactory.h"
 #include "Object.h"
 #include "SingletonBase.h"
 
@@ -13,9 +13,9 @@
 ///
 /// The factory exists only once (singleton). It is created at the first call
 /// of GetInstance and released automatically when the program ends.
-class BlankGraphicsObjectFactory : public IGraphicsObjectFactory, public SingletonBase<BlankGraphicsObjectFactory>
+class BlankGraphicObjectFactory : public IGraphicObjectFactory, public SingletonBase<BlankGraphicObjectFactory>
 {
-   friend class SingletonBase<BlankGraphicsObjectFactory>;
+   friend class SingletonBase<BlankGraphicObjectFactory>;
 public:
    /// @brief Creates a not filled circle.
    /// @param[in] stroke is the color of the outline.
@@ -36,7 +36,7 @@ public:
 
 private:
    /// @brief Private constructor, use GetInstance.
-   BlankGraphicsObjectFactory() = default;
+   BlankGraphicObjectFactory() = default;
 };
 
 #endif

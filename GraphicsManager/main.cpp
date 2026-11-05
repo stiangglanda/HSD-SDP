@@ -1,8 +1,8 @@
 #include <exception>
 #include <iostream>
-#include "BlankGraphicsObjectFactory.h"
-#include "FillGraphicsObjectFactory.h"
-#include "GraphicsManagement.h"
+#include "BlankGraphicObjectFactory.h"
+#include "FillGraphicObjectFactory.h"
+#include "GraphicManagement.h"
 
 /// @author Leander Kieweg
 /// @date 05.11.2026
@@ -10,10 +10,10 @@
 int main()
 {
     try {
-        auto& gm = GraphicsManagement::GetInstance();
+        auto& gm = GraphicManagement::GetInstance();
 
         // Outline version: a neon portal above a futuristic skyline.
-        gm.AddImage(BlankGraphicsObjectFactory::GetInstance(), "blank-cyberpunk.svg");
+        gm.AddImage(BlankGraphicObjectFactory::GetInstance(), "blank-cyberpunk.svg");
         gm.CreateRectangle("#09001f", 0, 0, 600, 400);
         gm.CreateCircle("#ff2bd6", 300, 135, 120);
         gm.CreateCircle("#00f5ff", 300, 135, 95);
@@ -33,7 +33,7 @@ int main()
         gm.CreateCircle("#00f5ff", 300, 365, 115);
 
         // Filled version: the same scene with intense neon colors.
-        gm.AddImage(FillGraphicsObjectFactory::GetInstance(), "filled-cyberpunk.svg");
+        gm.AddImage(FillGraphicObjectFactory::GetInstance(), "filled-cyberpunk.svg");
         gm.CreateRectangle("#09001f", 0, 0, 600, 400);
         gm.CreateCircle("#ff2bd6", 300, 135, 120);
         gm.CreateCircle("#00f5ff", 300, 135, 95);

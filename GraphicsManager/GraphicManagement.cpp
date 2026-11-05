@@ -1,22 +1,22 @@
-#include "GraphicsManagement.h"
+#include "GraphicManagement.h"
 #include "Image.h"
 #include <stdexcept>
 
-GraphicsManagement::~GraphicsManagement() = default;
-GraphicsManagement::GraphicsManagement() = default;
+GraphicManagement::~GraphicManagement() = default;
+GraphicManagement::GraphicManagement() = default;
 
-void GraphicsManagement::AddImage(const IGraphicsObjectFactory &fact, const std::string &file) {
+void GraphicManagement::AddImage(const IGraphicObjectFactory &fact, const std::string &file) {
     mFactory = &fact;
     mImages.push_back(std::make_unique<Image>(file));
 }
 
-void GraphicsManagement::WriteSVG() const {
+void GraphicManagement::WriteSVG() const {
     for (const auto &image : mImages) {
         image->WriteSVG();
     }
 }
 
-void GraphicsManagement::CreateCircle(const std::string &stroke, int x, int y, size_t radius) {
+void GraphicManagement::CreateCircle(const std::string &stroke, int x, int y, size_t radius) {
     if (mFactory == nullptr) {
         throw std::logic_error("No factory is set.");
     }
@@ -29,7 +29,7 @@ void GraphicsManagement::CreateCircle(const std::string &stroke, int x, int y, s
         mFactory->CreateCircle(stroke, x, y, radius));
 }
 
-void GraphicsManagement::CreateRectangle(const std::string &stroke, int x, int y, size_t width,
+void GraphicManagement::CreateRectangle(const std::string &stroke, int x, int y, size_t width,
                                         size_t height) {
     if (mFactory == nullptr) {
         throw std::logic_error("No factory is set.");

@@ -1,11 +1,11 @@
-#include "FilledCircle.h"
+#include "FillCircle.h"
 
-FilledCircle::FilledCircle(const std::string& stroke, int x, int y, size_t radius)
+FillCircle::FillCircle(const std::string& stroke, int x, int y, size_t radius)
 	: Circle(stroke, x, y, radius)
 {
 }
 
-std::string FilledCircle::ToSVG() const
+std::string FillCircle::ToSVG() const
 {
 	//<circle cx="55" cy="45" r="35" stroke="black"/>
 	std::string svg{};

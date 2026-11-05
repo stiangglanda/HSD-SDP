@@ -5,7 +5,7 @@
 #include <string>
 #include <vector>
 #include "Circle.h"
-#include "IGraphicsObjectFactory.h"
+#include "IGraphicObjectFactory.h"
 #include "Object.h"
 #include "Rectangle.h"
 #include "SingletonBase.h"
@@ -19,16 +19,16 @@ class Image;
 /// The management exists only once and is released automatically when the
 /// program ends. The factory that creates the graphical objects can be
 /// exchanged: each call of AddImage sets the factory for the new image.
-class GraphicsManagement : public SingletonBase<GraphicsManagement>
+class GraphicManagement : public SingletonBase<GraphicManagement>
 {
-   friend class SingletonBase<GraphicsManagement>;
+   friend class SingletonBase<GraphicManagement>;
 public:
-   ~GraphicsManagement() override;
+   ~GraphicManagement() override;
 
    /// @brief Creates a new image with the given factory and stores it.
    /// @param[in] fact is the factory used for all objects of the new image.
    /// @param[in] file is the name of the SVG file of the image.
-   void AddImage(const IGraphicsObjectFactory& fact, const std::string& file);
+   void AddImage(const IGraphicObjectFactory& fact, const std::string& file);
 
    /// @brief Writes all images as SVG files.
    /// @throws std::runtime_error if a file can not be opened.
@@ -55,10 +55,10 @@ public:
 
 private:
    /// @brief Private constructor, use GetInstance.
-   GraphicsManagement();
+   GraphicManagement();
 
    /// @brief Factory for the next images, not owned (the factories are singletons).
-   const IGraphicsObjectFactory* mFactory = nullptr;
+   const IGraphicObjectFactory* mFactory = nullptr;
 
    /// @brief All images, owned by the management.
    std::vector<std::unique_ptr<Image>> mImages;

@@ -20,23 +20,23 @@ add_executable (GraphicsManager main.cpp
         Circle.h
         Rectangle.cpp
         Rectangle.h
-        FilledCircle.cpp
-        FilledCircle.h
+        FillCircle.cpp
+        FillCircle.h
         BlankCircle.cpp
         BlankCircle.h
-        FilledRectangle.cpp
-        FilledRectangle.h
+        FillRectangle.cpp
+        FillRectangle.h
         BlankRectangle.cpp
         BlankRectangle.h
-        IGraphicsObjectFactory.h
-        FillGraphicsObjectFactory.cpp
-        FillGraphicsObjectFactory.h
-        BlankGraphicsObjectFactory.cpp
-        BlankGraphicsObjectFactory.h
+        IGraphicObjectFactory.h
+        FillGraphicObjectFactory.cpp
+        FillGraphicObjectFactory.h
+        BlankGraphicObjectFactory.cpp
+        BlankGraphicObjectFactory.h
         Image.cpp
         Image.h
-        GraphicsManagement.cpp
-        GraphicsManagement.h
+        GraphicManagement.cpp
+        GraphicManagement.h
         SingletonBase.h)
 
 if (CMAKE_VERSION VERSION_GREATER 3.12)

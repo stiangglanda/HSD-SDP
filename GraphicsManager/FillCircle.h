@@ -9,7 +9,7 @@
 /// @brief A filled circle.
 ///
 /// Objects of this class can only be created by the FillGraphicsObjectFactory.
-class FilledCircle : public Circle
+class FillCircle : public Circle
 {
 public:
    /// @brief Creates the SVG element of this filled circle.
@@ -21,7 +21,7 @@ public:
    /// @param[in] x is the x coordinate.d
    /// @param[in] y is the y coordinate.
    /// @param[in] radius is the radius of the circle.
-   FilledCircle(const std::string& stroke, int x, int y, size_t radius);
+   FillCircle(const std::string& stroke, int x, int y, size_t radius);
 };
 
 #endif

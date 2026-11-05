@@ -1,11 +1,11 @@
-#include "FilledRectangle.h"
+#include "FillRectangle.h"
 
-FilledRectangle::FilledRectangle(const std::string& stroke, int x, int y, size_t width, size_t height) :
+FillRectangle::FillRectangle(const std::string& stroke, int x, int y, size_t width, size_t height) :
 	Rectangle{stroke, x, y, width, height}
 {
 }
 
-std::string FilledRectangle::ToSVG() const
+std::string FillRectangle::ToSVG() const
 {
 	//<rect x="10" y="10" width="90" height="70" stroke="black"/>
 	std::string svg{};
