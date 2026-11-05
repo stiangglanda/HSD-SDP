@@ -7,7 +7,7 @@
 #include "Object.h"
 #include "SingletonBase.h"
 
-/// @author Julian Rieger
+/// @author Leander Kieweg
 /// @date 05.11.2026
 /// @brief Factory which creates not filled circles and rectangles.
 ///
@@ -15,6 +15,7 @@
 /// of GetInstance and released automatically when the program ends.
 class BlankGraphicsObjectFactory : public GraphicsObjectFactory, public SingletonBase<BlankGraphicsObjectFactory>
 {
+   friend class SingletonBase<BlankGraphicsObjectFactory>;
 public:
    /// @brief Creates a not filled circle.
    /// @param[in] stroke is the color of the outline.
@@ -35,7 +36,7 @@ public:
 
 private:
    /// @brief Private constructor, use GetInstance.
-   BlankGraphicsObjectFactory();
+   BlankGraphicsObjectFactory() = default;
 };
 
 #endif

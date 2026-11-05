@@ -11,19 +11,17 @@
 
 class Image;
 
-/// @author Julian Rieger
+/// @author Leander Kieweg
 /// @date 05.11.2026
 /// @brief Manages all images (singleton).
 ///
 /// The management exists only once and is released automatically when the
 /// program ends. The factory that creates the graphical objects can be
 /// exchanged: each call of AddImage sets the factory for the new image.
-class GraphicsManagement : public Object
+class GraphicsManagement : public SingletonBase<GraphicsManagement>
 {
+   friend class SingletonBase<GraphicsManagement>;
 public:
-   /// @brief Access function for the only instance, it is created at the first call.
-   /// @returns a reference to the management.
-   static GraphicsManagement& GetInstance();
 
    /// @brief Releases the instance. It is also called automatically at program end.
    static void Delete();
@@ -58,7 +56,7 @@ public:
 
 private:
    /// @brief Private constructor, use GetInstance.
-   GraphicsManagement();
+   GraphicsManagement() = default;
 
    /// @brief Private destructor, use Delete.
    ~GraphicsManagement() override;

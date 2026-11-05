@@ -5,19 +5,18 @@
 #include <string>
 #include "GraphicsObjectFactory.h"
 #include "Object.h"
+#include "SingletonBase.h"
 
-/// @author Julian Rieger
+/// @author Leander Kieweg
 /// @date 05.11.2026
 /// @brief Factory which creates filled circles and rectangles.
 ///
 /// The factory exists only once (singleton). It is created at the first call
 /// of GetInstance and released automatically when the program ends.
-class FillGraphicsObjectFactory : public GraphicsObjectFactory, public Object
+class FillGraphicsObjectFactory : public GraphicsObjectFactory, public SingletonBase<FillGraphicsObjectFactory>
 {
+   friend class SingletonBase<FillGraphicsObjectFactory>;
 public:
-   /// @brief Access function for the only instance of the factory.
-   /// @returns a constant reference to the factory.
-   static const FillGraphicsObjectFactory& GetInstance();
 
    /// @brief Creates a filled circle.
    /// @param[in] stroke is the color of the outline.
@@ -38,7 +37,7 @@ public:
 
 private:
    /// @brief Private constructor, use GetInstance.
-   FillGraphicsObjectFactory();
+   FillGraphicsObjectFactory() = default;
 };
 
 #endif
