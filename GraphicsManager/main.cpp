@@ -1,3 +1,18 @@
+/// @mainpage Graphic Management Test Driver
+/// @brief Test driver for verifying the GraphicManagement system and SVG generation.
+/// 
+/// Tests the creation of scalable vector graphics (SVG) using different factory 
+/// implementations (BlankGraphicObjectFactory and FillGraphicObjectFactory). 
+/// It verifies the proper assembly of graphical objects within the Image container 
+/// via the GraphicManagement singleton and tests the export functionality. 
+/// Additionally, edge cases (empty containers, single-element images) and all 
+/// relevant exception cases (invalid geometric dimensions, invalid file paths, 
+/// and memory allocation errors) are thoroughly verified.
+/// 
+/// @author Leander Kieweg, Julian Rieger
+/// @date 05.11.2026
+/// @version 1.0
+
 #include <cstdint>
 #include <cstdio>
 #include <exception>
@@ -134,15 +149,12 @@ static void PaintNightCity(GraphicManagement& gm)
         gm.CreateRectangle("#8e86ad", i * 70 + 10, 565, 36, 4);
 }
 
-/// @author Leander Kieweg
+/// @author Leander Kieweg, Julian Rieger
 /// @date 05.11.2026
 
 /// @brief Test driver: creates images and tests functionality/error handling.
 int main()
 {
-    // ==========================================
-    // TEST 1: Happy Path & Regular Functionality
-    // ==========================================
     try {
         auto& gm = GraphicManagement::GetInstance();
 
