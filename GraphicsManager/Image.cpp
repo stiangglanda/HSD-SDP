@@ -18,6 +18,8 @@ void Image::WriteSVG() const
     for (const auto& elem : mGraphicObjects)
         file << elem->ToSVG() << "\n";
     PrintFooter(file);
+
+    file.close();
 }
 
 void Image::AddGraphicObject(std::unique_ptr<GraphicObject> obj)

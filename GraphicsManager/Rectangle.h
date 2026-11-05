@@ -24,6 +24,7 @@ protected:
    /// @param[in] y is the y coordinate of the upper left corner.
    /// @param[in] width is the width of the rectangle.
    /// @param[in] height is the height of the rectangle.
+   /// @throws std::invalid_argument if width or height is 0.
    Rectangle(const std::string& stroke, int x, int y, size_t width, size_t height);
 
    /// @brief Access function for the width.

@@ -23,6 +23,7 @@ protected:
    /// @param[in] x is the x coordinate of the center.
    /// @param[in] y is the y coordinate of the center.
    /// @param[in] radius is the radius of the circle.
+   /// @throws std::invalid_argument if radius is 0.
    Circle(const std::string& stroke, int x, int y, size_t radius);
 
    /// @brief Access function for the radius.

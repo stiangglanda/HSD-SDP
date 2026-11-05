@@ -34,10 +34,10 @@ private:
 	/// @brief All graphical objects of the image, owned by the image.
 	std::vector<std::unique_ptr<GraphicObject>> mGraphicObjects;
 
-	///	@brief Prints the formated header of the SVG file
+	///	@brief Prints the formatted header of the SVG file
 	void PrintHeader(std::ostream& ost) const;
 
-	///	@brief Prints the formated footer of the SVG file
+	///	@brief Prints the formatted footer of the SVG file
 	void PrintFooter(std::ostream& ost) const;
 
 };
