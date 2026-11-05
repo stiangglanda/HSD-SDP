@@ -3,7 +3,7 @@
 #include <cstddef>
 #include <memory>
 #include <string>
-#include "GraphicsObjectFactory.h"
+#include "IGraphicsObjectFactory.h"
 #include "Object.h"
 #include "SingletonBase.h"
 
@@ -13,7 +13,7 @@
 ///
 /// The factory exists only once (singleton). It is created at the first call
 /// of GetInstance and released automatically when the program ends.
-class BlankGraphicsObjectFactory : public GraphicsObjectFactory, public SingletonBase<BlankGraphicsObjectFactory>
+class BlankGraphicsObjectFactory : public IGraphicsObjectFactory, public SingletonBase<BlankGraphicsObjectFactory>
 {
    friend class SingletonBase<BlankGraphicsObjectFactory>;
 public:

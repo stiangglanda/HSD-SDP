@@ -1,5 +1,5 @@
-#ifndef GRAPHICSOBJECTFACTORY_H
-#define GRAPHICSOBJECTFACTORY_H
+#ifndef IGRAPHICSOBJECTFACTORY_H
+#define IGRAPHICSOBJECTFACTORY_H
 #include <cstddef>
 #include <memory>
 #include <string>
@@ -13,11 +13,11 @@
 /// Every concrete factory creates a family of objects (e.g. only filled or
 /// only not filled ones). New families (hatched, dotted, ...) can be added by
 /// implementing this interface, without changing the existing classes.
-class GraphicsObjectFactory
+class IGraphicsObjectFactory
 {
 public:
    /// @brief Virtual destructor.
-   virtual ~GraphicsObjectFactory();
+   virtual ~IGraphicsObjectFactory();
 
    /// @brief Creates a circle.
    /// @param[in] stroke is the color of the outline.

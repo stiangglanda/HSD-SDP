@@ -5,9 +5,10 @@
 #include <string>
 #include <vector>
 #include "Circle.h"
-#include "GraphicsObjectFactory.h"
+#include "IGraphicsObjectFactory.h"
 #include "Object.h"
 #include "Rectangle.h"
+#include "SingletonBase.h"
 
 class Image;
 
@@ -29,7 +30,7 @@ public:
    /// @brief Creates a new image with the given factory and stores it.
    /// @param[in] fact is the factory used for all objects of the new image.
    /// @param[in] file is the name of the SVG file of the image.
-   void AddImage(const GraphicsObjectFactory& fact, const std::string& file);
+   void AddImage(const IGraphicsObjectFactory& fact, const std::string& file);
 
    /// @brief Writes all images as SVG files.
    /// @throws std::runtime_error if a file can not be opened.
@@ -65,7 +66,7 @@ private:
    static GraphicsManagement* mGraphicsManagement;
 
    /// @brief Factory for the next images, not owned (the factories are singletons).
-   const GraphicsObjectFactory* mFactory;
+   const IGraphicsObjectFactory* mFactory;
 
    /// @brief All images, owned by the management.
    std::vector<std::unique_ptr<Image>> mImages;
