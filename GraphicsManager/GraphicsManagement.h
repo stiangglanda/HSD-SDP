@@ -23,10 +23,6 @@ class GraphicsManagement : public SingletonBase<GraphicsManagement>
 {
    friend class SingletonBase<GraphicsManagement>;
 public:
-
-   /// @brief Releases the instance. It is also called automatically at program end.
-   static void Delete();
-
    /// @brief Creates a new image with the given factory and stores it.
    /// @param[in] fact is the factory used for all objects of the new image.
    /// @param[in] file is the name of the SVG file of the image.
@@ -61,9 +57,6 @@ private:
 
    /// @brief Private destructor, use Delete.
    ~GraphicsManagement() override;
-
-   /// @brief The only instance of the management.
-   static GraphicsManagement* mGraphicsManagement;
 
    /// @brief Factory for the next images, not owned (the factories are singletons).
    const IGraphicsObjectFactory* mFactory;

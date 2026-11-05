@@ -1,5 +1,7 @@
 #include "GraphicsManagement.h"
 
+
+
 void GraphicsManagement::AddImage(const IGraphicsObjectFactory &fact, const std::string &file) {
     mFactory = &fact;
 }
