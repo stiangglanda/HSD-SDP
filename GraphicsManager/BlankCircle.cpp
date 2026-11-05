@@ -4,7 +4,7 @@ std::string BlankCircle::ToSVG() const
 {
 	//<circle cx="55" cy="45" r="35" stroke="black" fill="none"/>
 	std::string svg{};
-	svg += "<circle cx=";
+	svg += "<circle cx=\"";
 	svg += std::to_string(GetX());
 	svg += "\" cy=\"";
 	svg += std::to_string(GetY());

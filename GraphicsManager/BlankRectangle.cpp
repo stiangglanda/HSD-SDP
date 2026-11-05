@@ -9,7 +9,7 @@ std::string BlankRectangle::ToSVG() const
 {
 	//<rect x="10" y="10" width="90" height="70" stroke="black" fill="none"/>
 	std::string svg{};
-	svg += "<rect x=";
+	svg += "<rect x=\"";
 	svg += std::to_string(GetX());
 	svg += "\" y=\"";
 	svg += std::to_string(GetY());
