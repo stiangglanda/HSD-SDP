@@ -23,6 +23,8 @@ class GraphicsManagement : public SingletonBase<GraphicsManagement>
 {
    friend class SingletonBase<GraphicsManagement>;
 public:
+   ~GraphicsManagement() override;
+
    /// @brief Creates a new image with the given factory and stores it.
    /// @param[in] fact is the factory used for all objects of the new image.
    /// @param[in] file is the name of the SVG file of the image.
@@ -54,11 +56,6 @@ public:
 private:
    /// @brief Private constructor, use GetInstance.
    GraphicsManagement();
-
-   /// @brief Private destructor, use Delete.
-   ~GraphicsManagement() override;
-
-   friend struct std::default_delete<GraphicsManagement>;
 
    /// @brief Factory for the next images, not owned (the factories are singletons).
    const IGraphicsObjectFactory* mFactory = nullptr;

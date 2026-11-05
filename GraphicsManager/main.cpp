@@ -16,7 +16,6 @@ int main()
 
         gm.CreateCircle("black", 50, 50, 25);
         gm.CreateRectangle("black", 100, 100, 50, 50);
-        gm.AddImage(FillGraphicsObjectFactory::GetInstance(), "image2.svg");
 
         gm.WriteSVG();
     } catch (const std::exception &e) {
