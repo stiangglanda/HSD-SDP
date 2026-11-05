@@ -13,5 +13,5 @@ void Image::WriteSVG() const
 
 void Image::AddGraphicObect(std::unique_ptr<GraphicObject> obj)
 {
-	mGraphicObjects.push_back(obj);
+	mGraphicObjects.push_back(std::move(obj));
 }

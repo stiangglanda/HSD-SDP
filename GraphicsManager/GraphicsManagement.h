@@ -39,7 +39,7 @@ public:
    /// @param[in] radius is the radius of the circle.
    /// @returns the created circle, the caller owns it.
    /// @throws std::logic_error if no factory is set.
-   std::unique_ptr<Circle> CreateCircle(const std::string& stroke, int x, int y, size_t radius) const;
+   void CreateCircle(const std::string& stroke, int x, int y, size_t radius);
 
    /// @brief Creates a rectangle with the current factory.
    /// @param[in] stroke is the color of the outline.
@@ -49,14 +49,14 @@ public:
    /// @param[in] height is the height of the rectangle.
    /// @returns the created rectangle, the caller owns it.
    /// @throws std::logic_error if no factory is set.
-   std::unique_ptr<Rectangle> CreateRectangle(const std::string& stroke, int x, int y, size_t width, size_t height) const;
+   void CreateRectangle(const std::string& stroke, int x, int y, size_t width, size_t height) const;
 
 private:
    /// @brief Private constructor, use GetInstance.
    GraphicsManagement() = default;
 
    /// @brief Private destructor, use Delete.
-   ~GraphicsManagement() override;
+   ~GraphicsManagement() override = default;
 
    /// @brief Factory for the next images, not owned (the factories are singletons).
    const IGraphicsObjectFactory* mFactory;
