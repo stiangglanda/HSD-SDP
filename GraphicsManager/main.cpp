@@ -2,8 +2,12 @@
 #include <cstdio>
 #include <exception>
 #include <iostream>
+<<<<<<< HEAD
+#include <string>
+=======
 #include <stdexcept>
 #include <new>
+>>>>>>> dc61e758c33d18c066571b562efcead22a9554c5
 #include "BlankGraphicObjectFactory.h"
 #include "FillGraphicObjectFactory.h"
 #include "GraphicManagement.h"
@@ -135,6 +139,7 @@ static void PaintNightCity(GraphicManagement& gm)
 
 /// @author Leander Kieweg
 /// @date 05.11.2026
+
 /// @brief Test driver: creates images and tests functionality/error handling.
 int main()
 {
@@ -144,6 +149,20 @@ int main()
     try {
         auto& gm = GraphicManagement::GetInstance();
 
+        gm.AddImage(BlankGraphicObjectFactory::GetInstance(), "blank-nightcity.svg");
+        PaintNightCity(gm);
+
+        gm.AddImage(FillGraphicObjectFactory::GetInstance(), "filled-nightcity.svg");
+        PaintNightCity(gm);
+
+        gm.WriteSVG();
+    }
+    catch (const std::exception& e) {
+        std::cerr << "Error: " << e.what() << std::endl;
+        return 1;
+    }
+
+    std::cout << "Created blank-nightcity.svg and filled-nightcity.svg\n";
         // Outline version: a neon portal above a futuristic skyline.
         gm.AddImage(BlankGraphicObjectFactory::GetInstance(), "blank-cyberpunk.svg");
         gm.CreateRectangle("#09001f", 0, 0, 600, 400);
