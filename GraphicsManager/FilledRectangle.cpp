@@ -19,6 +19,8 @@ std::string FilledRectangle::ToSVG() const
 	svg += std::to_string(GetHeight());
 	svg += "\" stroke=\"";
 	svg += GetStroke();
+	svg += "\" fill=\"";
+	svg += GetStroke();
 	svg += "\"/>";
 	return svg;
 }

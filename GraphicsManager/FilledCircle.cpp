@@ -17,6 +17,8 @@ std::string FilledCircle::ToSVG() const
 	svg += std::to_string(GetRadius());
 	svg += "\" stroke=\"";
 	svg += GetStroke();
+	svg += "\" fill=\"";
+	svg += GetStroke();
 	svg += "\"/>";
 	return svg;
 }
