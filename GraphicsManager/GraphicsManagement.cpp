@@ -1,17 +1,42 @@
 #include "GraphicsManagement.h"
+#include "Image.h"
+#include <stdexcept>
+
 
 void GraphicsManagement::AddImage(const IGraphicsObjectFactory &fact, const std::string &file) {
     mFactory = &fact;
+    mImages.push_back(std::make_unique<Image>(file));
 }
 
 void GraphicsManagement::WriteSVG() const {
+    for (const auto &image : mImages) {
+        image->WriteSVG();
+    }
 }
 
-std::unique_ptr<Circle> GraphicsManagement::CreateCircle(const std::string &stroke, int x, int y, size_t radius) const {
-    return mFactory->CreateCircle(stroke, x, y, radius);
+void GraphicsManagement::CreateCircle(const std::string &stroke, int x, int y, size_t radius) {
+    if (mFactory == nullptr) {
+        throw std::logic_error("No factory is set.");
+    }
+
+    if (mImages.empty()) {
+        throw std::logic_error("No image has been added.");
+    }
+
+    mImages.back()->AddGraphicObect(
+        mFactory->CreateCircle(stroke, x, y, radius));
 }
 
-std::unique_ptr<Rectangle> GraphicsManagement::CreateRectangle(const std::string &stroke, int x, int y, size_t width,
-    size_t height) const {
-    return mFactory->CreateRectangle(stroke, x, y, width, height);
+void GraphicsManagement::CreateRectangle(const std::string &stroke, int x, int y, size_t width,
+                                        size_t height) const {
+    if (mFactory == nullptr) {
+        throw std::logic_error("No factory is set.");
+    }
+
+    if (mImages.empty()) {
+        throw std::logic_error("No image has been added.");
+    }
+
+    mImages.back()->AddGraphicObect(
+        mFactory->CreateRectangle(stroke, x, y, width, height));
 }

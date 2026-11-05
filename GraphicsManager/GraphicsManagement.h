@@ -23,10 +23,6 @@ class GraphicsManagement : public SingletonBase<GraphicsManagement>
 {
    friend class SingletonBase<GraphicsManagement>;
 public:
-
-   /// @brief Releases the instance. It is also called automatically at program end.
-   static void Delete();
-
    /// @brief Creates a new image with the given factory and stores it.
    /// @param[in] fact is the factory used for all objects of the new image.
    /// @param[in] file is the name of the SVG file of the image.
@@ -43,7 +39,7 @@ public:
    /// @param[in] radius is the radius of the circle.
    /// @returns the created circle, the caller owns it.
    /// @throws std::logic_error if no factory is set.
-   std::unique_ptr<Circle> CreateCircle(const std::string& stroke, int x, int y, size_t radius) const;
+   void CreateCircle(const std::string& stroke, int x, int y, size_t radius);
 
    /// @brief Creates a rectangle with the current factory.
    /// @param[in] stroke is the color of the outline.
@@ -53,17 +49,14 @@ public:
    /// @param[in] height is the height of the rectangle.
    /// @returns the created rectangle, the caller owns it.
    /// @throws std::logic_error if no factory is set.
-   std::unique_ptr<Rectangle> CreateRectangle(const std::string& stroke, int x, int y, size_t width, size_t height) const;
+   void CreateRectangle(const std::string& stroke, int x, int y, size_t width, size_t height) const;
 
 private:
    /// @brief Private constructor, use GetInstance.
    GraphicsManagement() = default;
 
    /// @brief Private destructor, use Delete.
-   ~GraphicsManagement() override;
-
-   /// @brief The only instance of the management.
-   static GraphicsManagement* mGraphicsManagement;
+   ~GraphicsManagement() override = default;
 
    /// @brief Factory for the next images, not owned (the factories are singletons).
    const IGraphicsObjectFactory* mFactory;
