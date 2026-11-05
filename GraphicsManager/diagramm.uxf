@@ -1,4 +1,5 @@
-<diagram program="umletino" version="15.1"><zoom_level>11</zoom_level><help_text>Space for diagram notes</help_text><element><id>UMLClass</id><coordinates><x>847</x><y>209</y><w>352</w><h>176</h></coordinates><panel_attributes>GraphicsManagement
+<diagram program="umletino" version="15.1"><zoom_level>11</zoom_level><help_text>Space for diagram notes</help_text><element><id>UMLClass</id><coordinates><x>924</x><y>209</y><w>352</w><h>176</h></coordinates><panel_attributes>&lt;&lt;singleton&gt;&gt;
+GraphicsManagement
 --
 + GetInstance()
 + Delete()
@@ -7,66 +8,66 @@
 + CreateCircle(mStroke, mX, mY, mRadius)
 + CreateRectangle(mStroke, mX, mY, mWidth, mHeight)
 - GraphicsManagement(GraphicsObjectFactory fact, 
-Filename file)</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1408</x><y>110</y><w>110</w><h>77</h></coordinates><panel_attributes>&lt;&lt;abstract&gt;&gt;
+Filename file)</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1485</x><y>110</y><w>110</w><h>77</h></coordinates><panel_attributes>&lt;&lt;abstract&gt;&gt;
 /Object/
 --
-# Object()</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1375</x><y>374</y><w>176</w><h>154</h></coordinates><panel_attributes>&lt;&lt;abstract&gt;&gt;
+# Object()</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1452</x><y>374</y><w>176</w><h>154</h></coordinates><panel_attributes>&lt;&lt;abstract&gt;&gt;
 /GraphicObject/
 --
 /+ ToSVG()/
 --
 - mStroke : string
 - mX : int
-- mY : int</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1628</x><y>539</y><w>154</w><h>110</h></coordinates><panel_attributes>&lt;&lt;abstract&gt;&gt;
+- mY : int</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1705</x><y>539</y><w>154</w><h>110</h></coordinates><panel_attributes>&lt;&lt;abstract&gt;&gt;
 /Rectangle/
 --
 + ToSVG()
 --
 - mWidth : size_t
-- mHeight : size_t</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1617</x><y>297</y><w>187</w><h>99</h></coordinates><panel_attributes>&lt;&lt;abstract&gt;&gt;
+- mHeight : size_t</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1694</x><y>297</y><w>187</w><h>99</h></coordinates><panel_attributes>&lt;&lt;abstract&gt;&gt;
 /Circle/
 --
 + ToSVG()
 --
-mRadius : size_t</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1540</x><y>330</y><w>99</w><h>121</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;90;70;10</additional_attributes></element><element><id>Relation</id><coordinates><x>1540</x><y>462</y><w>110</w><h>154</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;80;120</additional_attributes></element><element><id>UMLClass</id><coordinates><x>429</x><y>385</y><w>363</w><h>99</h></coordinates><panel_attributes>FillGraphicsObjectFactory
+mRadius : size_t</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1617</x><y>330</y><w>99</w><h>121</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;90;70;10</additional_attributes></element><element><id>Relation</id><coordinates><x>1617</x><y>462</y><w>110</w><h>154</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;80;120</additional_attributes></element><element><id>UMLClass</id><coordinates><x>506</x><y>385</y><w>363</w><h>99</h></coordinates><panel_attributes>FillGraphicsObjectFactory
 --
 + CreateCircle(mStroke, mX, mY, mRadius)
-+ CreateRectangle(mStroke, mX, mY, mWidth, mHeight)</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1056</x><y>473</y><w>341</w><h>44</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-
-- mGraphicObjects</panel_attributes><additional_attributes>10;20;290;20</additional_attributes></element><element><id>Relation</id><coordinates><x>605</x><y>473</y><w>1683</w><h>385</h></coordinates><panel_attributes>lt=&lt;.
-&lt;&lt;create&gt;&gt;</panel_attributes><additional_attributes>1320;70;1510;70;1510;330;10;320;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>660</x><y>198</y><w>1540</w><h>594</h></coordinates><panel_attributes>lt=&lt;.
-&lt;&lt;create&gt;&gt;</panel_attributes><additional_attributes>1290;10;1380;10;1380;520;10;510;10;260</additional_attributes></element><element><id>Relation</id><coordinates><x>1452</x><y>176</y><w>33</w><h>220</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;10;180</additional_attributes></element><element><id>Relation</id><coordinates><x>1100</x><y>165</y><w>330</w><h>66</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>280;10;10;10;10;40</additional_attributes></element><element><id>Relation</id><coordinates><x>121</x><y>99</y><w>1309</w><h>308</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>1170;20;20;10;10;260</additional_attributes></element><element><id>UMLClass</id><coordinates><x>297</x><y>154</y><w>363</w><h>110</h></coordinates><panel_attributes>&lt;&lt;interface&gt;&gt;
++ CreateRectangle(mStroke, mX, mY, mWidth, mHeight)</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1133</x><y>473</y><w>341</w><h>44</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-
+- mGraphicObjects</panel_attributes><additional_attributes>10;20;290;20</additional_attributes></element><element><id>Relation</id><coordinates><x>682</x><y>473</y><w>1683</w><h>385</h></coordinates><panel_attributes>lt=&lt;.
+&lt;&lt;create&gt;&gt;</panel_attributes><additional_attributes>1320;70;1510;70;1510;330;10;320;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>737</x><y>198</y><w>1540</w><h>594</h></coordinates><panel_attributes>lt=&lt;.
+&lt;&lt;create&gt;&gt;</panel_attributes><additional_attributes>1290;10;1380;10;1380;520;10;510;10;260</additional_attributes></element><element><id>Relation</id><coordinates><x>1529</x><y>176</y><w>33</w><h>220</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;10;180</additional_attributes></element><element><id>Relation</id><coordinates><x>1177</x><y>165</y><w>330</w><h>66</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>280;10;10;10;10;40</additional_attributes></element><element><id>Relation</id><coordinates><x>198</x><y>99</y><w>1309</w><h>308</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>1170;20;20;10;10;260</additional_attributes></element><element><id>UMLClass</id><coordinates><x>374</x><y>154</y><w>363</w><h>110</h></coordinates><panel_attributes>&lt;&lt;interface&gt;&gt;
 /GraphicsObjectFactory/
 --
 /+ CreateCircle(mStroke, mX, mY, mRadius)/
 /+ CreateRectangle(mStroke, mX, mY, mWidth, mHeight)/
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>0</x><y>385</y><w>352</w><h>99</h></coordinates><panel_attributes>BlankGraphicsObjectFactory
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>77</x><y>385</y><w>352</w><h>99</h></coordinates><panel_attributes>BlankGraphicsObjectFactory
 --
 + CreateCircle(mStroke, mX, mY, mRadius)/
-+ CreateRectangle(mStroke, mX, mY, mWidth, mHeight)/</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>462</x><y>253</y><w>143</w><h>154</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>10;10;110;120</additional_attributes></element><element><id>Relation</id><coordinates><x>165</x><y>253</y><w>242</w><h>154</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>200;10;10;120</additional_attributes></element><element><id>Relation</id><coordinates><x>33</x><y>0</y><w>2387</w><h>726</h></coordinates><panel_attributes>lt=&lt;.
-&lt;&lt;create&gt;&gt;</panel_attributes><additional_attributes>1840;640;2150;640;2150;20;20;20;10;350</additional_attributes></element><element><id>Relation</id><coordinates><x>77</x><y>55</y><w>2288</w><h>363</h></coordinates><panel_attributes>lt=&lt;.
-&lt;&lt;create&gt;&gt;</panel_attributes><additional_attributes>1820;310;2060;310;2060;20;20;10;10;300</additional_attributes></element><element><id>UMLClass</id><coordinates><x>1892</x><y>176</y><w>187</w><h>66</h></coordinates><panel_attributes>FilledCircle
++ CreateRectangle(mStroke, mX, mY, mWidth, mHeight)/</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>539</x><y>253</y><w>143</w><h>154</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>10;10;110;120</additional_attributes></element><element><id>Relation</id><coordinates><x>242</x><y>253</y><w>242</w><h>154</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>200;10;10;120</additional_attributes></element><element><id>Relation</id><coordinates><x>110</x><y>0</y><w>2387</w><h>726</h></coordinates><panel_attributes>lt=&lt;.
+&lt;&lt;create&gt;&gt;</panel_attributes><additional_attributes>1840;640;2150;640;2150;20;20;20;10;350</additional_attributes></element><element><id>Relation</id><coordinates><x>154</x><y>55</y><w>2288</w><h>363</h></coordinates><panel_attributes>lt=&lt;.
+&lt;&lt;create&gt;&gt;</panel_attributes><additional_attributes>1820;310;2060;310;2060;20;20;10;10;300</additional_attributes></element><element><id>UMLClass</id><coordinates><x>1969</x><y>176</y><w>187</w><h>66</h></coordinates><panel_attributes>FilledCircle
 --
 + ToSVG()
 
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1892</x><y>352</y><w>187</w><h>66</h></coordinates><panel_attributes>BlankCircle
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1969</x><y>352</y><w>187</w><h>66</h></coordinates><panel_attributes>BlankCircle
 --
 + ToSVG()
 
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1903</x><y>517</y><w>154</w><h>66</h></coordinates><panel_attributes>FilledRectangle
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1980</x><y>517</y><w>154</w><h>66</h></coordinates><panel_attributes>FilledRectangle
 --
 + ToSVG()
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1903</x><y>671</y><w>154</w><h>66</h></coordinates><panel_attributes>BlankRectangle
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1980</x><y>671</y><w>154</w><h>66</h></coordinates><panel_attributes>BlankRectangle
 --
 + ToSVG()
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1793</x><y>209</y><w>121</w><h>132</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;100;90;10</additional_attributes></element><element><id>Relation</id><coordinates><x>1793</x><y>330</y><w>121</w><h>88</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;90;60</additional_attributes></element><element><id>Relation</id><coordinates><x>1771</x><y>550</y><w>154</w><h>66</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;40;120;10</additional_attributes></element><element><id>Relation</id><coordinates><x>1771</x><y>616</y><w>154</w><h>121</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;120;90</additional_attributes></element><element><id>Relation</id><coordinates><x>682</x><y>132</y><w>748</w><h>275</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>660;10;10;10;10;230</additional_attributes></element><element><id>UMLClass</id><coordinates><x>913</x><y>462</y><w>154</w><h>77</h></coordinates><panel_attributes>Image
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1870</x><y>209</y><w>121</w><h>132</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;100;90;10</additional_attributes></element><element><id>Relation</id><coordinates><x>1870</x><y>330</y><w>121</w><h>88</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;90;60</additional_attributes></element><element><id>Relation</id><coordinates><x>1848</x><y>550</y><w>154</w><h>66</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;40;120;10</additional_attributes></element><element><id>Relation</id><coordinates><x>1848</x><y>616</y><w>154</w><h>121</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;120;90</additional_attributes></element><element><id>Relation</id><coordinates><x>759</x><y>132</y><w>748</w><h>275</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>660;10;10;10;10;230</additional_attributes></element><element><id>UMLClass</id><coordinates><x>990</x><y>462</y><w>154</w><h>77</h></coordinates><panel_attributes>Image
 --
 WriteSVG()
 --
-mFilename : string</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1001</x><y>374</y><w>99</w><h>110</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-
+mFilename : string</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1078</x><y>374</y><w>99</w><h>110</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-
 
-- mImages</panel_attributes><additional_attributes>10;10;10;80</additional_attributes></element><element><id>Relation</id><coordinates><x>649</x><y>209</y><w>220</w><h>88</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-
-- mFactory</panel_attributes><additional_attributes>180;60;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>1188</x><y>231</y><w>253</w><h>110</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-
+- mImages</panel_attributes><additional_attributes>10;10;10;80</additional_attributes></element><element><id>Relation</id><coordinates><x>726</x><y>209</y><w>220</w><h>88</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-
+- mFactory</panel_attributes><additional_attributes>180;60;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>1265</x><y>231</y><w>253</w><h>110</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-
 m1=1
 m2=1
 - mGraphicsManagement
-</panel_attributes><additional_attributes>10;10;70;10;70;70;10;70</additional_attributes></element></diagram>
+</panel_attributes><additional_attributes>10;10;70;10;70;70;10;70</additional_attributes></element><element><id>Relation</id><coordinates><x>1133</x><y>176</y><w>407</w><h>319</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>350;10;350;150;250;150;250;270;10;270</additional_attributes></element></diagram>

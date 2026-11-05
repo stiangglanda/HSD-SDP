@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umletino" version="15.1"><zoom_level>10</zoom_level><help_text>Bilderverwaltung (SDP3 Uebung 4)</help_text><element><id>UMLClass</id><coordinates><x>600</x><y>20</y><w>200</w><h>86</h></coordinates><panel_attributes>&lt;&lt;abstract&gt;&gt;
+/Object/
+--
+# Object()</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>30</x><y>190</y><w>400</w><h>160</h></coordinates><panel_attributes>&lt;&lt;singleton&gt;&gt;
+GraphicsManagement
+--
++ GetInstance() : GraphicsManagement&amp;
++ AddImage(factory : const IGraphicsObjectFactory&amp;,
+                filename : string)
++ WriteSVG() const
+- GraphicsManagement()</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>30</x><y>420</y><w>400</w><h>160</h></coordinates><panel_attributes>Image
+--
+- mFilename : string
+--
++ Image(factory : const IGraphicsObjectFactory&amp;,
+             filename : string)
++ WriteSVG() const
+- Init(factory : const IGraphicsObjectFactory&amp;)</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>30</x><y>680</y><w>420</w><h>160</h></coordinates><panel_attributes>&lt;&lt;interface&gt;&gt;
+/IGraphicsObjectFactory/
+--
+/+ CreateCircle(stroke : string, x : int, y : int,/
+/                radius : size_t) : unique_ptr&lt;Circle&gt;/
+/+ CreateRectangle(stroke : string, x : int, y : int,/
+/                width : size_t, height : size_t)/
+/                : unique_ptr&lt;Rectangle&gt;/</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>620</x><y>410</y><w>300</w><h>176</h></coordinates><panel_attributes>&lt;&lt;abstract&gt;&gt;
+/GraphicObject/
+--
+- mStroke : string
+- mX : int
+- mY : int
+--
+# GraphicObject(stroke, x, y)
+/+ ToSVG() const : string/</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>520</x><y>640</y><w>300</w><h>140</h></coordinates><panel_attributes>&lt;&lt;abstract&gt;&gt;
+/Circle/
+--
+- mRadius : size_t
+--
+# Circle(stroke, x, y, radius)
+/+ ToSVG() const : string/</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>900</x><y>640</y><w>300</w><h>160</h></coordinates><panel_attributes>&lt;&lt;abstract&gt;&gt;
+/Rectangle/
+--
+- mWidth : size_t
+- mHeight : size_t
+--
+# Rectangle(stroke, x, y, width, height)
+/+ ToSVG() const : string/</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>470</x><y>860</y><w>200</w><h>70</h></coordinates><panel_attributes>FilledCircle
+--
++ ToSVG() const : string</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>700</x><y>860</y><w>200</w><h>70</h></coordinates><panel_attributes>BlankCircle
+--
++ ToSVG() const : string</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>930</x><y>860</y><w>210</w><h>70</h></coordinates><panel_attributes>FilledRectangle
+--
++ ToSVG() const : string</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1170</x><y>860</y><w>210</w><h>70</h></coordinates><panel_attributes>BlankRectangle
+--
++ ToSVG() const : string</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>470</x><y>1040</y><w>340</w><h>140</h></coordinates><panel_attributes>&lt;&lt;singleton&gt;&gt;
+FillGraphicsObjectFactory
+--
++ GetInstance() : FillGraphicsObjectFactory&amp;
++ CreateCircle(stroke, x, y, radius)
++ CreateRectangle(stroke, x, y, width, height)
+- FillGraphicsObjectFactory()</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1000</x><y>1040</y><w>340</w><h>140</h></coordinates><panel_attributes>&lt;&lt;singleton&gt;&gt;
+BlankGraphicsObjectFactory
+--
++ GetInstance() : BlankGraphicsObjectFactory&amp;
++ CreateCircle(stroke, x, y, radius)
++ CreateRectangle(stroke, x, y, width, height)
+- BlankGraphicsObjectFactory()</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLNote</id><coordinates><x>1000</x><y>150</y><w>400</w><h>190</h></coordinates><panel_attributes>Hinweise:
+- GraphicsManagement und die beiden Fabriken:
+  Meyers-Singleton (static-Variable in GetInstance(),
+  automatische Freigabe beim Programmende)
+- Alle Klassen ausser dem Interface erben von Object
+  (Kopieren und Zuweisen verhindert)
+- Ein Image bekommt genau eine Fabrik =&gt; nur gefuellte
+  oder nur nicht gefuellte Objekte</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>220</x><y>65</y><w>390</w><h>135</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>380;10;10;10;10;125</additional_attributes></element><element><id>Relation</id><coordinates><x>0</x><y>40</y><w>610</w><h>470</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>600;10;10;10;10;460;30;460</additional_attributes></element><element><id>Relation</id><coordinates><x>690</x><y>96</y><w>20</w><h>324</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;10;314</additional_attributes></element><element><id>Relation</id><coordinates><x>570</x><y>50</y><w>920</w><h>1210</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>230;10;910;10;910;1200;10;1200;10;1130</additional_attributes></element><element><id>Relation</id><coordinates><x>790</x><y>75</y><w>670</w><h>1045</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;660;10;660;1035;550;1035</additional_attributes></element><element><id>Relation</id><coordinates><x>220</x><y>340</y><w>20</w><h>90</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-
+m1=1
+m2=0..*
+- mImages</panel_attributes><additional_attributes>10;10;10;80</additional_attributes></element><element><id>Relation</id><coordinates><x>420</x><y>485</y><w>210</w><h>20</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-
+m1=1
+m2=0..*
+- mGraphicObjects</panel_attributes><additional_attributes>10;10;200;10</additional_attributes></element><element><id>Relation</id><coordinates><x>220</x><y>570</y><w>20</w><h>120</h></coordinates><panel_attributes>lt=.&gt;
+&lt;&lt;use&gt;&gt;</panel_attributes><additional_attributes>10;10;10;110</additional_attributes></element><element><id>Relation</id><coordinates><x>420</x><y>280</y><w>70</w><h>460</h></coordinates><panel_attributes>lt=.&gt;
+&lt;&lt;use&gt;&gt;</panel_attributes><additional_attributes>10;10;60;10;60;450;30;450</additional_attributes></element><element><id>Relation</id><coordinates><x>140</x><y>830</y><w>340</w><h>280</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>10;10;10;270;330;270</additional_attributes></element><element><id>Relation</id><coordinates><x>290</x><y>830</y><w>890</w><h>395</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>10;10;10;385;880;385;880;350</additional_attributes></element><element><id>Relation</id><coordinates><x>660</x><y>576</y><w>70</w><h>74</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>60;10;10;64</additional_attributes></element><element><id>Relation</id><coordinates><x>840</x><y>576</y><w>170</w><h>74</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;160;64</additional_attributes></element><element><id>Relation</id><coordinates><x>560</x><y>770</y><w>50</w><h>100</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>40;10;10;90</additional_attributes></element><element><id>Relation</id><coordinates><x>730</x><y>770</y><w>80</w><h>100</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;70;90</additional_attributes></element><element><id>Relation</id><coordinates><x>970</x><y>790</y><w>75</w><h>80</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;65;70</additional_attributes></element><element><id>Relation</id><coordinates><x>1110</x><y>790</y><w>175</w><h>80</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;165;70</additional_attributes></element><element><id>Relation</id><coordinates><x>550</x><y>920</y><w>30</w><h>130</h></coordinates><panel_attributes>lt=.&gt;
+&lt;&lt;create&gt;&gt;</panel_attributes><additional_attributes>10;120;20;10</additional_attributes></element><element><id>Relation</id><coordinates><x>770</x><y>920</y><w>240</w><h>130</h></coordinates><panel_attributes>lt=.&gt;
+&lt;&lt;create&gt;&gt;</panel_attributes><additional_attributes>10;120;230;10</additional_attributes></element><element><id>Relation</id><coordinates><x>840</x><y>920</y><w>210</w><h>130</h></coordinates><panel_attributes>lt=.&gt;
+&lt;&lt;create&gt;&gt;</panel_attributes><additional_attributes>200;120;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>1240</x><y>920</y><w>30</w><h>130</h></coordinates><panel_attributes>lt=.&gt;
+&lt;&lt;create&gt;&gt;</panel_attributes><additional_attributes>10;120;20;10</additional_attributes></element></diagram>
