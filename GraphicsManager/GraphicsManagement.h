@@ -49,17 +49,19 @@ public:
    /// @param[in] height is the height of the rectangle.
    /// @returns the created rectangle, the caller owns it.
    /// @throws std::logic_error if no factory is set.
-   void CreateRectangle(const std::string& stroke, int x, int y, size_t width, size_t height) const;
+   void CreateRectangle(const std::string& stroke, int x, int y, size_t width, size_t height);
 
 private:
    /// @brief Private constructor, use GetInstance.
-   GraphicsManagement() = default;
+   GraphicsManagement();
 
    /// @brief Private destructor, use Delete.
-   ~GraphicsManagement() override = default;
+   ~GraphicsManagement() override;
+
+   friend struct std::default_delete<GraphicsManagement>;
 
    /// @brief Factory for the next images, not owned (the factories are singletons).
-   const IGraphicsObjectFactory* mFactory;
+   const IGraphicsObjectFactory* mFactory = nullptr;
 
    /// @brief All images, owned by the management.
    std::vector<std::unique_ptr<Image>> mImages;
