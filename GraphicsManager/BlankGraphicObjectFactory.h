@@ -1,5 +1,5 @@
-#ifndef BLANKGRAPHICSOBJECTFACTORY_H
-#define BLANKGRAPHICSOBJECTFACTORY_H
+#ifndef BLANKGRAPHICOBJECTFACTORY_H
+#define BLANKGRAPHICOBJECTFACTORY_H
 #include <cstddef>
 #include <memory>
 #include <string>

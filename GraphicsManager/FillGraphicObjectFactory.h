@@ -1,5 +1,5 @@
-#ifndef FILLGRAPHICSOBJECTFACTORY_H
-#define FILLGRAPHICSOBJECTFACTORY_H
+#ifndef FILLGRAPHICOBJECTFACTORY_H
+#define FILLGRAPHICOBJECTFACTORY_H
 #include <cstddef>
 #include <memory>
 #include <string>

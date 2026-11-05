@@ -1,5 +1,5 @@
-#ifndef GRAPHICSMANAGEMENT_H
-#define GRAPHICSMANAGEMENT_H
+#ifndef GRAPHICMANAGEMENT_H
+#define GRAPHICMANAGEMENT_H
 #include <cstddef>
 #include <memory>
 #include <string>

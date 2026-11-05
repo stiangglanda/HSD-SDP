@@ -1,12 +1,12 @@
-#ifndef IGRAPHICSOBJECTFACTORY_H
-#define IGRAPHICSOBJECTFACTORY_H
+#ifndef IGRAPHICOBJECTFACTORY_H
+#define IGRAPHICOBJECTFACTORY_H
 #include <cstddef>
 #include <memory>
 #include <string>
 #include "Circle.h"
 #include "Rectangle.h"
 
-/// @author Julian Rieger
+/// @author Leander Kieweg
 /// @date 05.11.2026
 /// @brief Interface of the abstract factory which creates graphical objects.
 ///

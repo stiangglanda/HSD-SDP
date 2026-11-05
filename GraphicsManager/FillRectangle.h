@@ -1,5 +1,5 @@
-#ifndef FILLEDRECTANGLE_H
-#define FILLEDRECTANGLE_H
+#ifndef FILLRECTANGLE_H
+#define FILLRECTANGLE_H
 #include <cstddef>
 #include <string>
 #include "Rectangle.h"
