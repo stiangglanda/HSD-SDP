@@ -2,12 +2,9 @@
 #include <cstdio>
 #include <exception>
 #include <iostream>
-<<<<<<< HEAD
 #include <string>
-=======
 #include <stdexcept>
 #include <new>
->>>>>>> dc61e758c33d18c066571b562efcead22a9554c5
 #include "BlankGraphicObjectFactory.h"
 #include "FillGraphicObjectFactory.h"
 #include "GraphicManagement.h"
