@@ -151,13 +151,15 @@ static bool TestEdgeCases(GraphicManagement& gm)
     gm.CreateCircle("#ff0000", 100, 100, 50);
     gm.AddImage(BlankGraphicObjectFactory::GetInstance(), "test-empty-image.svg");
     gm.WriteSVG();
+    std::cout << "[PASS] Single-element and empty-image tests\n";
 
     try {
         gm.CreateCircle("#000000", 10, 10, 0);
         passed = false;
-        std::cerr << "Edge-case test failed: zero radius was accepted.\n";
+        std::cerr << "[FAIL] Zero-radius circle was accepted\n";
     }
     catch (const std::invalid_argument&) {
+        std::cout << "[PASS] Zero-radius circle rejected\n";
     }
 
     try {
@@ -165,9 +167,10 @@ static bool TestEdgeCases(GraphicManagement& gm)
             "Y:/this/directory/does/not/exist/test.svg");
         gm.WriteSVG();
         passed = false;
-        std::cerr << "Edge-case test failed: invalid path was accepted.\n";
+        std::cerr << "[FAIL] Invalid file path was accepted\n";
     }
     catch (const std::runtime_error&) {
+        std::cout << "[PASS] Invalid file path rejected\n";
     }
 
     return passed;
@@ -189,18 +192,19 @@ int main()
         PaintCyberpunk(gm);
 
         gm.WriteSVG();
+        std::cout << "[PASS] Scene generation and SVG export\n";
         if (!TestEdgeCases(gm))
             return 1;
     }
     catch (const std::bad_alloc& e) {
-        std::cerr << "Memory allocation failed: " << e.what() << '\n';
+        std::cerr << "[FAIL] Memory allocation: " << e.what() << '\n';
         return 1;
     }
     catch (const std::exception& e) {
-        std::cerr << "Test driver failed: " << e.what() << '\n';
+        std::cerr << "[FAIL] Test driver: " << e.what() << '\n';
         return 1;
     }
 
-    std::cout << "SVG files created and edge cases passed.\n";
+    std::cout << "[PASS] All tests\n";
     return 0;
 }
