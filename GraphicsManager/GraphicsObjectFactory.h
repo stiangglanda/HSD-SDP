@@ -25,7 +25,7 @@ public:
    /// @param[in] y is the y coordinate of the center.
    /// @param[in] radius is the radius of the circle.
    /// @returns the created circle, the caller owns it.
-   virtual std::unique_ptr<Circle> CreateCircle(const std::string& stroke, int x, int y, size_t radius) const = 0;
+   virtual std::unique_ptr<Circle> CreateCircle(const std::string& stroke, int x, int y, size_t radius) const;
 
    /// @brief Creates a rectangle.
    /// @param[in] stroke is the color of the outline.

@@ -5,6 +5,7 @@
 #include <string>
 #include "GraphicsObjectFactory.h"
 #include "Object.h"
+#include "SingletonBase.h"
 
 /// @author Julian Rieger
 /// @date 05.11.2026
@@ -12,13 +13,9 @@
 ///
 /// The factory exists only once (singleton). It is created at the first call
 /// of GetInstance and released automatically when the program ends.
-class BlankGraphicsObjectFactory : public GraphicsObjectFactory, public Object
+class BlankGraphicsObjectFactory : public GraphicsObjectFactory, public SingletonBase<BlankGraphicsObjectFactory>
 {
 public:
-   /// @brief Access function for the only instance of the factory.
-   /// @returns a constant reference to the factory.
-   static const BlankGraphicsObjectFactory& GetInstance();
-
    /// @brief Creates a not filled circle.
    /// @param[in] stroke is the color of the outline.
    /// @param[in] x is the x coordinate of the center.
