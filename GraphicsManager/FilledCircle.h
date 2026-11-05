@@ -16,10 +16,6 @@ public:
    /// @returns the SVG element as text.
    std::string ToSVG() const override;
 
-private:
-   /// @brief Only the factory is allowed to create objects.
-   friend class FillGraphicsObjectFactory;
-
    /// @brief Creates the object.
    /// @param[in] stroke is the color of the outline (and of the fill).
    /// @param[in] x is the x coordinate.d

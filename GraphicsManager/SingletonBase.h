@@ -2,9 +2,10 @@
 #define SINGLETONBASE_H
 
 #include <memory>
+#include "Object.h"
 
 template <typename T>
-class SingletonBase
+class SingletonBase : Object
 {
 public:
     static T& GetInstance()

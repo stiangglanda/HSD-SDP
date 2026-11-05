@@ -1,6 +1,6 @@
 # CMakeList.txt : CMake project for GraphicsManager (SDP3 Uebung 4)
 #
-cmake_minimum_required (VERSION 3.8)
+cmake_minimum_required (VERSION 3.10)
 
 # Enable Hot Reload for MSVC compilers if supported.
 if (POLICY CMP0141)
@@ -28,7 +28,7 @@ add_executable (GraphicsManager main.cpp
         FilledRectangle.h
         BlankRectangle.cpp
         BlankRectangle.h
-        GraphicsObjectFactory.h
+        IGraphicsObjectFactory.h
         FillGraphicsObjectFactory.cpp
         FillGraphicsObjectFactory.h
         BlankGraphicsObjectFactory.cpp

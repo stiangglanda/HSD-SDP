@@ -1,6 +1,6 @@
 #include "BlankGraphicsObjectFactory.h"
-
 #include "BlankCircle.h"
+#include "BlankRectangle.h"
 
 std::unique_ptr<Circle> BlankGraphicsObjectFactory::CreateCircle(const std::string &stroke, int x, int y,
                                                                  size_t radius) const {
@@ -9,5 +9,5 @@ std::unique_ptr<Circle> BlankGraphicsObjectFactory::CreateCircle(const std::stri
 
 std::unique_ptr<Rectangle> BlankGraphicsObjectFactory::CreateRectangle(const std::string &stroke, int x, int y,
     size_t width, size_t height) const {
-    return GraphicsObjectFactory::CreateRectangle(stroke, x, y, width, height);
+    return std::make_unique<BlankRectangle>(stroke, x, y, width, height);
 }

@@ -5,25 +5,24 @@
 #include <string>
 #include <vector>
 #include "Circle.h"
-#include "GraphicsObjectFactory.h"
+#include "IGraphicsObjectFactory.h"
 #include "Object.h"
 #include "Rectangle.h"
+#include "SingletonBase.h"
 
 class Image;
 
-/// @author Julian Rieger
+/// @author Leander Kieweg
 /// @date 05.11.2026
 /// @brief Manages all images (singleton).
 ///
 /// The management exists only once and is released automatically when the
 /// program ends. The factory that creates the graphical objects can be
 /// exchanged: each call of AddImage sets the factory for the new image.
-class GraphicsManagement : public Object
+class GraphicsManagement : public SingletonBase<GraphicsManagement>
 {
+   friend class SingletonBase<GraphicsManagement>;
 public:
-   /// @brief Access function for the only instance, it is created at the first call.
-   /// @returns a reference to the management.
-   static GraphicsManagement& GetInstance();
 
    /// @brief Releases the instance. It is also called automatically at program end.
    static void Delete();
@@ -31,7 +30,7 @@ public:
    /// @brief Creates a new image with the given factory and stores it.
    /// @param[in] fact is the factory used for all objects of the new image.
    /// @param[in] file is the name of the SVG file of the image.
-   void AddImage(const GraphicsObjectFactory& fact, const std::string& file);
+   void AddImage(const IGraphicsObjectFactory& fact, const std::string& file);
 
    /// @brief Writes all images as SVG files.
    /// @throws std::runtime_error if a file can not be opened.
@@ -58,7 +57,7 @@ public:
 
 private:
    /// @brief Private constructor, use GetInstance.
-   GraphicsManagement();
+   GraphicsManagement() = default;
 
    /// @brief Private destructor, use Delete.
    ~GraphicsManagement() override;
@@ -67,7 +66,7 @@ private:
    static GraphicsManagement* mGraphicsManagement;
 
    /// @brief Factory for the next images, not owned (the factories are singletons).
-   const GraphicsObjectFactory* mFactory;
+   const IGraphicsObjectFactory* mFactory;
 
    /// @brief All images, owned by the management.
    std::vector<std::unique_ptr<Image>> mImages;
