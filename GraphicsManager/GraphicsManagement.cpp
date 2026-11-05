@@ -23,7 +23,7 @@ void GraphicsManagement::CreateCircle(const std::string &stroke, int x, int y, s
         throw std::logic_error("No image has been added.");
     }
 
-    mImages.back()->AddGraphicObect(
+    mImages.back()->AddGraphicObject(
         mFactory->CreateCircle(stroke, x, y, radius));
 }
 
@@ -37,6 +37,6 @@ void GraphicsManagement::CreateRectangle(const std::string &stroke, int x, int y
         throw std::logic_error("No image has been added.");
     }
 
-    mImages.back()->AddGraphicObect(
+    mImages.back()->AddGraphicObject(
         mFactory->CreateRectangle(stroke, x, y, width, height));
 }
