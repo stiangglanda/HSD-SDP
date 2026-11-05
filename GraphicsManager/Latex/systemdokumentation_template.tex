@@ -15,9 +15,9 @@
 
 
 \lstset{
-   literate={ö}{{\"o}}1
-           {ä}{{\"a}}1
-           {ü}{{\"u}}1
+   literate={ö}{{ö}}1
+           {ä}{{ä}}1
+           {ü}{{ü}}1
            {ß}{{\ss}}1
            {é}{{\'e}}1,
    inputencoding=ansinew,
@@ -38,7 +38,7 @@
     numbers=none,                % Keine Zeilennummern
     keepspaces=true,             % Behält deine Leerzeichen/Formatierung bei
     columns=fullflexible,        % WICHTIG: Erlaubt "normale" Buchstabenabstände
-    literate={ä}{{\"a}}1 {ö}{{\"o}}1 {ü}{{\"u}}1 {ß}{{\ss}}1 % Fix für Umlaute
+    literate={ä}{{ä}}1 {ö}{{ö}}1 {ü}{{ü}}1 {ß}{{\ss}}1 % Fix für Umlaute
 }
 
 \lstdefinestyle{customcpp}{
@@ -109,14 +109,13 @@ Dieses Dokument zeigt den prinzipiellen Aufbau einer Systemdokumentation für So
 \begin{itemize}
 \item Julian Rieger
     \begin{itemize}
-        \item Implementierung der Klassen: Video, PlayerClient, VideoPlayer, VideoAdapter
-        \item Implementierung des Testtreibers
+        \item Implementierung der Klassen: Image, Object, GraphicObject, Circle, Rectangle, FillCircle, BlankCircle, FillRectangle, BlankRectangle
+        \item Erstellen des Klassendiagramms
         \item Verfassen der Systemdokumentation
     \end{itemize}
 \item Leander Kieweg
     \begin{itemize}
-        \item Implementierung der Klassen: Player, MusicAdapter, MusicPlayer, Media, Song
-        \item Design des Klassendiagrams
+        \item Implementierung der Klassen: GraphicObjectFactory, FillGraphicObjectFactory, BlankGraphicObjectFactory, GraphicManagement
         \item Implementierung des Testtreibers
 
     \end{itemize}
@@ -124,27 +123,59 @@ Dieses Dokument zeigt den prinzipiellen Aufbau einer Systemdokumentation für So
 
 \subsection{Aufwand}
 \begin{itemize}
-\item Julian Rieger: geschätzt: 7h, tatsächlich 7h
-\item Leander Kieweg: geschätzt 7h, tatsächlich 7h
+\item Julian Rieger: geschätzt: 10h, tatsächlich 9h
+\item Leander Kieweg: geschätzt 10h, tatsächlich 9h
 \end{itemize}
 
 \newpage
 % -- Kapitel 2 --
 \section{Anforderungsdefinition (Systemspezifikation)}
-Es wird eine Software zur generischen Bedienung von zwei verschiedenen Schnittstellen, die eines Video Players und die eines Music Players, und stellt eine einzige, für beide verwendbare Schnittstelle, bereit. Die Schnittstelle soll sieben verschiedene Methoden zur Verfügung stellen, die die Geräte steuern können.
+Es wird eine Software zur Erzeugung und Verwaltung von Bildern mit grafischen Objekten erstellt. Ein Bild besteht aus gefüllten oder nicht gefüllten Kreisen und Rechtecken und kann als SVG-Datei gespeichert und in einem Browser angezeigt werden. Ein Bild enthält entweder nur gefüllte oder nur nicht gefüllte Objekte. Der Name der SVG-Datei wird bei der Konstruktion des Bildes festgelegt.
 \subsection*{Funktionale Anforderungen}
 \begin{itemize}
-    \item \textbf{Play():} Startet die Wiedergabe des Titels.
-    \item \textbf{Stop():} Beendet die Wiedergabe des Titels.
-    \item \textbf{Next():} Springt in der Playlist auf den nächsten Titel.
-    \item \textbf{Prev():} Springt in der Playlist auf den vorherige Titel.
-    \item \textbf{VolInc():} Erhöht die Lautstärke um den Wert 1.
-    \item \textbf{VolDec():} Verringert die Lautstärke um den Wert 1.
-    \item \textbf{Select(const std::string name):} Wählt einen bestimmten, in der Playlist vorhandenen, Titel aus und startet die Wiedergabe.
+  \item \texttt{AddImage(fact, file)}: Legt ein neues Bild mit dem
+        angegebenen Dateinamen an. Die übergebene Fabrik wird zur aktuellen
+        Fabrik der Bilderverwaltung und erzeugt die Objekte dieses Bildes.
+  \item \texttt{CreateCircle(stroke, x, y, radius)}: Erzeugt mit der aktuellen
+        Fabrik einen Kreis (Mittelpunkt $(x,y)$) und fügt ihn dem zuletzt
+        angelegten Bild hinzu.
+  \item \texttt{CreateRectangle(stroke, x, y, width, height)}: Erzeugt mit der
+        aktuellen Fabrik ein Rechteck (linke obere Ecke $(x,y)$) und fügt es
+        dem zuletzt angelegten Bild hinzu.
+  \item \texttt{WriteSVG()}: Schreibt alle Bilder der Bilderverwaltung als
+        SVG-Datei. Ein einzelnes Bild kann ebenfalls über
+        \texttt{Image::WriteSVG()} gespeichert werden.
+  \item \texttt{ToSVG()}: Jedes grafische Objekt liefert sein SVG-Element als
+        Text. Nicht gefüllte Objekte erhalten das Attribut
+        \texttt{fill="none"}, bei gefüllten Objekten wird es weggelassen, sodass
+        das Objekt mit der Strichfarbe gefüllt wird.
 \end{itemize}
 
+\subsection{Nichtfunktionale Anforderungen}
+\begin{itemize}
+  \item Bilderverwaltung und Fabriken existieren nur einmal (Singleton) und
+        werden beim Programmende automatisch freigegeben.
+  \item Grafische Objekte werden ausschließlich über eine Fabrik erzeugt.
+        Kopieren und Zuweisen von Objekten ist verboten.
+  \item Die Fabriken der Bilderverwaltung sind austauschbar, sodass
+        verschiedene Bilder mit verschiedenen Fabriken erzeugt werden können.
+  \item Das Design ist erweiterbar: Weitere Objektfamilien (z.B.
+        schraffierte oder gepunktete Objekte) können ergänzt werden, ohne
+        bestehende Klassen zu verändern.
+  \item Für die SVG-Datei muss keine Grammatik angegeben werden.
+\end{itemize}
+
+
 \subsection*{Fehlerbehandlung}
-Fehler bei der Anwendung oder Bedienung des Programms werden abgefangen und es werden Rückmeldungen per std::cerr auf die Konsole ausgegeben und die Funktion wird mit return umgehend wieder verlassen. Zu diese Art von Fehlern zählen jegliche Fehlbedienungen der Schnittstelle. (z.B. Aufruf von Play bei leerer Playlist) Dabei kommt es zu keinen Einschränkungen der darauffolgenden Funktionsaufrufen, sofern ein korrekter Aufruf stattfindet.
+Fehler werden als Ausnahmen (\texttt{std::exception}) gemeldet und vom
+Testtreiber abgefangen und per \texttt{std::cerr} ausgegeben:
+\begin{itemize}
+  \item \texttt{std::logic\_error}, wenn \texttt{CreateCircle} oder
+        \texttt{CreateRectangle} aufgerufen wird, ohne dass eine Fabrik gesetzt
+        oder ein Bild angelegt wurde.
+  \item \texttt{std::runtime\_error}, wenn eine SVG-Datei nicht geöffnet
+        werden kann.
+\end{itemize}
 \newpage
 % -- Kapitel 3 -- 
 \section{Systementwurf}
@@ -153,29 +184,35 @@ Fehler bei der Anwendung oder Bedienung des Programms werden abgefangen und es w
 \begin{figure}[htbp]
   \centering
   \makebox[\textwidth][c]{%
-    \includegraphics[width=1.0\textwidth]{diagramm.png}% Ohne .png, falls pdflatex genutzt wird
+    \includegraphics[width=1.0\textwidth]{diagramm}%
   }%
-  \caption{Klassendiagramm Player}
+  \caption{Klassendiagramm Bilderverwaltung}
   \label{fig:klassendiagramm}
 \end{figure}
 Anmerkung: Das Klassendiagram steht für bessere Lesbarkeit ebenfalls im Sysdoku-Ordner zur Verfügung.
 
 \newpage
 \subsection{Designentscheidungen}
-Für die Konzeption und Implementierung der einheitlichen Player-Schnittstelle wurden gezielt objektorientierte Design-Prinzipien und Entwurfsmuster angewandt, um eine lose Kopplung und hohe Erweiterbarkeit zu garantieren.
+Für die Bilderverwaltung wurden folgende Entwurfsmuster eingesetzt, um Erweiterbarkeit und lose Kopplung zu gewährleisten.
 
-\paragraph{Adapter-Pattern}
-Da die beiden vorgegebenen Fremdklassen \texttt{VideoPlayer} (von DonkeySoft) und \texttt{MusicPlayer} (von MonkeySoft) unterschiedliche, unveränderliche Schnittstellen besitzen, wurde das \textbf{Adapter-Pattern} eingesetzt. Die Klassen \texttt{VideoAdapter} und \texttt{MusicAdapter} implementieren jeweils das einheitliche \texttt{Player}-Interface und übersetzen die Methodenaufrufe in die jeweilige proprietäre Schnittstelle. Dadurch kann der \texttt{PlayerClient} beide Medientypen über eine gemeinsame, generische Schnittstelle steuern.
+\paragraph{Abstract-Factory-Pattern}
+Die Schnittstelle \texttt{IGraphicObjectFactory} beschreibt die Erzeugung einer Familie zusammengehöriger Objekte (Kreis und Rechteck). Die konkreten Fabriken \texttt{BlankGraphicObjectFactory} und \texttt{FillGraphicObjectFactory} erzeugen jeweils nur nicht gefüllte bzw. nur gefüllte Objekte. Dadurch kann ein Bild nie beide Arten mischen. Die \texttt{GraphicManagement} kennt nur die Schnittstelle und die abstrakten Produkte \texttt{Circle} und \texttt{Rectangle}. Neue Familien (z.\,B. \texttt{HatchedGraphicObjectFactory} mit \texttt{HatchedCircle} und \texttt{HatchedRectangle}) können ergänzt werden, ohne bestehenden Code zu ändern. Die Fabrik ist pro Bild austauschbar (Parameter von \texttt{AddImage}).
 
-\paragraph{Vererbungshierarchie und gemeinsame Basisklassen}
-Zur Reduzierung von Code-Duplikaten und für ein sauberes Fundament erben alle zentralen Klassen von einer abstrakten Basisklasse \texttt{Object}. Zudem wurde für die Medienverwaltung die abstrakte Klasse \texttt{Media} eingeführt, von der die Klassen \texttt{Video} und \texttt{Song} abgeleitet sind. Gemeinsame Attribute wie Name und Dauer werden dadurch zentral in \texttt{Media} verwaltet.
+\paragraph{Singleton-Pattern}
+Bilderverwaltung und konkrete Fabriken dürfen nur einmal existieren. Dazu dient die Template-Klasse \texttt{SingletonBase<T>}: Die Instanz wird beim ersten Aufruf von \texttt{GetInstance()} erzeugt und in einem statischen \texttt{std::unique\_ptr} gehalten. Sie wird dadurch beim Programmende automatisch freigegeben (\texttt{Delete()} erlaubt zusätzlich eine vorzeitige Freigabe). Die Konstruktoren der Singletons sind privat bzw. geschützt, die Basisklasse ist dazu als \texttt{friend} eingetragen.
 
-\paragraph{Zustandsverwaltung und Kapselung}
-Der \texttt{PlayerClient} hält eine optionale Referenz auf ein \texttt{Player}-Interface und delegiert Befehle direkt an diesen. Zur Vermeidung von Nullzeiger-Zugriffen wird im Client stets geprüft, ob ein gültiger Player gesetzt ist. Die spezifischen Restriktionen der Player (unterschiedliche Lautstärkebereiche wie 0--50 beim VideoPlayer bzw. 0--100 beim MusicPlayer) werden innerhalb der jeweiligen Adapter und Player sicher gekapselt und abgefangen.
+\paragraph{Vererbungshierarchie und Kopierverbot}
+Alle Klassen leiten direkt oder indirekt von \texttt{Object} ab. Dessen Kopierkonstruktor und Zuweisungsoperator sind gelöscht, womit das Kopieren und Zuweisen aller abgeleiteten Klassen verhindert wird. Der geschützte Konstruktor verhindert die direkte Instanziierung.
+
+\paragraph{Gemeinsame Basisklassen der grafischen Objekte}
+Gemeinsame Attribute (Strichfarbe, Position) liegen in \texttt{GraphicObject}, die geometrischen Eigenschaften in \texttt{Circle} bzw. \texttt{Rectangle}. Die Unterklassen unterscheiden sich nur in \texttt{ToSVG()} (Polymorphismus). Die Konstruktoren der Basisklassen sind geschützt, die Objekte werden nur über die Fabriken erzeugt.
+
+\paragraph{Besitzverhältnisse}
+Die Fabriken geben \texttt{std::unique\_ptr} zurück. Das \texttt{Image} besitzt seine Objekte, die \texttt{GraphicManagement} besitzt die Bilder und hält die aktuelle Fabrik nur als nicht besitzenden Zeiger (die Fabriken sind selbst Singletons).
 
 \paragraph{Fehlerstrategie}
-Fehlbedienungen (wie beispielsweise der Versuch, ein Medium bei leerer Playlist abzuspielen) werden kontrolliert abgefangen. Entsprechend den Vorgaben werden aussagekräftige Fehlermeldungen auf der Konsole ausgegeben und die betroffenen Methoden kontrolliert verlassen, ohne das Gesamtsystem zu destabilisieren.
-
+Ungültige Aufrufe (keine Fabrik oder kein Bild vorhanden, Datei nicht
+beschreibbar) werden über Ausnahmen gemeldet und im Testtreiber behandelt.
 % -- Kapitel 4 --
 \section{Komponentenentwurf}
 Die HTML-Startdatei befindet sich im Verzeichnis ./../doxy/html/index.html
@@ -185,55 +222,26 @@ Die HTML-Startdatei befindet sich im Verzeichnis ./../doxy/html/index.html
 \section{Testprotokollierung}
 \subsection{Ausgabe Konsole Testtreiber}
 \begin{lstlisting}[style=textstyle]
---- VideoPlayer ---
-volume is now -> 5
-Volume verified: 5
-Index 0: Video1
-playing video number 1: Video1 [duration -> 120 min], WMV-Format
-Index 1: Video2
-playing video number 2: Video2 [duration -> 90 min], AVI-Format
-Index 2: Video3
-playing video number 3: Video3 [duration -> 200 min], MKV-Format
-stop video: Video3 [duration -> 200 min], MKV-Format
-[SUCCESS] VideoPlayer passed
-
---- MusicPlayer ---
-Count verified: 3
-volume is now -> 18
-volume is now -> 17
-playing song number 1: Song1 (180 sec)
-Index verified: 1
-song: Song9 not found!
-stop song: Song3 (150 sec)
-[SUCCESS] MusicPlayer passed
-
---- VideoAdapter via Client ---
-playing video number 1: Video1 [duration -> 120 min], WMV-Format
-volume is now -> 9
-playing video number 2: Video2 [duration -> 90 min], AVI-Format
-playing video number 1: Video1 [duration -> 120 min], WMV-Format
-playing video number 3: Video3 [duration -> 200 min], MKV-Format
-video: NonExisting not found!
-stop video: Video3 [duration -> 200 min], MKV-Format
---- MusicAdapter via Client ---
-playing song number 1: Song1 (180 sec)
-volume is now -> 14
-playing song number 2: Song2 (210 sec)
-playing song number 1: Song1 (180 sec)
-playing song number 2: Song2 (210 sec)
-song: NonExisting not found!
-stop song: Song2 (210 sec)
-[SUCCESS] Adapters passed
-
---- Edge Cases ---
-no video in playlist!
-no song in playlist!
-[SUCCESS] EdgeCases passed
-
-All tests successfully executed and verified!
-
-
+Created blank-cyberpunk.svg and filled-cyberpunk.svg
 \end{lstlisting}
+
+\subsection{Erstellte Bilder}
+\begin{figure}[htbp]
+  \centering
+  \makebox[\textwidth][c]{%
+    \includegraphics[width=1.0\textwidth]{diagramm}%
+  }%
+  \caption{Klassendiagramm Bilderverwaltung}
+  \label{fig:klassendiagramm}
+\end{figure}
+\begin{figure}[htbp]
+  \centering
+  \makebox[\textwidth][c]{%
+    \includegraphics[width=1.0\textwidth]{diagramm}%
+  }%
+  \caption{Klassendiagramm Bilderverwaltung}
+  \label{fig:klassendiagramm}
+\end{figure}
 
 % -- Kapitel 6 --
 \newpage
@@ -241,25 +249,25 @@ All tests successfully executed and verified!
 \hfile{../Object}
 \hfile{../BlankCircle}
 \cppfile{../BlankCircle}
-\hfile{../FilledCircle}
-\cppfile{../FilledCircle}
+\hfile{../FillCircle}
+\cppfile{../FillCircle}
 \hfile{../Circle}
 \cppfile{../Circle}
 \hfile{../BlankRectangle}
 \cppfile{../BlankRectangle}
-\hfile{../FilledRectangle}
-\cppfile{../FilledRectangle}
+\hfile{../FillRectangle}
+\cppfile{../FillRectangle}
 \hfile{../Rectangle}
 \cppfile{../Rectangle}
 \hfile{../SingletonBase}
-\hfile{../IGraphicsObjectFactory}
-\hfile{../BlankGraphicsObjectFactory}
-\cppfile{../BlankGraphicsObjectFactory}
-\hfile{../FillGraphicsObjectFactory}
-\cppfile{../FillGraphicsObjectFactory}
+\hfile{../IGraphicObjectFactory}
+\hfile{../BlankGraphicObjectFactory}
+\cppfile{../BlankGraphicObjectFactory}
+\hfile{../FillGraphicObjectFactory}
+\cppfile{../FillGraphicObjectFactory}
 \hfile{../Image}
 \cppfile{../Image}
-\hfile{../GraphicsManagement}
-\cppfile{../GraphicsManagement}
+\hfile{../GraphicManagement}
+\cppfile{../GraphicManagement}
 \cppfile{../main}
 \end{document}
