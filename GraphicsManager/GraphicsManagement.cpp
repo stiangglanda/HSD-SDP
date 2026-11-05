@@ -2,6 +2,8 @@
 #include "Image.h"
 #include <stdexcept>
 
+GraphicsManagement::~GraphicsManagement() = default;
+GraphicsManagement::GraphicsManagement() = default;
 
 void GraphicsManagement::AddImage(const IGraphicsObjectFactory &fact, const std::string &file) {
     mFactory = &fact;
@@ -28,7 +30,7 @@ void GraphicsManagement::CreateCircle(const std::string &stroke, int x, int y, s
 }
 
 void GraphicsManagement::CreateRectangle(const std::string &stroke, int x, int y, size_t width,
-                                        size_t height) const {
+                                        size_t height) {
     if (mFactory == nullptr) {
         throw std::logic_error("No factory is set.");
     }
