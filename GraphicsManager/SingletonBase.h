@@ -5,7 +5,7 @@
 #include "Object.h"
 
 template <typename T>
-class SingletonBase : Object
+class SingletonBase : public Object
 {
 public:
     static T& GetInstance()

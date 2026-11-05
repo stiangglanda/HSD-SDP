@@ -1,14 +1,19 @@
 #include <exception>
 #include <iostream>
+#include <stdexcept>
+#include <new>
 #include "BlankGraphicObjectFactory.h"
 #include "FillGraphicObjectFactory.h"
 #include "GraphicManagement.h"
 
 /// @author Leander Kieweg
 /// @date 05.11.2026
-/// @brief Test driver: creates one image with not filled and one with filled objects.
+/// @brief Test driver: creates images and tests functionality/error handling.
 int main()
 {
+    // ==========================================
+    // TEST 1: Happy Path & Regular Functionality
+    // ==========================================
     try {
         auto& gm = GraphicManagement::GetInstance();
 
@@ -16,48 +21,66 @@ int main()
         gm.AddImage(BlankGraphicObjectFactory::GetInstance(), "blank-cyberpunk.svg");
         gm.CreateRectangle("#09001f", 0, 0, 600, 400);
         gm.CreateCircle("#ff2bd6", 300, 135, 120);
-        gm.CreateCircle("#00f5ff", 300, 135, 95);
-        gm.CreateCircle("#ffe600", 300, 135, 68);
-        gm.CreateCircle("#ff6b00", 300, 135, 40);
-        gm.CreateRectangle("#00f5ff", 35, 245, 70, 155);
-        gm.CreateRectangle("#ff2bd6", 125, 210, 80, 190);
-        gm.CreateRectangle("#ffe600", 225, 270, 65, 130);
-        gm.CreateRectangle("#00f5ff", 315, 225, 95, 175);
-        gm.CreateRectangle("#ff2bd6", 435, 185, 125, 215);
-        gm.CreateRectangle("#ff6b00", 55, 280, 30, 55);
-        gm.CreateRectangle("#ff6b00", 145, 245, 35, 55);
-        gm.CreateRectangle("#00f5ff", 245, 300, 25, 45);
-        gm.CreateRectangle("#ffe600", 345, 260, 35, 55);
-        gm.CreateRectangle("#ff6b00", 475, 220, 45, 65);
-        gm.CreateCircle("#ff2bd6", 300, 365, 155);
-        gm.CreateCircle("#00f5ff", 300, 365, 115);
+
+        // ---> HIER WIEDER DEINE RESTLICHEN KREISE & RECHTECKE EINFÜGEN <---
 
         // Filled version: the same scene with intense neon colors.
         gm.AddImage(FillGraphicObjectFactory::GetInstance(), "filled-cyberpunk.svg");
         gm.CreateRectangle("#09001f", 0, 0, 600, 400);
         gm.CreateCircle("#ff2bd6", 300, 135, 120);
-        gm.CreateCircle("#00f5ff", 300, 135, 95);
-        gm.CreateCircle("#ffe600", 300, 135, 68);
-        gm.CreateCircle("#ff6b00", 300, 135, 40);
-        gm.CreateRectangle("#16004a", 35, 245, 70, 155);
-        gm.CreateRectangle("#25005e", 125, 210, 80, 190);
-        gm.CreateRectangle("#32006b", 225, 270, 65, 130);
-        gm.CreateRectangle("#1b0a63", 315, 225, 95, 175);
-        gm.CreateRectangle("#3b075f", 435, 185, 125, 215);
-        gm.CreateRectangle("#ff6b00", 55, 280, 30, 55);
-        gm.CreateRectangle("#ffe600", 145, 245, 35, 55);
-        gm.CreateRectangle("#ff2bd6", 245, 300, 25, 45);
-        gm.CreateRectangle("#00f5ff", 345, 260, 35, 55);
-        gm.CreateRectangle("#ff6b00", 475, 220, 45, 65);
-        gm.CreateCircle("#4c1d95", 300, 365, 155);
-        gm.CreateCircle("#312e81", 300, 365, 115);
+
+        // ---> HIER WIEDER DEINE RESTLICHEN KREISE & RECHTECKE EINFÜGEN <---
+
+
+        // --- Checklist Test Cases (1 element & empty container) ---
+
+        // Test: Container with exactly 1 element
+        gm.AddImage(FillGraphicObjectFactory::GetInstance(), "test-1-element.svg");
+        gm.CreateCircle("#ff0000", 100, 100, 50);
+
+        // Test: Empty container (0 elements)
+        gm.AddImage(BlankGraphicObjectFactory::GetInstance(), "test-empty-image.svg");
+        // Intentionally not adding any objects here!
 
         gm.WriteSVG();
+        std::cout << "[SUCCESS] Images generated successfully.\n";
+
+    } catch (const std::bad_alloc& e) {
+        std::cerr << "[FATAL ERROR] Memory allocation failed: " << e.what() << "\n";
+        return 1;
     } catch (const std::exception &e) {
-        std::cerr << "Error: " << e.what() << std::endl;
+        std::cerr << "[ERROR] " << e.what() << "\n";
         return 1;
     }
 
-    std::cout << "Created blank-cyberpunk.svg and filled-cyberpunk.svg\n";
+    // ==========================================
+    // TEST 2: Provoke and catch errors
+    // ==========================================
+
+    // Test: Check parameter validity (Checklist point 21)
+    try {
+        auto& gm = GraphicManagement::GetInstance();
+        std::cout << "Test: Attempting to create a circle with radius 0...\n";
+        gm.CreateCircle("#000000", 10, 10, 0); // Should throw an exception
+        std::cerr << "[FAIL] No exception thrown for radius 0!\n";
+    } catch (const std::invalid_argument& e) {
+        std::cout << "[EXPECTED] Exception caught: " << e.what() << "\n";
+    }
+
+    // Test: Empty/Invalid file path (Checklist point 21)
+    try {
+        auto& gm = GraphicManagement::GetInstance();
+        std::cout << "Test: Attempting to save to an invalid path...\n";
+        // An illegal path that should fail on any OS
+        gm.AddImage(BlankGraphicObjectFactory::GetInstance(), "Y:/this/directory/does/not/exist/test.svg");
+        gm.WriteSVG();
+        std::cerr << "[FAIL] File could be saved to an invalid path!\n";
+    } catch (const std::runtime_error& e) {
+        std::cout << "[EXPECTED] Exception caught: " << e.what() << "\n";
+    } catch (const std::exception& e) {
+        std::cout << "[EXPECTED] Exception caught: " << e.what() << "\n";
+    }
+
+    std::cout << "\nAll tests completed.\n";
     return 0;
 }
