@@ -44,7 +44,7 @@ DOXYFILE_ENCODING      = UTF-8
 # anderen Stellen verwendet.
 # Der Standardwert ist: My Project.
 
-PROJECT_NAME           = Player
+PROJECT_NAME           = GraphicsManager
 
 # Das PROJECT_NUMBER-Tag kann verwendet werden, um eine Projekt- oder
 # Revisionsnummer einzugeben. Dies kann zum Archivieren der generierten

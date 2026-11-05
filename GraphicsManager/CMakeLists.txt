@@ -28,7 +28,6 @@ add_executable (GraphicsManager main.cpp
         FilledRectangle.h
         BlankRectangle.cpp
         BlankRectangle.h
-        GraphicsObjectFactory.cpp
         GraphicsObjectFactory.h
         FillGraphicsObjectFactory.cpp
         FillGraphicsObjectFactory.h
@@ -37,7 +36,8 @@ add_executable (GraphicsManager main.cpp
         Image.cpp
         Image.h
         GraphicsManagement.cpp
-        GraphicsManagement.h)
+        GraphicsManagement.h
+        SingletonBase.h)
 
 if (CMAKE_VERSION VERSION_GREATER 3.12)
   set_property(TARGET GraphicsManager PROPERTY CXX_STANDARD 20)
