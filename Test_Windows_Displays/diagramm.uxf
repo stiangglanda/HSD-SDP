@@ -1,0 +1,11 @@
+<diagram program="umletino" version="15.1"><zoom_level>10</zoom_level><element><id>UMLClass</id><coordinates><x>240</x><y>90</y><w>210</w><h>190</h></coordinates><panel_attributes>KFZ
+--
+-id: Long
+_-ClassAttribute: Long_
+--
+#Operation(i: int): int
+/+AbstractOperation()/
+--
+Responsibilities
+-- Resp1
+*-- Resp2*</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>630</x><y>230</y><w>100</w><h>30</h></coordinates><panel_attributes>Raddrehsensor</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>390</x><y>470</y><w>300</w><h>40</h></coordinates><panel_attributes>Tchometeranzeige</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>750</x><y>460</y><w>100</w><h>30</h></coordinates><panel_attributes>Kilometerzähler</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>290</x><y>350</y><w>100</w><h>30</h></coordinates><panel_attributes>PKW</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>330</x><y>270</y><w>40</w><h>100</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>20;10;10;80</additional_attributes></element></diagram>
