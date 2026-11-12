@@ -20,7 +20,7 @@ void WindowsDisplay::Init(std::string const& pipeName) {
 
    // loop until pipe is found
    while (NoPipeFound){ 
-      mhPipe = CreateFile(pipe.c_str(), GENERIC_WRITE, 0, nullptr, OPEN_EXISTING, 0, nullptr);
+      mhPipe = CreateFileA(pipe.c_str(), GENERIC_WRITE, 0, nullptr, OPEN_EXISTING, 0, nullptr);
 
       if (mhPipe == INVALID_HANDLE_VALUE) {
          std::cerr << "WindowsClient: Server not online. Waiting..." << std::endl;
