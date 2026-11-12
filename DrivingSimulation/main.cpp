@@ -1,10 +1,7 @@
 #include <iostream>
-#include <list>
-#include <iomanip>
-#include <algorithm>
-#include <sstream>
+#include <chrono>
 #include <memory>
-#include <windows.h>
+#include <thread>
 
 //zur Verwendung der analogen und digitalen Anzeige
 #include "WindowsDisplay.h"
@@ -14,8 +11,8 @@ using namespace std;
 int main() 
 {
    //Erzeugen der Objekte
-   WindowsDisplay::SPtr digDisp = make_shared<DigitalDisplay>();
-   WindowsDisplay::SPtr anaDisp = make_shared<AnalogDisplay>();
+   DisplayClient::SPtr digDisp = make_shared<DigitalDisplay>();
+   DisplayClient::SPtr anaDisp = make_shared<AnalogDisplay>();
 
 	//send values to displays
 	for (int i = 0; i < 4711; i++) {
@@ -27,9 +24,8 @@ int main()
       {
          cout << "analog: " << i * 5 << endl;
       }
-		Sleep(500);
+      std::this_thread::sleep_for(std::chrono::milliseconds(500));
 	}
 
 	return 0;
 }
-
