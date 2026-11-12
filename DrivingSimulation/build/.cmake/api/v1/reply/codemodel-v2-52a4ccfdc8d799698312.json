@@ -1,0 +1,156 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"childIndexes" : 
+					[
+						1
+					],
+					"jsonFile" : "directory-.-Debug-d0094a50bb2071803777.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.20"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3
+					]
+				},
+				{
+					"build" : "_deps/sdl2-build",
+					"jsonFile" : "directory-_deps.sdl2-build-Debug-7cbabdef2c0db8968731.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.4"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 1,
+					"source" : "build/_deps/sdl2-src",
+					"targetIndexes" : 
+					[
+						4,
+						5,
+						6,
+						7
+					]
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"childIndexes" : 
+					[
+						1
+					],
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "DrivingSimulation",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3
+					]
+				},
+				{
+					"directoryIndexes" : 
+					[
+						1
+					],
+					"name" : "SDL2",
+					"parentIndex" : 0,
+					"targetIndexes" : 
+					[
+						4,
+						5,
+						6,
+						7
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "AnalogDisplay::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-AnalogDisplay-Debug-34868684b0391fc3a03f.json",
+					"name" : "AnalogDisplay",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "DigitalDisplay::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-DigitalDisplay-Debug-b3668bcddbf5298ab1bd.json",
+					"name" : "DigitalDisplay",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "DisplayServer::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-DisplayServer-Debug-8620d6d7a24929da311e.json",
+					"name" : "DisplayServer",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "DrivingSimulation::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-DrivingSimulation-Debug-f8885b161398c8f2f1ae.json",
+					"name" : "DrivingSimulation",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 1,
+					"id" : "SDL2-static::@45bd952f1071c035638d",
+					"jsonFile" : "target-SDL2-static-Debug-84a89016a12775b7f996.json",
+					"name" : "SDL2-static",
+					"projectIndex" : 1
+				},
+				{
+					"directoryIndex" : 1,
+					"id" : "SDL2main::@45bd952f1071c035638d",
+					"jsonFile" : "target-SDL2main-Debug-37198742956582a8b2ea.json",
+					"name" : "SDL2main",
+					"projectIndex" : 1
+				},
+				{
+					"directoryIndex" : 1,
+					"id" : "sdl_headers_copy::@45bd952f1071c035638d",
+					"jsonFile" : "target-sdl_headers_copy-Debug-697dbe378ade40ed1559.json",
+					"name" : "sdl_headers_copy",
+					"projectIndex" : 1
+				},
+				{
+					"directoryIndex" : 1,
+					"id" : "uninstall::@45bd952f1071c035638d",
+					"jsonFile" : "target-uninstall-Debug-5f631dd348cd3fabd56b.json",
+					"name" : "uninstall",
+					"projectIndex" : 1
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "C:/CMakeDev/HSD-SDP/DrivingSimulation/build",
+		"source" : "C:/CMakeDev/HSD-SDP/DrivingSimulation"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 7
+	}
+}
