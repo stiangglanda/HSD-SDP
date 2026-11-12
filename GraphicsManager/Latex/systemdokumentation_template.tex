@@ -81,7 +81,7 @@ FH-HAGENBERG
 \vspace{4cm}
 \begin{center}
 {\Huge \textbf{Systemdokumentation}}\\[1cm]
-{\Large \textbf{Player-Schnittstelle}}\\[0.5cm]
+{\Large \textbf{GraphicsManager}}\\[0.5cm]
 {\large Version 1.0}\\[2cm]
 {\large J. Rieger, L. Kieweg}\\[0.5cm]
 {\large Hagenberg, 28. Oktober 2026}
@@ -222,27 +222,71 @@ Die HTML-Startdatei befindet sich im Verzeichnis ./../doxy/html/index.html
 \section{Testprotokollierung}
 \subsection{Ausgabe Konsole Testtreiber}
 \begin{lstlisting}[style=textstyle]
-Created blank-cyberpunk.svg and filled-cyberpunk.svg
+
+[PASS] Scene generation and SVG export
+[PASS] Single-element and empty-image tests
+[PASS] Zero-radius circle rejected
+[PASS] Invalid file path rejected
+[PASS] All tests
+
 \end{lstlisting}
 
 \subsection{Erstellte Bilder}
+Anmerkung: Zur Demonstration des Programms haben wir uns mit Hilfe einer LLM einige Testbilder generieren lassen.
+
 \begin{figure}[htbp]
   \centering
   \makebox[\textwidth][c]{%
-    \includegraphics[width=1.0\textwidth]{diagramm}%
+    \includegraphics[width=1.0\textwidth]{1}%
   }%
-  \caption{Klassendiagramm Bilderverwaltung}
-  \label{fig:klassendiagramm}
-\end{figure}
-\begin{figure}[htbp]
-  \centering
-  \makebox[\textwidth][c]{%
-    \includegraphics[width=1.0\textwidth]{diagramm}%
-  }%
-  \caption{Klassendiagramm Bilderverwaltung}
-  \label{fig:klassendiagramm}
+  \caption{Testbild 1 (test1.svg)}
+  \label{fig:bild1}
 \end{figure}
 
+\begin{figure}[htbp]
+  \centering
+  \makebox[\textwidth][c]{%
+    \includegraphics[width=1.0\textwidth]{2}%
+  }%
+  \caption{Testbild 2 (test2.svg)}
+  \label{fig:bild2}
+\end{figure}
+
+\begin{figure}[htbp]
+  \centering
+  \makebox[\textwidth][c]{%
+    \includegraphics[width=1.0\textwidth]{3}%
+  }%
+  \caption{Testbild 3}
+  \label{fig:bild3}
+\end{figure}
+
+\begin{figure}[htbp]
+  \centering
+  \makebox[\textwidth][c]{%
+    \includegraphics[width=1.0\textwidth]{4}%
+  }%
+  \caption{Testbild 4}
+  \label{fig:bild4}
+\end{figure}
+
+\begin{figure}[htbp]
+  \centering
+  \makebox[\textwidth][c]{%
+    \includegraphics[width=1.0\textwidth]{5}%
+  }%
+  \caption{Testbild 5}
+  \label{fig:bild5}
+\end{figure}
+
+\begin{figure}[htbp]
+  \centering
+  \makebox[\textwidth][c]{%
+    \includegraphics[width=1.0\textwidth]{6}%
+  }%
+  \caption{Testbild 6}
+  \label{fig:bild6}
+\end{figure}
 % -- Kapitel 6 --
 \newpage
 \section{Quellcode}
