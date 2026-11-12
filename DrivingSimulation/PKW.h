@@ -16,8 +16,9 @@ class PKW : public KFZ, public ISpeed
 public:
    /// @brief Creates a car.
    /// @param[in] sensor is the sensor that delivers the revolutions.
+   /// @param[in] wheelDiameter is the diameter of the wheels.
    /// @throws std::invalid_argument if sensor is a null pointer.
-   explicit PKW(WheelSpeedSensor::SPtr sensor);
+   explicit PKW(WheelSpeedSensor::UPtr sensor, double wheelDiameter);
 
    /// @brief Reads the revolutions from the sensor and notifies all meters.
    /// @throws std::runtime_error if the sensor cannot deliver a value.
@@ -29,10 +30,13 @@ public:
 
 private:
    /// @brief Sensor that delivers the revolutions.
-   WheelSpeedSensor::SPtr mSensor;
+   WheelSpeedSensor::UPtr mSensor;
 
    /// @brief Last revolutions read from the sensor.
-   double mRevolutions;
+   double mRevolutions{0.0};
+
+   /// @brief Diameter of the wheels.
+   double mWheelDiameter{0.0};
 };
 
 #endif // PKW_H

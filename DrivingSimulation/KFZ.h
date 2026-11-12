@@ -33,6 +33,7 @@ protected:
 private:
    /// @brief All attached meters.
    std::vector<Meter::SPtr> mMeters;
+
 };
 
 #endif // KFZ_H

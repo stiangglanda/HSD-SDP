@@ -14,15 +14,15 @@
 class WheelSpeedSensor : public Object
 {
 public:
-   /// @brief Shared pointer to a wheel speed sensor.
-   using SPtr = std::shared_ptr<WheelSpeedSensor>;
+   /// @brief Unique pointer to a wheel speed sensor.
+   using UPtr = std::unique_ptr<WheelSpeedSensor>;
 
    /// @brief Creates a sensor and opens the file with the revolutions.
    /// @param[in] path is the path of the file to read.
    /// @throws std::runtime_error if the file cannot be opened.
    explicit WheelSpeedSensor(const std::string& path);
 
-   /// @brief Reads the next value from the file.
+   /// @brief Reads the next value from the file, restarting at the beginning at EOF.
    /// @returns the wheel revolutions.
    /// @throws std::runtime_error if no value can be read.
    double GetRevolutions();
