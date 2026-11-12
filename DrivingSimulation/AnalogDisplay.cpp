@@ -7,7 +7,11 @@
 #include <iostream>
 #include <thread>
 
-int main() {
+// SDL2 erwartet unter Windows genau diese Signatur (main wird zu SDL_main)
+int main(int argc, char* argv[]) {
+   (void)argc;
+   (void)argv;
+
    if (SDL_Init(SDL_INIT_VIDEO) != 0) {
       std::cerr << "SDL initialization failed: " << SDL_GetError() << '\n';
       return 1;

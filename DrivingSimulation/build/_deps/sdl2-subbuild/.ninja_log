@@ -1,0 +1,21 @@
+# ninja log v6
+4	475	8162074449022715	sdl2-populate-prefix/src/sdl2-populate-stamp/sdl2-populate-mkdir	a7eab0118762573b
+4	475	8162074449022715	C:/CMakeDev/HSD-SDP/DrivingSimulation/build/_deps/sdl2-subbuild/sdl2-populate-prefix/src/sdl2-populate-stamp/sdl2-populate-mkdir	a7eab0118762573b
+477	66352	8162075097968828	sdl2-populate-prefix/src/sdl2-populate-stamp/sdl2-populate-download	e3bc3437484fd586
+477	66352	8162075097968828	C:/CMakeDev/HSD-SDP/DrivingSimulation/build/_deps/sdl2-subbuild/sdl2-populate-prefix/src/sdl2-populate-stamp/sdl2-populate-download	e3bc3437484fd586
+66353	71879	8162075109823339	sdl2-populate-prefix/src/sdl2-populate-stamp/sdl2-populate-update	30176df40a926efe
+66353	71879	8162075109823339	C:/CMakeDev/HSD-SDP/DrivingSimulation/build/_deps/sdl2-subbuild/sdl2-populate-prefix/src/sdl2-populate-stamp/sdl2-populate-update	30176df40a926efe
+71880	75174	8162075193710635	sdl2-populate-prefix/src/sdl2-populate-stamp/sdl2-populate-patch	d1219f0a98806d57
+71880	75174	8162075193710635	C:/CMakeDev/HSD-SDP/DrivingSimulation/build/_deps/sdl2-subbuild/sdl2-populate-prefix/src/sdl2-populate-stamp/sdl2-populate-patch	d1219f0a98806d57
+75175	83476	8162075275848926	sdl2-populate-prefix/src/sdl2-populate-stamp/sdl2-populate-configure	ef26ec7135e091d2
+75175	83476	8162075275848926	C:/CMakeDev/HSD-SDP/DrivingSimulation/build/_deps/sdl2-subbuild/sdl2-populate-prefix/src/sdl2-populate-stamp/sdl2-populate-configure	ef26ec7135e091d2
+83477	86843	8162075311656575	sdl2-populate-prefix/src/sdl2-populate-stamp/sdl2-populate-build	b5b3913d7f651816
+83477	86843	8162075311656575	C:/CMakeDev/HSD-SDP/DrivingSimulation/build/_deps/sdl2-subbuild/sdl2-populate-prefix/src/sdl2-populate-stamp/sdl2-populate-build	b5b3913d7f651816
+86847	91275	8162075356398900	sdl2-populate-prefix/src/sdl2-populate-stamp/sdl2-populate-install	43809dbeadf1d920
+86847	91275	8162075356398900	C:/CMakeDev/HSD-SDP/DrivingSimulation/build/_deps/sdl2-subbuild/sdl2-populate-prefix/src/sdl2-populate-stamp/sdl2-populate-install	43809dbeadf1d920
+91307	94085	8162075383595896	sdl2-populate-prefix/src/sdl2-populate-stamp/sdl2-populate-test	c0e0c5c25d4c29f
+91307	94085	8162075383595896	C:/CMakeDev/HSD-SDP/DrivingSimulation/build/_deps/sdl2-subbuild/sdl2-populate-prefix/src/sdl2-populate-stamp/sdl2-populate-test	c0e0c5c25d4c29f
+94086	99740	8162075438875195	CMakeFiles/sdl2-populate-complete	cf82862da47886b
+94086	99740	8162075438875195	sdl2-populate-prefix/src/sdl2-populate-stamp/sdl2-populate-done	cf82862da47886b
+94086	99740	8162075438875195	C:/CMakeDev/HSD-SDP/DrivingSimulation/build/_deps/sdl2-subbuild/CMakeFiles/sdl2-populate-complete	cf82862da47886b
+94086	99740	8162075438875195	C:/CMakeDev/HSD-SDP/DrivingSimulation/build/_deps/sdl2-subbuild/sdl2-populate-prefix/src/sdl2-populate-stamp/sdl2-populate-done	cf82862da47886b
