@@ -1,49 +1,53 @@
 #include "WindowsDisplay.h"
 
+#include <chrono>
+#include <iostream>
+#include <string>
+#include <thread>
 
-WindowsDisplay::WindowsDisplay(std::string const& pipeName) {
-   Init(pipeName);
+DisplayClient::DisplayClient(std::uint16_t port)
+   : mSocket(mIoContext) {
+   Init(port);
 }
 
-WindowsDisplay::~WindowsDisplay() {
-   CloseHandle(mhPipe);
+DisplayClient::~DisplayClient() {
+   std::error_code error;
+   mSocket.close(error);
 }
 
-bool WindowsDisplay::SendValue(unsigned int value) {
+bool DisplayClient::SendValue(unsigned int value) {
    return Send(value);
 }
 
 
-void WindowsDisplay::Init(std::string const& pipeName) {
-   std::string pipe = "//./pipe/" + pipeName;
-   bool NoPipeFound = true;
+void DisplayClient::Init(std::uint16_t port) {
+   asio::ip::tcp::resolver resolver(mIoContext);
 
-   // loop until pipe is found
-   while (NoPipeFound){ 
-      mhPipe = CreateFileA(pipe.c_str(), GENERIC_WRITE, 0, nullptr, OPEN_EXISTING, 0, nullptr);
-
-      if (mhPipe == INVALID_HANDLE_VALUE) {
-         std::cerr << "WindowsClient: Server not online. Waiting..." << std::endl;
-         Sleep(3000);
+   while (!mSocket.is_open()) {
+      std::error_code error;
+      const auto endpoints = resolver.resolve("127.0.0.1",
+                                              std::to_string(port), error);
+      if (!error) {
+         asio::connect(mSocket, endpoints, error);
       }
-      else {
-         NoPipeFound = false;
+
+      if (error) {
+         std::cerr << "Display server on port " << port
+                   << " is not online. Waiting..." << std::endl;
+         std::this_thread::sleep_for(std::chrono::seconds(3));
       }
    }
 }
 
-bool WindowsDisplay::Send(unsigned int value) {
-   bool Success = false;
-   DWORD BytesRW = 0;
-   DWORD PipeBufferSize = sizeof(DataPacket);
-   DataPacket dp;
-   dp.value = value;
-   dp.command = SetValueBoth;
+bool DisplayClient::Send(unsigned int value) {
+   const std::string message = "SET_VALUE " + std::to_string(value) + "\n";
+   std::error_code error;
 
-   Success = WriteFile(mhPipe, &dp, PipeBufferSize, &BytesRW, nullptr) != 0;
-
-   if (!Success || BytesRW == 0) {
+   asio::write(mSocket, asio::buffer(message), error);
+   if (error) {
+      std::cerr << "Could not send value to display: "
+                << error.message() << std::endl;
       return false;
    }
-   return true;   
+   return true;
 }

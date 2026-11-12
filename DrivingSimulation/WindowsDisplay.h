@@ -1,57 +1,44 @@
-#ifndef WINDOWDISPLAY_H
-#define WINDOWDISPLAY_H
+#ifndef DISPLAY_CLIENT_H
+#define DISPLAY_CLIENT_H
 
-#include <Windows.h>
-#include <string>
-#include <iostream>
+#include <asio.hpp>
+#include <cstdint>
 #include <memory>
+
 #include "Object.h"
 
-enum eCommand {
-   ConfigureAnalogOnly  = 0,
-   ConfigureDigitalOnly = 1,
-   ConfigureBoth = 2,
-   SetValueAnalogOnly = 3,
-   SetValueDigitalOnly = 4,
-   SetValueBoth = 5
-};
-
-struct DataPacket {
-   eCommand command;
-   unsigned int value;
-};
-
-class WindowsDisplay : public Object {
+class DisplayClient : public Object {
 public:   
-   ~WindowsDisplay();
+   ~DisplayClient() override;
 
    bool SendValue(unsigned int value);
-   typedef std::shared_ptr<WindowsDisplay> SPtr;
+   using SPtr = std::shared_ptr<DisplayClient>;
 protected:
-   WindowsDisplay(std::string const& pipeName);
-   WindowsDisplay(WindowsDisplay const&);
-   WindowsDisplay& operator=(WindowsDisplay const&);
+   DisplayClient(std::uint16_t port);
+   DisplayClient(DisplayClient const&) = delete;
+   DisplayClient& operator=(DisplayClient const&) = delete;
 
 private:
-   HANDLE mhPipe;
+   asio::io_context mIoContext;
+   asio::ip::tcp::socket mSocket;
 
-   void Init(std::string const& pipeName);
+   void Init(std::uint16_t port);
    bool Send(unsigned int value);
 };
 
 
 
-class DigitalDisplay: public WindowsDisplay {
+class DigitalDisplay: public DisplayClient {
 public:
-   DigitalDisplay(): WindowsDisplay("SDP_DigitalDisplay") {
+   DigitalDisplay(): DisplayClient(4711) {
    }
 };
 
 
-class AnalogDisplay: public WindowsDisplay {
+class AnalogDisplay: public DisplayClient {
 public:
-   AnalogDisplay(): WindowsDisplay("SDP_AnalogDisplay") {
+   AnalogDisplay(): DisplayClient(4712) {
    }
 };
 
-#endif //WINDOWDISPLAY_H
+#endif //DISPLAY_CLIENT_H
