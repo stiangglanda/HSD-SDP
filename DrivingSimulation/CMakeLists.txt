@@ -50,7 +50,14 @@ endif()
 add_library(DisplayServer STATIC DisplayServer.cpp DisplayServer.h)
 target_link_libraries(DisplayServer PUBLIC asio_headers)
 
-add_executable(DrivingSimulation main.cpp WindowsDisplay.h WindowsDisplay.cpp)
+add_executable(DrivingSimulation main.cpp WindowsDisplay.h WindowsDisplay.cpp
+  Object.h Meter.h ISpeed.h
+  MeterBase.h MeterBase.cpp
+  Speedometer.h Speedometer.cpp
+  Odometer.h Odometer.cpp
+  KFZ.h KFZ.cpp
+  PKW.h PKW.cpp
+  WheelSpeedSensor.h WheelSpeedSensor.cpp)
 target_link_libraries(DrivingSimulation PRIVATE asio_headers)
 
 add_executable(DigitalDisplay DigitalDisplay.cpp)
