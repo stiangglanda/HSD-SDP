@@ -38,5 +38,5 @@ ISpeed
 -
 + GetCurrentSpeed(): double
 
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>384</x><y>280</y><w>72</w><h>40</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>70;10;10;30</additional_attributes></element><element><id>Relation</id><coordinates><x>576</x><y>216</y><w>144</w><h>40</h></coordinates><panel_attributes>lt=.&gt;
-</panel_attributes><additional_attributes>160;20;60;20;10;30</additional_attributes></element></diagram>
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>384</x><y>280</y><w>72</w><h>40</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>70;10;10;30</additional_attributes></element><element><id>Relation</id><coordinates><x>576</x><y>208</y><w>144</w><h>40</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-
+mSpeed</panel_attributes><additional_attributes>160;20;10;30</additional_attributes></element></diagram>

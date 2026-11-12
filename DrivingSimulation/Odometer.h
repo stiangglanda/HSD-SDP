@@ -12,8 +12,8 @@ class Odometer : public MeterBase
 {
 public:
    /// @brief Creates an odometer with a distance of zero.
-   /// @param[in] speed is the source of the current speed.
    /// @param[in] display is the display that shows the distance.
+   /// @param[in] speed is the pointer to the interface that provides GetCurrentSpeed().
    /// @throws std::invalid_argument if display is a null pointer.
    Odometer(const ISpeed& speed, DisplayClient::SPtr display);
 
@@ -23,7 +23,7 @@ public:
 
 private:
    /// @brief Total distance driven so far.
-   double mDistance;
+   double mDistance = 0;
 };
 
 #endif // ODOMETER_H

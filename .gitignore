@@ -10,6 +10,7 @@ CMakeFiles
 out
 .idea
 doxy
+build/
 
 # Build-Ergebnisse (Binaries)
 [Bb]in/
