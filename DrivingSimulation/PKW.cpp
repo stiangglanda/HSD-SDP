@@ -17,5 +17,5 @@ void PKW::Process() {
 }
 
 double PKW::GetCurrentSpeed() const {
-    return (mSensor->GetRevolutions() * mWheelDiameter * std::numbers::pi * 60) / 1000.0;
+    return (mRevolutions * mWheelDiameter * std::numbers::pi * 60) / 1000.0;
 }
