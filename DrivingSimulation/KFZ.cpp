@@ -1,4 +1,5 @@
 #include "KFZ.h"
+#include <stdexcept>
 
 void KFZ::Attach(Meter::SPtr meter) {
     if (meter) {

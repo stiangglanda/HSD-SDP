@@ -11,6 +11,7 @@ out
 .idea
 doxy
 build/
+Latex
 
 # Build-Ergebnisse (Binaries)
 [Bb]in/
