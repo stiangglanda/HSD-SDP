@@ -1,16 +1,20 @@
 #include "Odometer.h"
 
-Odometer::Odometer(const ISpeed& speed, DisplayClient::SPtr display) :
+Odometer::Odometer(const ISpeed& speed, const DisplayClient::SPtr& display) :
     MeterBase(speed, display)
 {
-    mDisplay->SendValue(0);
+    Show(mDistance);
 }
 
 void Odometer::Update()
 {
-    double const speed = mSpeed.GetCurrentSpeed();
-    // v = s / t  =>  s = v * t, t = 0.5 s = 1/7200 h  =>  s = v / 7200
-    mDistance += speed / 7200.0;
+    // v = s / t  =>  s = v * t with t = 0.5 s = 1/7200 h
+    mDistance += mSpeed.GetCurrentSpeed() * cCycleTimeHours;
 
-    mDisplay->SendValue(static_cast<unsigned int>(mDistance));
+    Show(mDistance);
+}
+
+double Odometer::GetDistance() const
+{
+    return mDistance;
 }

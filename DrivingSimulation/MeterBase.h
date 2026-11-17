@@ -17,10 +17,18 @@ class MeterBase : public Meter, public Object
 {
 protected:
    /// @brief Protected constructor that makes the class abstract.
-   /// @param[in] speed is the source of the current speed.
+   /// @param[in] speed is the source of the current speed. It must live
+   ///            longer than the meter.
    /// @param[in] display is the display that shows the value of the meter.
    /// @throws std::invalid_argument if display is a null pointer.
-   MeterBase(const ISpeed& speed, DisplayClient::SPtr display);
+   MeterBase(const ISpeed& speed, const DisplayClient::SPtr& display);
+
+   /// @brief Sends a value to the display.
+   ///
+   /// The display only shows whole numbers, so the decimal places are cut
+   /// off. Values outside the range of unsigned int are limited to it.
+   /// @param[in] value is the value to show.
+   void Show(double value) const;
 
    /// @brief Source of the current speed.
    const ISpeed& mSpeed;

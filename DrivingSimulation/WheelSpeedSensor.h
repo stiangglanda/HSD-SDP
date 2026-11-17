@@ -10,7 +10,9 @@
 /// @date 12.11.2026
 /// @brief Simulates a wheel speed sensor.
 ///
-/// The sensor reads the wheel revolutions from a file, one value per call.
+/// The sensor reads the wheel revolutions (U/min) from a file, one value
+/// per call. The file stays open for the lifetime of the sensor, because
+/// a real sensor is also read continuously value by value.
 class WheelSpeedSensor : public Object
 {
 public:
@@ -23,11 +25,18 @@ public:
    explicit WheelSpeedSensor(const std::string& path);
 
    /// @brief Reads the next value from the file, restarting at the beginning at EOF.
-   /// @returns the wheel revolutions.
-   /// @throws std::runtime_error if no value can be read.
+   /// @returns the wheel revolutions in U/min.
+   /// @throws std::runtime_error if no value can be read (empty file or
+   ///         invalid content) or the value is negative.
    double GetRevolutions();
 
 private:
+   /// @brief Reads one value from the file.
+   /// @param[out] revolutions receives the value.
+   /// @returns true if a value was read, false at the end of the file.
+   /// @throws std::runtime_error if the file contains invalid content.
+   bool ReadValue(double& revolutions);
+
    /// @brief File that contains the revolutions.
    std::ifstream mFile;
 };

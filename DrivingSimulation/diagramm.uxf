@@ -1,42 +1,51 @@
-<diagram program="umletino" version="15.1"><zoom_level>8</zoom_level><element><id>UMLClass</id><coordinates><x>496</x><y>0</y><w>112</w><h>40</h></coordinates><panel_attributes>&lt;&lt;abstract&gt;&gt;
-Object</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>256</x><y>120</y><w>224</w><h>104</h></coordinates><panel_attributes>&lt;&lt;abstract&gt;&gt;
+<diagram program="umletino" version="15.1"><zoom_level>11</zoom_level><element><id>UMLClass</id><coordinates><x>737</x><y>0</y><w>154</w><h>55</h></coordinates><panel_attributes>&lt;&lt;abstract&gt;&gt;
+Object</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>352</x><y>165</y><w>363</w><h>143</h></coordinates><panel_attributes>&lt;&lt;abstract&gt;&gt;
 KFZ
 --
 --
-+ Attach(meter: Meter::SPtr): void
-+ Detach(meter: Meter::SPtr): void
-+ Notify(): void</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>664</x><y>120</y><w>160</w><h>64</h></coordinates><panel_attributes>&lt;&lt;interface&gt;&gt;
++ Attach(meter: const Meter::SPtr&amp;): void
++ Detach(meter: const Meter::SPtr&amp;): void
++ Notify(): void</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>968</x><y>165</y><w>220</w><h>88</h></coordinates><panel_attributes>&lt;&lt;interface&gt;&gt;
 Meter
 --
-+ Update(): void</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>0</x><y>304</y><w>192</w><h>72</h></coordinates><panel_attributes>WheelSpeedSensor
++ Update(): void</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>0</x><y>418</y><w>319</w><h>121</h></coordinates><panel_attributes>WheelSpeedSensor
 --
 - mFile: std::ifstream
 --
-+ GetRevolutions(): double</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>272</x><y>304</y><w>192</w><h>88</h></coordinates><panel_attributes>PKW
++ GetRevolutions(): double
+- ReadValue(revolutions: double&amp;): bool</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>429</x><y>418</y><w>319</w><h>187</h></coordinates><panel_attributes>PKW
 --
 - mRevolutions: double
+- mWheelDiameter: double
+_- cMinutesPerHour: double = 60_
+_- cMetersPerKilometer: double = 1000_
 --
 + Process(): void
-+ GetCurrentSpeed(): double</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>560</x><y>304</y><w>160</w><h>56</h></coordinates><panel_attributes>Speedometer
++ GetCurrentSpeed(): double</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>825</x><y>418</y><w>220</w><h>77</h></coordinates><panel_attributes>Speedometer
 --
-+ Update(): void</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>768</x><y>304</y><w>160</w><h>72</h></coordinates><panel_attributes>Odometer
++ Update(): void</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1111</x><y>418</y><w>275</w><h>143</h></coordinates><panel_attributes>Odometer
 --
 - mDistance: double
+_- cCycleTimeHours: double = 1/7200_
 --
-+ Update(): void</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>608</x><y>480</y><w>240</w><h>64</h></coordinates><panel_attributes>&lt;&lt;abstract&gt;&gt;
-WindowsDisplay
++ Update(): void
++ GetDistance(): double</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>891</x><y>660</y><w>330</w><h>88</h></coordinates><panel_attributes>&lt;&lt;abstract&gt;&gt;
+DisplayClient
 --
-+ SendValue(value: unsigned int): bool</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>592</x><y>616</y><w>128</w><h>32</h></coordinates><panel_attributes>AnalogDisplay</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>736</x><y>616</y><w>128</w><h>32</h></coordinates><panel_attributes>DigitalDisplay</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>360</x><y>32</y><w>208</w><h>104</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>240;10;240;50;10;50;10;110</additional_attributes></element><element><id>Relation</id><coordinates><x>88</x><y>32</y><w>480</w><h>288</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>580;10;580;50;10;50;10;340</additional_attributes></element><element><id>Relation</id><coordinates><x>544</x><y>32</y><w>80</w><h>288</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;10;50;80;50;80;340</additional_attributes></element><element><id>Relation</id><coordinates><x>544</x><y>32</y><w>376</w><h>288</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;10;50;450;50;450;340</additional_attributes></element><element><id>Relation</id><coordinates><x>544</x><y>32</y><w>448</w><h>496</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;10;50;540;50;540;600;380;600</additional_attributes></element><element><id>Relation</id><coordinates><x>360</x><y>216</y><w>24</w><h>104</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;10;110</additional_attributes></element><element><id>Relation</id><coordinates><x>472</x><y>136</y><w>208</w><h>40</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-
++ SendValue(value: unsigned int): bool</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>869</x><y>847</y><w>176</w><h>44</h></coordinates><panel_attributes>AnalogDisplay</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1067</x><y>847</y><w>176</w><h>44</h></coordinates><panel_attributes>DigitalDisplay</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>550</x><y>44</y><w>286</w><h>143</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>240;10;240;50;10;50;10;110</additional_attributes></element><element><id>Relation</id><coordinates><x>176</x><y>44</y><w>660</w><h>396</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>580;10;580;50;10;50;10;340</additional_attributes></element><element><id>Relation</id><coordinates><x>803</x><y>44</y><w>429</w><h>286</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;10;50;370;50;370;220;320;220;320;240</additional_attributes></element><element><id>Relation</id><coordinates><x>803</x><y>44</y><w>616</w><h>682</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;10;50;540;50;540;600;380;600</additional_attributes></element><element><id>Relation</id><coordinates><x>550</x><y>297</y><w>33</w><h>143</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;10;110</additional_attributes></element><element><id>Relation</id><coordinates><x>704</x><y>187</y><w>286</w><h>55</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-
 m2=0..*
-r2=-mMeters</panel_attributes><additional_attributes>10;20;240;20</additional_attributes></element><element><id>Relation</id><coordinates><x>736</x><y>176</y><w>24</w><h>64</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>10;10;10;60</additional_attributes></element><element><id>Relation</id><coordinates><x>184</x><y>320</y><w>104</w><h>40</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-
+r2=-mMeters</panel_attributes><additional_attributes>10;20;240;20</additional_attributes></element><element><id>Relation</id><coordinates><x>1067</x><y>242</y><w>33</w><h>88</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>10;10;10;60</additional_attributes></element><element><id>Relation</id><coordinates><x>308</x><y>440</y><w>143</w><h>55</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
 m2=1
-r2=-mSensor</panel_attributes><additional_attributes>110;20;10;20</additional_attributes></element><element><id>Relation</id><coordinates><x>648</x><y>536</y><w>96</w><h>96</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>100;10;100;60;10;60;10;100</additional_attributes></element><element><id>Relation</id><coordinates><x>720</x><y>536</y><w>96</w><h>96</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;10;60;100;60;100;100</additional_attributes></element><element><id>UMLClass</id><coordinates><x>704</x><y>224</y><w>80</w><h>32</h></coordinates><panel_attributes>/MeterBase/
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>728</x><y>248</y><w>64</w><h>248</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-
+r2=-mSensor</panel_attributes><additional_attributes>110;20;10;20</additional_attributes></element><element><id>Relation</id><coordinates><x>946</x><y>737</y><w>132</w><h>132</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>100;10;100;60;10;60;10;100</additional_attributes></element><element><id>Relation</id><coordinates><x>1045</x><y>737</y><w>132</w><h>132</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;10;60;100;60;100;100</additional_attributes></element><element><id>UMLClass</id><coordinates><x>968</x><y>308</y><w>220</w><h>77</h></coordinates><panel_attributes>/MeterBase/
+--
+--
+# Show(value: double): void</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1056</x><y>374</y><w>99</w><h>308</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-
 m2=1
-r2=-mDisplay</panel_attributes><additional_attributes>10;10;10;290</additional_attributes></element><element><id>Relation</id><coordinates><x>776</x><y>232</y><w>112</w><h>88</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;120;10;120;90</additional_attributes></element><element><id>Relation</id><coordinates><x>632</x><y>232</y><w>88</w><h>88</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>90;10;10;10;10;90</additional_attributes></element><element><id>UMLClass</id><coordinates><x>440</x><y>232</y><w>144</w><h>56</h></coordinates><panel_attributes>&lt;&lt;interface&gt;&gt;
+r2=#mDisplay</panel_attributes><additional_attributes>10;10;10;260</additional_attributes></element><element><id>Relation</id><coordinates><x>1144</x><y>374</y><w>33</w><h>66</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;10;40</additional_attributes></element><element><id>Relation</id><coordinates><x>979</x><y>374</y><w>33</w><h>66</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;10;40</additional_attributes></element><element><id>UMLClass</id><coordinates><x>660</x><y>319</y><w>198</w><h>77</h></coordinates><panel_attributes>&lt;&lt;interface&gt;&gt;
 ISpeed
 -
 + GetCurrentSpeed(): double
 
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>384</x><y>280</y><w>72</w><h>40</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>70;10;10;30</additional_attributes></element><element><id>Relation</id><coordinates><x>576</x><y>208</y><w>144</w><h>40</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-
-mSpeed</panel_attributes><additional_attributes>160;20;10;30</additional_attributes></element></diagram>
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>583</x><y>385</y><w>99</w><h>55</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>70;10;10;30</additional_attributes></element><element><id>Relation</id><coordinates><x>847</x><y>341</y><w>143</w><h>55</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-
+m2=1
+r2=#mSpeed</panel_attributes><additional_attributes>110;20;10;20</additional_attributes></element></diagram>

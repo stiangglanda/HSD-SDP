@@ -58,7 +58,32 @@ add_executable(DrivingSimulation main.cpp WindowsDisplay.h WindowsDisplay.cpp
   KFZ.h KFZ.cpp
   PKW.h PKW.cpp
   WheelSpeedSensor.h WheelSpeedSensor.cpp)
-target_link_libraries(DrivingSimulation PRIVATE asio_headers)
+target_link_libraries(DrivingSimulation PRIVATE asio_headers DisplayServer)
+
+# Compiler-Warnungen fuer den eigenen Code einschalten
+if (MSVC)
+  target_compile_options(DrivingSimulation PRIVATE /W4)
+else()
+  target_compile_options(DrivingSimulation PRIVATE -Wall -Wextra -Wpedantic)
+endif()
+
+# Visual Leak Detector (nur MSVC, falls installiert)
+if (MSVC)
+  find_path(VLD_INCLUDE_DIR vld.h
+    PATHS "C:/Program Files (x86)/Visual Leak Detector/include")
+  find_library(VLD_LIBRARY vld
+    PATHS "C:/Program Files (x86)/Visual Leak Detector/lib/Win64")
+  if (VLD_INCLUDE_DIR AND VLD_LIBRARY)
+    target_include_directories(DrivingSimulation PRIVATE ${VLD_INCLUDE_DIR})
+    target_link_libraries(DrivingSimulation PRIVATE ${VLD_LIBRARY})
+    target_compile_definitions(DrivingSimulation PRIVATE HAVE_VLD)
+  endif()
+endif()
+
+# Sensordaten neben die .exe kopieren, damit sie unabhaengig vom Build-Ordner
+# (build/, out/build/x64-Debug/, ...) gefunden werden
+configure_file(${CMAKE_CURRENT_SOURCE_DIR}/wheel_speeds.txt
+               ${CMAKE_CURRENT_BINARY_DIR}/wheel_speeds.txt COPYONLY)
 
 add_executable(DigitalDisplay DigitalDisplay.cpp)
 add_executable(AnalogDisplay AnalogDisplay.cpp)

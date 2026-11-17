@@ -1,6 +1,6 @@
 #include "Speedometer.h"
 
-Speedometer::Speedometer(const ISpeed& speed, DisplayClient::SPtr display) :
+Speedometer::Speedometer(const ISpeed& speed, const DisplayClient::SPtr& display) :
     MeterBase(speed, display)
 {
     Update();
@@ -8,7 +8,5 @@ Speedometer::Speedometer(const ISpeed& speed, DisplayClient::SPtr display) :
 
 void Speedometer::Update()
 {
-    double const speed = mSpeed.GetCurrentSpeed();
-
-    mDisplay->SendValue(static_cast<unsigned int>(speed));
+    Show(mSpeed.GetCurrentSpeed());
 }

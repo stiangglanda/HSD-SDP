@@ -15,16 +15,20 @@ class KFZ : public Object
 {
 public:
    /// @brief Attaches a meter to the KFZ.
+   ///
+   /// A meter that is already attached is not attached a second time.
    /// @param[in] meter is the meter to attach.
    /// @throws std::invalid_argument if meter is a null pointer.
-   void Attach(Meter::SPtr meter);
+   void Attach(const Meter::SPtr& meter);
 
    /// @brief Detaches a meter from the KFZ.
+   ///
+   /// Detaching a meter that is not attached has no effect.
    /// @param[in] meter is the meter to detach.
-   void Detach(Meter::SPtr meter);
+   void Detach(const Meter::SPtr& meter);
 
    /// @brief Calls Update on all attached meters.
-   void Notify();
+   void Notify() const;
 
 protected:
    /// @brief Protected default constructor that makes the class abstract.
