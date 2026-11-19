@@ -81,9 +81,12 @@ if (MSVC)
 endif()
 
 # Sensordaten neben die .exe kopieren, damit sie unabhaengig vom Build-Ordner
-# (build/, out/build/x64-Debug/, ...) gefunden werden
-configure_file(${CMAKE_CURRENT_SOURCE_DIR}/wheel_speeds.txt
-               ${CMAKE_CURRENT_BINARY_DIR}/wheel_speeds.txt COPYONLY)
+# (build/, out/build/x64-Debug/, ...) gefunden werden. Das Kopieren passiert
+# bei jedem Build, damit Aenderungen an der Datei sofort ankommen.
+add_custom_command(TARGET DrivingSimulation POST_BUILD
+  COMMAND ${CMAKE_COMMAND} -E copy_if_different
+          ${CMAKE_CURRENT_SOURCE_DIR}/wheel_speeds.txt
+          $<TARGET_FILE_DIR:DrivingSimulation>/wheel_speeds.txt)
 
 add_executable(DigitalDisplay DigitalDisplay.cpp)
 add_executable(AnalogDisplay AnalogDisplay.cpp)

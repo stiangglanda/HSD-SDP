@@ -1,0 +1,71 @@
+<diagram program="umletino" version="15.1"><zoom_level>7</zoom_level><element><id>UMLClass</id><coordinates><x>562</x><y>84</y><w>126</w><h>49</h></coordinates><panel_attributes>&lt;&lt;abstract&gt;&gt;
+Object
+--
+--
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>135</x><y>196</y><w>154</w><h>77</h></coordinates><panel_attributes>MusicPlayer
+--
+
+--
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>541</x><y>210</y><w>168</w><h>91</h></coordinates><panel_attributes>&lt;&lt;abstract&gt;&gt;
+/Media/
+--
+- mTitle : string
+- mDuration : size_t
+--
++ GetChild(int) : Media
++ Accept(Visitor)
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>877</x><y>210</y><w>168</w><h>77</h></coordinates><panel_attributes>Collection
+--
+--
++ Play()
++ Add(Media)
++ Remove(Media)
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1115</x><y>210</y><w>168</w><h>70</h></coordinates><panel_attributes>&lt;&lt;interface&gt;&gt;
+/ICollection/
+--
+--
++ Add(Media)
++ Remove(Media)
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>135</x><y>406</y><w>154</w><h>84</h></coordinates><panel_attributes>&lt;&lt;interface&gt;&gt;
+Visitor
+--
+--
++ Visit(Collection)
++ Visit(Song)
++ Visit (Album)
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>429</x><y>406</y><w>154</w><h>56</h></coordinates><panel_attributes>Song
+--
+- mInterpreter : string
+--
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>681</x><y>406</y><w>154</w><h>56</h></coordinates><panel_attributes>Album
+--
+--
++ GetNumSongs()
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>37</x><y>588</y><w>154</w><h>70</h></coordinates><panel_attributes>VisitorSearch
+--
+--
++ Visit(Collection)
++ Visit(Song)
++ Visit (Album)
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>233</x><y>588</y><w>154</w><h>70</h></coordinates><panel_attributes>VisitorPlay
+--
+--
++ Visit(Collection)
++ Visit(Song)
++ Visit (Album)
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>541</x><y>616</y><w>182</w><h>56</h></coordinates><panel_attributes>SimpleMediaFactory
+--
+--
++ CreateMedia(kind) : Media
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>618</x><y>126</y><w>357</w><h>98</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;10;60;490;60;490;120</additional_attributes></element><element><id>Relation</id><coordinates><x>618</x><y>126</y><w>21</w><h>98</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;10;120</additional_attributes></element><element><id>Relation</id><coordinates><x>205</x><y>126</y><w>434</w><h>84</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>600;10;600;60;10;60;10;100</additional_attributes></element><element><id>Relation</id><coordinates><x>499</x><y>294</y><w>140</w><h>126</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>180;10;180;90;10;90;10;160</additional_attributes></element><element><id>Relation</id><coordinates><x>618</x><y>294</y><w>154</w><h>126</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;10;90;200;90;200;160</additional_attributes></element><element><id>Relation</id><coordinates><x>702</x><y>224</y><w>189</w><h>21</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;250;10</additional_attributes></element><element><id>Relation</id><coordinates><x>702</x><y>252</y><w>189</w><h>35</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-
+
+mMedias</panel_attributes><additional_attributes>250;20;10;20</additional_attributes></element><element><id>Relation</id><coordinates><x>1038</x><y>238</y><w>91</w><h>21</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>110;10;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>205</x><y>483</y><w>119</w><h>119</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>10;10;10;80;150;80;150;150</additional_attributes></element><element><id>Relation</id><coordinates><x>107</x><y>483</y><w>119</w><h>119</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>150;10;150;80;10;80;10;150</additional_attributes></element><element><id>Relation</id><coordinates><x>576</x><y>413</y><w>119</w><h>28</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-
+- mSongs</panel_attributes><additional_attributes>150;20;10;20</additional_attributes></element><element><id>Relation</id><coordinates><x>170</x><y>266</y><w>42</w><h>154</h></coordinates><panel_attributes>lt=&lt;.
+&lt;&lt;use&gt;&gt;</panel_attributes><additional_attributes>10;200;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>247</x><y>273</y><w>308</w><h>147</h></coordinates><panel_attributes>lt=&lt;.
+&lt;&lt;use&gt;&gt;</panel_attributes><additional_attributes>10;190;10;20;420;20</additional_attributes></element><element><id>Relation</id><coordinates><x>282</x><y>224</y><w>273</w><h>21</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;10;370;10</additional_attributes></element><element><id>Relation</id><coordinates><x>282</x><y>420</y><w>161</w><h>28</h></coordinates><panel_attributes>lt=&lt;.
+&lt;&lt;use&gt;&gt;</panel_attributes><additional_attributes>210;20;10;20</additional_attributes></element><element><id>Relation</id><coordinates><x>282</x><y>455</y><w>504</w><h>63</h></coordinates><panel_attributes>lt=&lt;.
+&lt;&lt;use&gt;&gt;</panel_attributes><additional_attributes>700;10;700;70;170;70;170;20;10;20</additional_attributes></element><element><id>Relation</id><coordinates><x>282</x><y>280</y><w>735</w><h>238</h></coordinates><panel_attributes>lt=&lt;.
+&lt;&lt;use&gt;&gt;</panel_attributes><additional_attributes>1030;10;1030;320;170;320;170;270;10;270</additional_attributes></element><element><id>Relation</id><coordinates><x>16</x><y>238</y><w>630</w><h>490</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>170;10;10;10;10;680;880;680;880;620</additional_attributes></element><element><id>Relation</id><coordinates><x>562</x><y>455</y><w>49</w><h>175</h></coordinates><panel_attributes>lt=&lt;.
+&lt;&lt;create&gt;&gt;</panel_attributes><additional_attributes>10;10;10;230</additional_attributes></element><element><id>Relation</id><coordinates><x>688</x><y>455</y><w>49</w><h>175</h></coordinates><panel_attributes>lt=&lt;.
+&lt;&lt;create&gt;&gt;</panel_attributes><additional_attributes>10;10;10;230</additional_attributes></element><element><id>Relation</id><coordinates><x>716</x><y>280</y><w>350</w><h>378</h></coordinates><panel_attributes>lt=&lt;.
+&lt;&lt;create&gt;&gt;</panel_attributes><additional_attributes>440;10;440;520;10;520</additional_attributes></element></diagram>

@@ -144,7 +144,7 @@ static void TestSensor()
       last = s->GetRevolutions();
       if (last > max) max = last;
    }
-   Check(first == 0 && max == 1379 && last == 0, "wheel_speeds.txt: 27 values from 0 up to 1379 and back to 0");
+   Check(first == 0 && max == 63662 && last == 0, "wheel_speeds.txt: 27 values from 0 up to 63662 and back to 0");
    Check(s->GetRevolutions() == 0, "wheel_speeds.txt: restart after 27 values");
    cout << endl;
 }
@@ -278,6 +278,21 @@ static void TestMeters()
    Check(probeA.Shown() == 113, "Second Process (1000 U/min -> 113 km/h)");
    probeB.Shown();
    Check(Near(odometer->GetDistance(), 0.02356), "Distance of both intervals is summed up (0.02356 km)");
+
+   // wheel_speeds.txt: Schritte von 6366.2 U/min = 720 km/h = 0.1 km pro 500 ms
+   PKW drive(make_unique<WheelSpeedSensor>("wheel_speeds.txt"), 0.6);
+   auto driveOdo = make_shared<Odometer>(drive, dispB);
+   probeB.Shown();
+   drive.Attach(driveOdo);
+   unsigned shownKm = 0;
+   for (int i = 0; i < 27; ++i) {
+      drive.Process();
+      shownKm = probeB.Shown();
+      if (i == 9) Check(Near(drive.GetCurrentSpeed(), 6480, 0.01) && shownKm == 4, "wheel_speeds.txt after 10 cycles: 6480 km/h, display shows 4 km");
+      if (i == 16) Check(Near(drive.GetCurrentSpeed(), 7200, 0.01) && shownKm == 11, "wheel_speeds.txt after 17 cycles: 7200 km/h, display shows 11 km");
+   }
+   cout << "  Distance after one pass through wheel_speeds.txt: " << driveOdo->GetDistance() << " km" << endl;
+   Check(Near(driveOdo->GetDistance(), 16.0, 0.001) && shownKm == 16, "One pass through wheel_speeds.txt -> 16 km, display shows 16");
    cout << endl;
 }
 
