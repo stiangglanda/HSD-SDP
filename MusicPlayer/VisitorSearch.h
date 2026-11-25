@@ -10,6 +10,10 @@
 class VisitorSearch : public Visitor
 {
 public:
+   /// @brief Constructor.
+   /// @param[in] searchTerm is the term to search for.
+   VisitorSearch(std::string const& searchTerm);
+   
    /// @brief Visits a collection and searches in it.
    /// @param[in] collection is the collection to visit.
    void Visit(Collection const& collection) override;
@@ -21,5 +25,8 @@ public:
    /// @brief Visits an album and searches in it.
    /// @param[in] album is the album to visit.
    void Visit(Album const& album) override;
+
+private:
+   std::string mSearchTerm;
 };
 #endif //VISITORSEARCH_H
