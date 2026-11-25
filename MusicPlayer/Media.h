@@ -19,6 +19,14 @@ public:
    /// @param[in] duration is the duration of the media.
    Media(std::string const& title, size_t const duration);
 
+   /// @brief Returns the title of the media.
+   /// @returns the title.
+   std::string const& GetTitle() const;
+
+   /// @brief Returns the duration of the media.
+   /// @returns the duration.
+   size_t GetDuration() const;
+
    /// @brief Returns a child of the media.
    /// @param[in] index is the position of the child.
    /// @returns the child at the given position or nullptr if there is none.

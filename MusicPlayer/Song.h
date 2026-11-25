@@ -18,6 +18,10 @@ public:
    /// Calls the constructor of a media.
    Song(std::string const& title, size_t const duration, std::string const& interpreter);
 
+   /// @brief Returns the interpreter of the song.
+   /// @returns the interpreter.
+   std::string const& GetInterpreter() const;
+
    /// @brief Accepts a visitor.
    /// @param[in] visitor is the visitor that visits the song.
    ///

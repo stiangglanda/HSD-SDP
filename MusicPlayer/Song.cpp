@@ -6,6 +6,11 @@ Song::Song(std::string const& title, size_t const duration, std::string const& i
 {
 }
 
+std::string const& Song::GetInterpreter() const
+{
+   return mInterpreter;
+}
+
 void Song::Accept(Visitor& visitor) const
 {
 }
