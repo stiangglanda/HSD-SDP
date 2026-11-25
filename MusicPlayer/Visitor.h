@@ -5,7 +5,7 @@ class Collection;
 class Song;
 class Album;
 
-/// @author Leander
+/// @author Leander Kieweg
 /// @date 25.11.2026
 /// @brief Interface for a visitor of media.
 ///

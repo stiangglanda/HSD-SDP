@@ -3,7 +3,7 @@
 
 class Media;
 
-/// @author Leander
+/// @author Julian Rieger
 /// @date 25.11.2026
 /// @brief Interface for a collection of media.
 ///

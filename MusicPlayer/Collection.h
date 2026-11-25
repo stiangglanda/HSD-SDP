@@ -4,7 +4,7 @@
 #include "Media.h"
 #include "ICollection.h"
 
-/// @author Leander
+/// @author Julian Rieger
 /// @date 25.11.2026
 /// @brief Concrete class for a collection of media.
 ///

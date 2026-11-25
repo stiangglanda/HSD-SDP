@@ -2,7 +2,7 @@
 #define SONG_H
 #include "Media.h"
 
-/// @author Leander
+/// @author Julian Rieger
 /// @date 25.11.2026
 /// @brief Concrete class for a song.
 ///

@@ -4,7 +4,7 @@
 
 class Media;
 
-/// @author Leander
+/// @author Leander Kieweg
 /// @date 25.11.2026
 /// @brief Factory that creates media.
 ///

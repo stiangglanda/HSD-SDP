@@ -5,7 +5,7 @@
 
 class Song;
 
-/// @author Leander
+/// @author Julian Rieger
 /// @date 25.11.2026
 /// @brief Concrete class for an album.
 ///

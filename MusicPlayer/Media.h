@@ -6,7 +6,7 @@
 
 class Visitor;
 
-/// @author Leander
+/// @author Julian Rieger
 /// @date 25.11.2026
 /// @brief Abstract class for all kinds of media.
 ///

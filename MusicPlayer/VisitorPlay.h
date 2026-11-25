@@ -2,7 +2,7 @@
 #define VISITORPLAY_H
 #include "Visitor.h"
 
-/// @author Leander
+/// @author Leander Kieweg
 /// @date 25.11.2026
 /// @brief Concrete visitor that plays media.
 ///

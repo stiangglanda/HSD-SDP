@@ -5,7 +5,7 @@
 class Media;
 class SimpleMediaFactory;
 
-/// @author Leander
+/// @author Leander Kieweg
 /// @date 25.11.2026
 /// @brief Concrete class for a music player.
 ///
