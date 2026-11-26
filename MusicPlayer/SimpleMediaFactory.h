@@ -25,8 +25,9 @@ public:
                                  std::string const& interpreter,
                                  size_t const duration);
 
-   std::shared_ptr<Album> CreateAlbum(std::string const& title,
-                                      std::vector<std::shared_ptr<Song>> songs);
+    std::shared_ptr<Album> CreateAlbum(std::string const &title,
+                                       std::string const &interpreter,
+                                       std::vector<std::shared_ptr<Song>> songs);
 
    std::shared_ptr<Collection> CreateCollection(std::string const& title,
                                                 std::vector<std::shared_ptr<Media>> medias);
