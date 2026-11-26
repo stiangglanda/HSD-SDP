@@ -14,10 +14,9 @@ class Collection : public Media, public ICollection
 public:
    /// @brief Constructor of a collection.
    /// @param[in] title is the title of the collection.
-   /// @param[in] duration is the duration of the collection.
    ///
    /// Calls the constructor of a media.
-   Collection(std::string const& title, size_t const duration);
+   Collection(std::string const& title);
 
    /// @brief Plays all media of the collection.
    void Play();

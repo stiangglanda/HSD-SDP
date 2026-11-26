@@ -1,8 +1,8 @@
 #include "Collection.h"
 #include "Visitor.h"
 
-Collection::Collection(std::string const& title, size_t const duration)
-   : Media(title, duration)
+Collection::Collection(std::string const& title)
+   : Media(title)
 {
 }
 

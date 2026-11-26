@@ -13,4 +13,5 @@ std::string const& Song::GetInterpreter() const
 
 void Song::Accept(Visitor& visitor) const
 {
+	visitor.Visit(*this);
 }
