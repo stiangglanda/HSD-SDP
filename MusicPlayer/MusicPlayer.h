@@ -1,5 +1,7 @@
 #ifndef MUSICPLAYER_H
 #define MUSICPLAYER_H
+#include <memory>
+
 #include "Object.h"
 
 class Media;
@@ -33,6 +35,6 @@ public:
 
 private:
    Media* mPlaylist;             ///< Playlist of the music player.
-   SimpleMediaFactory* mFactory; ///< Factory to create media.
+   std::unique_ptr<SimpleMediaFactory> mFactory; ///< Factory to create media.
 };
 #endif //MUSICPLAYER_H
