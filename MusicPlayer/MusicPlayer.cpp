@@ -1,6 +1,5 @@
 #include "MusicPlayer.h"
 #include <algorithm>
-
 #include "Collection.h"
 #include "Media.h"
 #include "SimpleMediaFactory.h"
