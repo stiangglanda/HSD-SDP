@@ -6,7 +6,7 @@
 #include <iomanip>
 #include <sstream>
 
-std::string FormatDuration(size_t const seconds)
+std::string VisitorPlay::FormatDuration(size_t const seconds)
 {
     std::ostringstream out;
     out << std::setfill('0') << std::setw(2) << seconds / 60
