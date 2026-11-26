@@ -17,7 +17,7 @@ public:
    /// @brief Constructor of a media.
    /// @param[in] title is the title of the media.
    /// @param[in] duration is the duration of the media.
-   Media(std::string const& title, size_t const duration);
+   Media(std::string const& title);
 
    /// @brief Returns the title of the media.
    /// @returns the title.
@@ -25,7 +25,7 @@ public:
 
    /// @brief Returns the duration of the media.
    /// @returns the duration.
-   size_t GetDuration() const;
+   virtual size_t GetDuration() const = 0;
 
    /// @brief Returns a child of the media.
    /// @param[in] index is the position of the child.
@@ -42,6 +42,5 @@ public:
 
 private:
    std::string mTitle;  ///< Title of the media.
-   size_t mDuration;    ///< Duration of the media.
 };
 #endif //MEDIA_H

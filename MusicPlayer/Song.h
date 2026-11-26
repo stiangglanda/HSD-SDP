@@ -2,16 +2,15 @@
 #define SONG_H
 #include <memory>
 
-#include "Media.h"
-
-class Album;
+#include "Publication.h"
+#include "Album.h"
 
 /// @author Julian Rieger
 /// @date 25.11.2026
 /// @brief Concrete class for a song.
 ///
 /// The class represents a song with its interpreter.
-class Song : public Media
+class Song : public Publication
 {
 public:
    /// @brief Constructor of a song.
@@ -33,9 +32,14 @@ public:
    void Accept(Visitor& visitor) const override;
 
 private:
-   void SetAlbum(Album& album);
+   /// Only the constructor of Album may assign itself to a song.
+   friend Album::Album(std::string const& title, std::string const& interpreter, std::vector<std::shared_ptr<Song>> songs);
 
-   std::weak_ptr<Album> album;
+   /// @brief Sets the album the song belongs to.
+   /// @param[in] album is the album that contains the song.
+   void SetAlbum(Album* album);
+
+   Album* mAlbum = nullptr;  ///< Album of the song (0..1), not owned.
 
    std::string mInterpreter;  ///< Name of the interpreter.
 };

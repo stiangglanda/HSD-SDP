@@ -1,20 +1,29 @@
 #include "Album.h"
 #include "Song.h"
 #include "Visitor.h"
+#include <utility>
 
-Album::AlbumAlbum(std::string const& title, std::string const& interpreter, std::vector<std::shared_ptr<Song>> songs)
-   : Media(title, duration)
+Album::Album(std::string const& title, std::string const& interpreter, std::vector<std::shared_ptr<Song>> songs) : 
+   Publication{title, interpreter}, mSongs{std::move(songs)}
 {
+   for (auto const& song : mSongs)
+   {
+      song->SetAlbum(this);
+   }
 }
 
 size_t Album::GetNumSongs() const
 {
-   return 0;
+   return mSongs.size();
 }
 
 Media const* Album::GetChild(int const index) const
 {
-   return nullptr;
+   if (index < 0 || static_cast<size_t>(index) >= mSongs.size())
+   {
+      return nullptr;
+   }
+   return mSongs[index].get();
 }
 
 void Album::Accept(Visitor& visitor) const
