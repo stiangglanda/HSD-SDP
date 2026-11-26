@@ -29,7 +29,6 @@ public:
                                        std::string const &interpreter,
                                        std::vector<std::shared_ptr<Song>> songs);
 
-   std::shared_ptr<Collection> CreateCollection(std::string const& title,
-                                                std::vector<std::shared_ptr<Media>> medias);
+   std::shared_ptr<Collection> CreateCollection(std::string const& title);
 };
 #endif //SIMPLEMEDIAFACTORY_H

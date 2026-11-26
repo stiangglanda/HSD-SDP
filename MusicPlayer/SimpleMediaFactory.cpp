@@ -13,7 +13,6 @@ std::shared_ptr<Album> SimpleMediaFactory::CreateAlbum(std::string const &title,
     return std::make_shared<Album>(title, interpreter, songs);
 }
 
-std::shared_ptr<Collection> SimpleMediaFactory::CreateCollection(std::string const &title,
-    std::vector<std::shared_ptr<Media>> medias) {
-    return std::make_shared<Collection>(title, medias);
+std::shared_ptr<Collection> SimpleMediaFactory::CreateCollection(std::string const &title) {
+    return std::make_shared<Collection>(title);
 }
