@@ -1,5 +1,7 @@
 #ifndef VISITORSEARCH_H
 #define VISITORSEARCH_H
+#include <string>
+
 #include "Visitor.h"
 
 /// @author Leander Kieweg

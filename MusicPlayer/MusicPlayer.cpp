@@ -1,5 +1,7 @@
 #include "MusicPlayer.h"
 #include <algorithm>
+
+#include "Collection.h"
 #include "Media.h"
 #include "SimpleMediaFactory.h"
 #include "VisitorSearch.h"
@@ -22,20 +24,32 @@ void MusicPlayer::Search(std::string const& searchTerm)
     }
 }
 
-void MusicPlayer::Add(MediaKind kind,
-                      std::string const& title,
-                      size_t const duration,
-                      std::string const& interpreter)
-{
-    auto media = mFactory.CreateMedia(kind, title, duration, interpreter);
+void MusicPlayer::Add(std::shared_ptr<Media> media) {
     if (media != nullptr)
     {
         mPlaylist.push_back(std::move(media));
     }
 }
 
-void MusicPlayer::Remove()
+void MusicPlayer::Remove(std::string const& title)
 {
-    auto media = mFactory.CreateMedia(MediaKind::Album, "All Along the Watchtower", "AC/DC");
-    media->
+    auto it = std::find_if(mPlaylist.begin(), mPlaylist.end(),
+                           [&title](std::shared_ptr<Media> const& media)
+                           {
+                              return media->GetTitle() == title;
+                           });
+    if (it != mPlaylist.end())
+    {
+        mPlaylist.erase(it);
+        return;
+    }
+
+    for (auto const& media : mPlaylist)
+    {
+        auto collection = std::dynamic_pointer_cast<Collection>(media);
+        if (collection != nullptr && collection->Remove(title))
+        {
+            return;
+        }
+    }
 }
