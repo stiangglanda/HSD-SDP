@@ -1,5 +1,8 @@
 #ifndef VISITORPLAY_H
 #define VISITORPLAY_H
+#include <cstddef>
+#include <string>
+
 #include "Visitor.h"
 
 /// @author Leander Kieweg
@@ -21,5 +24,10 @@ public:
    /// @brief Visits an album and plays all of its songs.
    /// @param[in] album is the album to visit.
    void Visit(Album const& album) override;
+
+private:
+   std::string FormatDuration(size_t const seconds);
+   std::size_t mSongCounter = 0;
+   size_t mLevel = 0;
 };
 #endif //VISITORPLAY_H
