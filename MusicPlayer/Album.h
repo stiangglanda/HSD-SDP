@@ -1,5 +1,6 @@
 #ifndef ALBUM_H
 #define ALBUM_H
+#include <memory>
 #include <vector>
 #include "Media.h"
 
@@ -15,10 +16,10 @@ class Album : public Media
 public:
    /// @brief Constructor of an album.
    /// @param[in] title is the title of the album.
-   /// @param[in] duration is the duration of the album.
+   /// @param[in] interpreter is the interpreter of the album.
    ///
    /// Calls the constructor of a media.
-   Album(std::string const& title, size_t const duration);
+   Album(std::string const& title, std::string const& interpreter, std::vector<std::shared_ptr<Song>> songs);
 
    /// @brief Returns the number of songs.
    /// @returns the number of songs of the album.

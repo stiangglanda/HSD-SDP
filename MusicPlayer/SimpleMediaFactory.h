@@ -20,6 +20,6 @@ public:
    /// @returns a new media of the given kind or nullptr if the kind is unknown.
    ///
    /// The caller is responsible for deleting the returned object.
-   std::unique_ptr<Media> CreateMedia(MediaKind kind, std::string const& title, size_t const duration, std::string const& interpreter);
+   std::unique_ptr<Media> CreateMedia(MediaKind kind, std::string const& title, size_t const duration = 0, std::string const& interpreter = "");
 };
 #endif //SIMPLEMEDIAFACTORY_H

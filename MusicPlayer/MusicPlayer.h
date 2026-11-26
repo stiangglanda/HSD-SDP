@@ -1,8 +1,11 @@
 #ifndef MUSICPLAYER_H
 #define MUSICPLAYER_H
 #include <memory>
+#include <vector>
 
 #include "Object.h"
+#include "SimpleMediaFactory.h"
+#include "VisitorPlay.h"
 
 class Media;
 class SimpleMediaFactory;
@@ -23,18 +26,21 @@ public:
    /// @brief Searches in the playlist.
    ///
    /// Uses a visitor to search all media.
-   void Search();
+   void Search(std::string const& searchTerm);
 
    /// @brief Adds a media to the playlist.
    ///
    /// Uses the factory to create the media.
-   void Add();
+   void Add(MediaKind kind,
+            std::string const& title,
+            size_t const duration = 0,
+            std::string const& interpreter = "");
 
    /// @brief Removes a media from the playlist.
    void Remove();
 
 private:
-   Media* mPlaylist;             ///< Playlist of the music player.
-   std::unique_ptr<SimpleMediaFactory> mFactory; ///< Factory to create media.
+   std::vector<std::unique_ptr<Media>> mPlaylist;
+   SimpleMediaFactory mFactory;
 };
 #endif //MUSICPLAYER_H

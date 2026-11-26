@@ -2,7 +2,7 @@
 #include "Song.h"
 #include "Visitor.h"
 
-Album::Album(std::string const& title, size_t const duration)
+Album::AlbumAlbum(std::string const& title, std::string const& interpreter, std::vector<std::shared_ptr<Song>> songs)
    : Media(title, duration)
 {
 }

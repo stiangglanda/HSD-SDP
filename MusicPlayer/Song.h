@@ -1,5 +1,7 @@
 #ifndef SONG_H
 #define SONG_H
+#include <memory>
+
 #include "Media.h"
 
 /// @author Julian Rieger
@@ -29,6 +31,10 @@ public:
    void Accept(Visitor& visitor) const override;
 
 private:
+   void SetAlbum(Album& album)
+
+   std::weak_ptr<Album> album;
+
    std::string mInterpreter;  ///< Name of the interpreter.
 };
 #endif //SONG_H
