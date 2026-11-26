@@ -6,7 +6,7 @@ Publication::Publication(std::string const& title, std::string const& interprete
 {
 }
 
-std::string Publication::GetInterpreter()
+std::string const& Publication::GetInterpreter() const
 {
     return mInterpreter;
 }

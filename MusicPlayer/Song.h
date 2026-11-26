@@ -21,9 +21,11 @@ public:
    /// Calls the constructor of a media.
    Song(std::string const& title, size_t const duration, std::string const& interpreter);
 
-   /// @brief Returns the interpreter of the song.
-   /// @returns the interpreter.
-   std::string const& GetInterpreter() const;
+   /// @brief Returns the duration of the song.
+   /// @returns the duration.
+   ///
+   /// Implements the pure virtual method of class Media.
+   size_t GetDuration() const override;
 
    /// @brief Accepts a visitor.
    /// @param[in] visitor is the visitor that visits the song.
@@ -41,6 +43,6 @@ private:
 
    Album* mAlbum = nullptr;  ///< Album of the song (0..1), not owned.
 
-   std::string mInterpreter;  ///< Name of the interpreter.
+   size_t mDuration;  ///< Duration of the song.
 };
 #endif //SONG_H

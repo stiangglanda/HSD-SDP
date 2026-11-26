@@ -25,6 +25,12 @@ public:
    /// @returns the number of songs of the album.
    size_t GetNumSongs() const;
 
+   /// @brief Returns the duration of the album.
+   /// @returns the sum of the durations of all songs.
+   ///
+   /// Implements the pure virtual method of class Media.
+   size_t GetDuration() const override;
+
    /// @brief Returns a song of the album.
    /// @param[in] index is the position of the song.
    /// @returns the song at the given position or nullptr if there is none.

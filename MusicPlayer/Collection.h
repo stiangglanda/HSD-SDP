@@ -41,6 +41,12 @@ public:
    /// @returns the number of songs of the collection.
    size_t GetNumSongs() const;
 
+   /// @brief Returns the duration of the collection.
+   /// @returns the sum of the durations of all media.
+   ///
+   /// Implements the pure virtual method of class Media.
+   size_t GetDuration() const override;
+
    /// @brief Accepts a visitor.
    /// @param[in] visitor is the visitor that visits the collection.
    ///

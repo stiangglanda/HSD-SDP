@@ -10,7 +10,8 @@ class Visitor;
 /// @date 25.11.2026
 /// @brief Abstract class for all kinds of media.
 ///
-/// The class has a title and a duration. It is the base class of Song, Album and Collection.
+/// The class has a title. The duration is stored by a song and calculated by album and collection.
+/// It is the base class of Song, Album and Collection.
 class Media : public Object
 {
 public:

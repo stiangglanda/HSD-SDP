@@ -17,11 +17,12 @@ public:
    /// @param[in] title is the title of the media.
    Publication(std::string const& title, std::string const& interpreter);
 
-   /// @brief Return the member mInterpreter as std::string
-   std::string GetInterpreter();
+   /// @brief Returns the interpreter of the publication.
+   /// @returns the interpreter.
+   std::string const& GetInterpreter() const;
 
 private:
 
-    std::string mInterpreter;
+    std::string mInterpreter;  ///< Name of the interpreter.
 };
 #endif //PUBLICATION_H

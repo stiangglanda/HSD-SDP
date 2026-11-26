@@ -15,6 +15,8 @@ add_executable (MusicPlayer main.cpp
         Object.h
         Media.cpp
         Media.h
+        Publication.cpp
+        Publication.h
         Song.cpp
         Song.h
         Album.cpp

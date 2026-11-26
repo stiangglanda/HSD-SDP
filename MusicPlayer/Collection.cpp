@@ -10,11 +10,26 @@ Collection::Collection(std::string const& title)
 
 size_t Collection::GetNumSongs() const
 {
-   return mMedias.size();
+   size_t c = 0;
+   for(auto const& e : mMedias)
+   {
+      
+   }
+}
+
+size_t Collection::GetDuration() const
+{
+   size_t duration = 0;
+   for (auto const media : mMedias)
+   {
+      duration += media->GetDuration();
+   }
+   return duration;
 }
 
 void Collection::Add(Media* media)
 {
+   mMedias.push_back(media);
 }
 
 void Collection::Remove(Media* media)
@@ -28,7 +43,11 @@ void Collection::Remove(Media* media)
 
 Media const* Collection::GetChild(int const index) const
 {
-   return nullptr;
+   if (index < 0 || static_cast<size_t>(index) >= mMedias.size())
+   {
+      return nullptr;
+   }
+   return mMedias[index];
 }
 
 void Collection::Accept(Visitor& visitor) const

@@ -17,6 +17,16 @@ size_t Album::GetNumSongs() const
    return mSongs.size();
 }
 
+size_t Album::GetDuration() const
+{
+   size_t duration = 0;
+   for (auto const& song : mSongs)
+   {
+      duration += song->GetDuration();
+   }
+   return duration;
+}
+
 Media const* Album::GetChild(int const index) const
 {
    if (index < 0 || static_cast<size_t>(index) >= mSongs.size())
