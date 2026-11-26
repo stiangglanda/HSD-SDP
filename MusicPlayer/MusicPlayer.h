@@ -31,16 +31,12 @@ public:
    /// @brief Adds a media to the playlist.
    ///
    /// Uses the factory to create the media.
-   void Add(MediaKind kind,
-            std::string const& title,
-            size_t const duration = 0,
-            std::string const& interpreter = "");
-
+   void Add(std::shared_ptr<Media> media);
+   
    /// @brief Removes a media from the playlist.
-   void Remove();
+   void Remove(std::string const& title);
 
 private:
-   std::vector<std::unique_ptr<Media>> mPlaylist;
-   SimpleMediaFactory mFactory;
+   std::vector<std::shared_ptr<Media>> mPlaylist;
 };
 #endif //MUSICPLAYER_H

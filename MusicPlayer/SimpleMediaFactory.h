@@ -2,10 +2,11 @@
 #define SIMPLEMEDIAFACTORY_H
 #include <memory>
 #include <string>
+#include <vector>
+#include "Song.h"
 
+class Collection;
 class Media;
-
-enum class MediaKind { Song, Album, Collection };
 
 /// @author Leander Kieweg
 /// @date 25.11.2026
@@ -20,6 +21,14 @@ public:
    /// @returns a new media of the given kind or nullptr if the kind is unknown.
    ///
    /// The caller is responsible for deleting the returned object.
-   std::unique_ptr<Media> CreateMedia(MediaKind kind, std::string const& title, size_t const duration = 0, std::string const& interpreter = "");
+   std::shared_ptr<Song> CreateSong(std::string const& title,
+                                 std::string const& interpreter,
+                                 size_t const duration);
+
+   std::shared_ptr<Album> CreateAlbum(std::string const& title,
+                                      std::vector<std::shared_ptr<Song>> songs);
+
+   std::shared_ptr<Collection> CreateCollection(std::string const& title,
+                                                std::vector<std::shared_ptr<Media>> medias);
 };
 #endif //SIMPLEMEDIAFACTORY_H

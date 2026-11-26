@@ -6,8 +6,7 @@
 
 void VisitorPlay::Visit(Collection const& collection)
 {
-    std::cout << "Playing collection: " << collection.GetTitle() << std::endl;
-    std::cout << "Duration: " << collection.GetDuration() << std::endl;
+    std::cout << "Collection: " << collection.GetTitle() << " (" << collection.GetNumSongs() << " Songs) << " << collection.GetDuration() << std::endl;
     
     for (int i = 0; collection.GetChild(i) != nullptr; ++i)
     {
@@ -17,16 +16,12 @@ void VisitorPlay::Visit(Collection const& collection)
 
 void VisitorPlay::Visit(Song const& song)
 {
-    std::cout << "Playing song: " << song.GetTitle() << std::endl;
-    std::cout << "Duration: " << song.GetDuration() << std::endl;
-    std::cout << "Interpreter: " << song.GetInterpreter() << std::endl;
+    std::cout << "1. " << song.GetTitle() << " << " << song.GetDuration() << " << " << song.GetInterpreter() << std::endl;;
 }
 
 void VisitorPlay::Visit(Album const& album)
 {
-    std::cout << "Playing album: " << album.GetTitle() << std::endl;
-    std::cout << "Duration: " << album.GetDuration() << std::endl;
-    std::cout << "Number of songs: " << album.GetNumSongs() << std::endl;
+    std::cout << "Album: " << album.GetTitle() << " (" << album.GetNumSongs() << " Songs) << " << album.GetDuration() << std::endl;
 
     for (int i = 0; album.GetChild(i) != nullptr; ++i)
     {
