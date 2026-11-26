@@ -28,4 +28,5 @@ Media const* Album::GetChild(int const index) const
 
 void Album::Accept(Visitor& visitor) const
 {
+   visitor.Visit(*this);
 }

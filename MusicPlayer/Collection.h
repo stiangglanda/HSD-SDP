@@ -18,9 +18,6 @@ public:
    /// Calls the constructor of a media.
    Collection(std::string const& title);
 
-   /// @brief Plays all media of the collection.
-   void Play();
-
    /// @brief Adds a media to the collection.
    /// @param[in] media is the media to add.
    ///
@@ -39,6 +36,10 @@ public:
    ///
    /// Overrides the method of class Media.
    Media const* GetChild(int const index) const override;
+
+   /// @brief Returns the number of songs.
+   /// @returns the number of songs of the collection.
+   size_t GetNumSongs() const;
 
    /// @brief Accepts a visitor.
    /// @param[in] visitor is the visitor that visits the collection.

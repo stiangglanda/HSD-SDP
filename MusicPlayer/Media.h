@@ -16,7 +16,6 @@ class Media : public Object
 public:
    /// @brief Constructor of a media.
    /// @param[in] title is the title of the media.
-   /// @param[in] duration is the duration of the media.
    Media(std::string const& title);
 
    /// @brief Returns the title of the media.
