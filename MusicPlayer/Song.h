@@ -4,6 +4,8 @@
 
 #include "Media.h"
 
+class Album;
+
 /// @author Julian Rieger
 /// @date 25.11.2026
 /// @brief Concrete class for a song.
@@ -31,7 +33,7 @@ public:
    void Accept(Visitor& visitor) const override;
 
 private:
-   void SetAlbum(Album& album)
+   void SetAlbum(Album& album);
 
    std::weak_ptr<Album> album;
 
