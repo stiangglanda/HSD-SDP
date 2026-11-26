@@ -19,7 +19,7 @@ public:
    /// @param[in] interpreter is the name of the interpreter.
    ///
    /// Calls the constructor of a media.
-   Song(std::string const& title, size_t const duration, std::string const& interpreter);
+   Song(std::string const& title, std::string const& interpreter, size_t const duration);
 
    /// @brief Returns the duration of the song.
    /// @returns the duration.

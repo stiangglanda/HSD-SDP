@@ -1,6 +1,7 @@
 #ifndef COLLECTION_H
 #define COLLECTION_H
 #include <vector>
+#include <memory>
 #include "Media.h"
 #include "ICollection.h"
 
@@ -22,13 +23,14 @@ public:
    /// @param[in] media is the media to add.
    ///
    /// Implements the pure virtual method of interface ICollection.
-   void Add(Media* media) override;
+   void Add(std::shared_ptr<Media> media) override;
 
    /// @brief Removes a media from the collection.
-   /// @param[in] media is the media to remove.
+   /// @param[in] title is the media to remove.
+   /// @returns if a element was deleted, if yes, function returs true.
    ///
    /// Implements the pure virtual method of interface ICollection.
-   void Remove(Media* media) override;
+   bool Remove(std::string const& title) override;
 
    /// @brief Returns a media of the collection.
    /// @param[in] index is the position of the media.
@@ -54,6 +56,6 @@ public:
    void Accept(Visitor& visitor) const override;
 
 private:
-   std::vector<Media*> mMedias;  ///< Media of the collection (*).
+   std::vector<std::shared_ptr<Media>> mMedias;  ///< Media of the collection (*).
 };
 #endif //COLLECTION_H

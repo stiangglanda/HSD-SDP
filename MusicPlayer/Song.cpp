@@ -1,7 +1,7 @@
 #include "Song.h"
 #include "Visitor.h"
 
-Song::Song(std::string const& title, size_t const duration, std::string const& interpreter)
+Song::Song(std::string const& title, std::string const& interpreter, size_t const duration)
    : Publication(title, interpreter), mDuration(duration)
 {
 }

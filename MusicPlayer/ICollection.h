@@ -1,6 +1,8 @@
 #ifndef ICOLLECTION_H
 #define ICOLLECTION_H
 
+#include <memory>
+
 class Media;
 
 /// @author Julian Rieger
@@ -16,10 +18,11 @@ public:
 
    /// @brief Adds a media to the collection.
    /// @param[in] media is the media to add.
-   virtual void Add(Media* media) = 0;
+   virtual void Add(std::shared_ptr<Media> media) = 0;
 
    /// @brief Removes a media from the collection.
-   /// @param[in] media is the media to remove.
-   virtual void Remove(Media* media) = 0;
+   /// @param[in] title is the media to remove.
+   /// @returns if a element was deleted, if yes, function returs true.
+   virtual bool Remove(std::string const& title) = 0;
 };
 #endif //ICOLLECTION_H
