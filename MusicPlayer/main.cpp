@@ -1,23 +1,6 @@
-// Testtreiber MusicPlayer
-// Teil 1: Tests aller Klassen inkl. Fehlerfaelle und Grenzwerte
-// Teil 2: Demo einer Playlist (Play und Search)
-
-#include <climits>
-#include <cstdint>
-#include <exception>
-#include <functional>
 #include <iostream>
 #include <memory>
-#include <new>
-#include <sstream>
-#include <stdexcept>
 #include <string>
-#include <vector>
-
-#ifdef HAVE_VLD
-#include <vld.h>
-#endif
-
 #include "Album.h"
 #include "Collection.h"
 #include "MusicPlayer.h"
