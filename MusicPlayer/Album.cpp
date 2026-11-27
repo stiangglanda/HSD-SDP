@@ -1,14 +1,22 @@
 #include "Album.h"
 #include "Song.h"
 #include "Visitor.h"
+#include <stdexcept>
 #include <utility>
 
-Album::Album(std::string const& title, std::string const& interpreter, std::vector<std::shared_ptr<Song>> songs) : 
+Album::Album(std::string const& title, std::string const& interpreter, std::vector<std::shared_ptr<Song>> songs) :
    Publication{title, interpreter}, mSongs{std::move(songs)}
 {
+   if (mSongs.empty())
+   {
+      throw std::invalid_argument("Album must contain at least one song");
+   }
    for (auto const& song : mSongs)
    {
-      song->SetAlbum(this);
+      if (song == nullptr)
+      {
+         throw std::invalid_argument("Song of album is a null pointer");
+      }
    }
 }
 
@@ -22,7 +30,7 @@ size_t Album::GetDuration() const
    size_t duration = 0;
    for (auto const& song : mSongs)
    {
-      duration += song->GetDuration();
+      duration = AddDuration(duration, song->GetDuration());
    }
    return duration;
 }
@@ -33,7 +41,7 @@ Media const* Album::GetChild(int const index) const
    {
       return nullptr;
    }
-   return mSongs[index].get();
+   return mSongs[static_cast<size_t>(index)].get();
 }
 
 void Album::Accept(Visitor& visitor) const

@@ -1,7 +1,9 @@
 #ifndef COLLECTION_H
 #define COLLECTION_H
-#include <vector>
+#include <cstddef>
 #include <memory>
+#include <string>
+#include <vector>
 #include "Media.h"
 #include "ICollection.h"
 
@@ -10,25 +12,28 @@
 /// @brief Concrete class for a collection of media.
 ///
 /// The class aggregates any number of media and implements the interface ICollection.
+/// Collections can be nested, but a collection must never contain itself.
 class Collection : public Media, public ICollection
 {
 public:
    /// @brief Constructor of a collection.
    /// @param[in] title is the title of the collection.
-   ///
-   /// Calls the constructor of a media.
-   Collection(std::string const& title);
+   /// @throws std::invalid_argument if the title is empty.
+   explicit Collection(std::string const& title);
 
    /// @brief Adds a media to the collection.
    /// @param[in] media is the media to add.
+   /// @throws std::invalid_argument if the media is a null pointer, the collection itself
+   ///         or a collection that already contains this collection (cycle).
    ///
    /// Implements the pure virtual method of interface ICollection.
    void Add(std::shared_ptr<Media> media) override;
 
    /// @brief Removes a media from the collection.
-   /// @param[in] title is the media to remove.
-   /// @returns if a element was deleted, if yes, function returs true.
+   /// @param[in] title is the title of the media to remove.
+   /// @returns true if a media was removed, otherwise false.
    ///
+   /// Removes the first media with the given title. Nested collections are searched as well.
    /// Implements the pure virtual method of interface ICollection.
    bool Remove(std::string const& title) override;
 
@@ -40,11 +45,12 @@ public:
    Media const* GetChild(int const index) const override;
 
    /// @brief Returns the number of songs.
-   /// @returns the number of songs of the collection.
+   /// @returns the number of songs of the collection, including songs in albums and nested collections.
    size_t GetNumSongs() const;
 
    /// @brief Returns the duration of the collection.
    /// @returns the sum of the durations of all media.
+   /// @throws std::overflow_error if the sum does not fit into size_t.
    ///
    /// Implements the pure virtual method of class Media.
    size_t GetDuration() const override;

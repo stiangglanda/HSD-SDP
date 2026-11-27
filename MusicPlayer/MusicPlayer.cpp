@@ -1,54 +1,61 @@
 #include "MusicPlayer.h"
 #include <algorithm>
+#include <iostream>
+#include <stdexcept>
+#include <utility>
 #include "Collection.h"
 #include "Media.h"
-#include "SimpleMediaFactory.h"
+#include "VisitorPlay.h"
 #include "VisitorSearch.h"
 
-void MusicPlayer::Play()
+void MusicPlayer::Play() const
 {
-    VisitorPlay mVisitor;
-    for (const auto& media : mPlaylist)
-    {
-        media->Accept(mVisitor);
-    }
+   VisitorPlay visitor;
+   for (auto const& media : mPlaylist)
+   {
+      media->Accept(visitor);
+   }
 }
 
-void MusicPlayer::Search(std::string const& searchTerm)
+void MusicPlayer::Search(std::string const& searchTerm) const
 {
-    VisitorSearch mVisitor{searchTerm};
-    for (const auto& media : mPlaylist)
-    {
-        media->Accept(mVisitor);
-    }
+   VisitorSearch visitor{searchTerm};
+   std::cout << "search for \"" << searchTerm << "\": found medias:\n";
+   for (auto const& media : mPlaylist)
+   {
+      media->Accept(visitor);
+   }
 }
 
-void MusicPlayer::Add(std::shared_ptr<Media> media) {
-    if (media != nullptr)
-    {
-        mPlaylist.push_back(std::move(media));
-    }
+void MusicPlayer::Add(std::shared_ptr<Media> media)
+{
+   if (media == nullptr)
+   {
+      throw std::invalid_argument("Media is a null pointer");
+   }
+   mPlaylist.push_back(std::move(media));
 }
 
-void MusicPlayer::Remove(std::string const& title)
+bool MusicPlayer::Remove(std::string const& title)
 {
-    auto it = std::find_if(mPlaylist.begin(), mPlaylist.end(),
-                           [&title](std::shared_ptr<Media> const& media)
-                           {
-                              return media->GetTitle() == title;
-                           });
-    if (it != mPlaylist.end())
-    {
-        mPlaylist.erase(it);
-        return;
-    }
+   auto const it = std::find_if(mPlaylist.cbegin(), mPlaylist.cend(),
+                                [&title](std::shared_ptr<Media> const& media)
+                                {
+                                   return media->GetTitle() == title;
+                                });
+   if (it != mPlaylist.cend())
+   {
+      mPlaylist.erase(it);
+      return true;
+   }
 
-    for (auto const& media : mPlaylist)
-    {
-        auto collection = std::dynamic_pointer_cast<Collection>(media);
-        if (collection != nullptr && collection->Remove(title))
-        {
-            return;
-        }
-    }
+   for (auto const& media : mPlaylist)
+   {
+      Collection* const collection = dynamic_cast<Collection*>(media.get());
+      if (collection != nullptr && collection->Remove(title))
+      {
+         return true;
+      }
+   }
+   return false;
 }

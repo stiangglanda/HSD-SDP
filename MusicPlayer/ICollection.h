@@ -2,6 +2,7 @@
 #define ICOLLECTION_H
 
 #include <memory>
+#include <string>
 
 class Media;
 
@@ -18,11 +19,12 @@ public:
 
    /// @brief Adds a media to the collection.
    /// @param[in] media is the media to add.
+   /// @throws std::invalid_argument if the media is a null pointer or would create a cycle.
    virtual void Add(std::shared_ptr<Media> media) = 0;
 
    /// @brief Removes a media from the collection.
-   /// @param[in] title is the media to remove.
-   /// @returns if a element was deleted, if yes, function returs true.
+   /// @param[in] title is the title of the media to remove.
+   /// @returns true if a media was removed, otherwise false.
    virtual bool Remove(std::string const& title) = 0;
 };
 #endif //ICOLLECTION_H

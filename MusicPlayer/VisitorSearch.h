@@ -2,20 +2,22 @@
 #define VISITORSEARCH_H
 #include <string>
 
+#include "Object.h"
 #include "Visitor.h"
 
 /// @author Leander Kieweg
 /// @date 25.11.2026
 /// @brief Concrete visitor that searches for media.
 ///
-/// The class implements all Visit methods of the interface Visitor.
-class VisitorSearch : public Visitor
+/// The class prints every media whose title contains the search term to std::cout.
+class VisitorSearch : public Object, public Visitor
 {
 public:
    /// @brief Constructor.
    /// @param[in] searchTerm is the term to search for.
-   VisitorSearch(std::string const& searchTerm);
-   
+   /// @throws std::invalid_argument if the search term is empty.
+   explicit VisitorSearch(std::string const& searchTerm);
+
    /// @brief Visits a collection and searches in it.
    /// @param[in] collection is the collection to visit.
    void Visit(Collection const& collection) override;
@@ -29,6 +31,10 @@ public:
    void Visit(Album const& album) override;
 
 private:
-   std::string mSearchTerm;
+   /// @brief Prints the title if it contains the search term.
+   /// @param[in] title is the title to check.
+   void Check(std::string const& title) const;
+
+   std::string mSearchTerm;  ///< Term to search for.
 };
 #endif //VISITORSEARCH_H

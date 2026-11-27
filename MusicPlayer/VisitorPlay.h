@@ -3,14 +3,16 @@
 #include <cstddef>
 #include <string>
 
+#include "Object.h"
 #include "Visitor.h"
 
 /// @author Leander Kieweg
 /// @date 25.11.2026
 /// @brief Concrete visitor that plays media.
 ///
-/// The class implements all Visit methods of the interface Visitor.
-class VisitorPlay : public Visitor
+/// The class prints all media hierarchically to std::cout.
+/// Contained media are indented, songs are numbered consecutively.
+class VisitorPlay : public Object, public Visitor
 {
 public:
    /// @brief Visits a collection and plays all of its media.
@@ -26,8 +28,16 @@ public:
    void Visit(Album const& album) override;
 
 private:
-   std::string FormatDuration(size_t const seconds);
-   std::size_t mSongCounter = 0;
-   size_t mLevel = 0;
+   /// @brief Formats a duration as mm:ss.
+   /// @param[in] seconds is the duration in seconds.
+   /// @returns the formatted duration.
+   static std::string FormatDuration(size_t const seconds);
+
+   /// @brief Returns the indentation for the current level.
+   /// @returns a string of spaces.
+   std::string Indent() const;
+
+   size_t mSongCounter = 0;  ///< Number of songs played so far.
+   size_t mLevel = 0;        ///< Current nesting level.
 };
 #endif //VISITORPLAY_H

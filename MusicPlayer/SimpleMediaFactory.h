@@ -1,34 +1,49 @@
 #ifndef SIMPLEMEDIAFACTORY_H
 #define SIMPLEMEDIAFACTORY_H
+#include <cstddef>
 #include <memory>
 #include <string>
 #include <vector>
-#include "Song.h"
+#include "Object.h"
 
+class Album;
 class Collection;
-class Media;
+class Song;
 
 /// @author Leander Kieweg
 /// @date 25.11.2026
 /// @brief Factory that creates media.
 ///
-/// The class creates a song, an album or a collection depending on the kind.
-class SimpleMediaFactory
+/// The class creates songs, albums and collections, so the client does not
+/// need to know the constructors of the concrete classes.
+class SimpleMediaFactory : public Object
 {
 public:
-   /// @brief Creates a media.
-   /// @param[in] kind is the kind of media, for example "song", "album" or "collection".
-   /// @returns a new media of the given kind or nullptr if the kind is unknown.
-   ///
-   /// The caller is responsible for deleting the returned object.
+   /// @brief Creates a song.
+   /// @param[in] title is the title of the song.
+   /// @param[in] interpreter is the name of the interpreter.
+   /// @param[in] duration is the duration of the song in seconds.
+   /// @returns the new song.
+   /// @throws std::invalid_argument if the title or the interpreter is empty.
    std::shared_ptr<Song> CreateSong(std::string const& title,
-                                 std::string const& interpreter,
-                                 size_t const duration);
+                                    std::string const& interpreter,
+                                    size_t const duration) const;
 
-    std::shared_ptr<Album> CreateAlbum(std::string const &title,
-                                       std::string const &interpreter,
-                                       std::vector<std::shared_ptr<Song>> songs);
+   /// @brief Creates an album.
+   /// @param[in] title is the title of the album.
+   /// @param[in] interpreter is the name of the interpreter.
+   /// @param[in] songs are the songs of the album.
+   /// @returns the new album.
+   /// @throws std::invalid_argument if the title or the interpreter is empty,
+   ///         if there are no songs or if a song is a null pointer.
+   std::shared_ptr<Album> CreateAlbum(std::string const& title,
+                                      std::string const& interpreter,
+                                      std::vector<std::shared_ptr<Song>> songs) const;
 
-   std::shared_ptr<Collection> CreateCollection(std::string const& title);
+   /// @brief Creates an empty collection.
+   /// @param[in] title is the title of the collection.
+   /// @returns the new collection.
+   /// @throws std::invalid_argument if the title is empty.
+   std::shared_ptr<Collection> CreateCollection(std::string const& title) const;
 };
 #endif //SIMPLEMEDIAFACTORY_H

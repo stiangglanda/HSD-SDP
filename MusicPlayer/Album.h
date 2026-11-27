@@ -1,6 +1,8 @@
 #ifndef ALBUM_H
 #define ALBUM_H
+#include <cstddef>
 #include <memory>
+#include <string>
 #include <vector>
 #include "Publication.h"
 
@@ -17,8 +19,9 @@ public:
    /// @brief Constructor of an album.
    /// @param[in] title is the title of the album.
    /// @param[in] interpreter is the interpreter of the album.
-   ///
-   /// Calls the constructor of a media.
+   /// @param[in] songs are the songs of the album.
+   /// @throws std::invalid_argument if the title or the interpreter is empty,
+   ///         if there are no songs or if a song is a null pointer.
    Album(std::string const& title, std::string const& interpreter, std::vector<std::shared_ptr<Song>> songs);
 
    /// @brief Returns the number of songs.
@@ -27,6 +30,7 @@ public:
 
    /// @brief Returns the duration of the album.
    /// @returns the sum of the durations of all songs.
+   /// @throws std::overflow_error if the sum does not fit into size_t.
    ///
    /// Implements the pure virtual method of class Media.
    size_t GetDuration() const override;

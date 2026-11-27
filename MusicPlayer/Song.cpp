@@ -13,10 +13,5 @@ size_t Song::GetDuration() const
 
 void Song::Accept(Visitor& visitor) const
 {
-	visitor.Visit(*this);
-}
-
-void Song::SetAlbum(Album* album)
-{
-   mAlbum = album;
+   visitor.Visit(*this);
 }
